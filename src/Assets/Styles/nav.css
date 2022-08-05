@@ -1,0 +1,16 @@
+
+
+.nav-center, .nav_left_container ul{
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-center{
+    position: fixed;
+    left: 6.9rem;
+    right: 6.9rem;
+}
+.nav_middle_container input{
+    width: 17rem;
+}

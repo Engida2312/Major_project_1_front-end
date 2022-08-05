@@ -1,0 +1,16 @@
+
+.input{
+    height: 36px;
+    padding: 0 1rem;
+    border: 1px solid var(--clr-border-light);
+    border-radius: 10px;
+    transition: 100ms border ease-in-out;
+    background-color: var(--clr-primary-1);
+    color: var(--clr-primary-3);
+}
+
+.input:focus{
+    outline: none;
+    border: 2px solid var(--clr-primary-3);
+    box-shadow: 0.2rem 0.8rem 1.6rem var(--clr-primary-1);
+}
