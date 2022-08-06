@@ -1,14 +1,9 @@
 import React from 'react';
-import Navbar from './Layers/Nav/Navbar';
-import Button from './Componets/button';
-import Input from './Componets/input';
-import SearchBar from './Componets/search-bar';
-
+import Home from './Pages/Home';
 
 function App() {
   return <>
-  <Navbar></Navbar>
-    {/* <Input></Input> */}
+    <Home></Home>
   </>
 }
 

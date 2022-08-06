@@ -5,8 +5,9 @@ body {
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--clr-primary-1);
+  background-color: var(--clr-primary-2);
   color: var(--clr-primary-3);
+  height: 1000vh;
 }
 
 :root {
@@ -51,3 +52,12 @@ body {
   --fixed-width: 620px;
 }
 
+.center_center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.margin_section{
+  padding-left: 6.9rem;
+  padding-right: 6.9rem;
+}

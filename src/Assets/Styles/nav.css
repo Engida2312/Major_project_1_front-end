@@ -1,15 +1,21 @@
+nav{
+    height: 60px;
+}
 
-
-.nav-center, .nav_left_container ul{
+.nav_center, .nav_left_container ul{
     display: flex;
     gap: 1rem;
     justify-content: space-between;
     align-items: center;
 }
-.nav-center{
+.nav_center{
     position: fixed;
-    left: 6.9rem;
-    right: 6.9rem;
+    left: 0;
+    right: 0;
+   
+    height: 60px;
+    background-color: var(--clr-primary-1);
+    border-bottom: 1px solid var(--clr-border-light);
 }
 .nav_middle_container input{
     width: 17rem;
