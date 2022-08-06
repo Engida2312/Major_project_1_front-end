@@ -1,4 +1,3 @@
-import '../Assets/Styles/card.css'
 
 const InfoCard = ({infoCards})=>{
     return<>

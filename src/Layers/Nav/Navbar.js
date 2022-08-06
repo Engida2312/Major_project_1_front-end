@@ -3,11 +3,7 @@ import React, {useState, UseRef, useEffect} from 'react'
 import {AiOutlineMenu} from 'react-icons/ai'
 import {VscGithub} from 'react-icons/vsc'
 import SearchBar from '../../Componets/search-bar'
-import '../../Assets/Styles/nav.css'
-import '../../Assets/Styles/links.css'
-import '../../Assets/Styles/button.css'
-import '../../Assets/Styles/icons.css'
-import '../../Assets/Styles/list.css'
+
 
 const Navbar = ()=>{
     const [showLinks, setShowLinks] = useState(false)

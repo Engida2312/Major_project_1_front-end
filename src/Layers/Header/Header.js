@@ -1,5 +1,4 @@
 
-import '../../Assets/Styles/header.css'
 import {IoIosArrowDroprightCircle} from 'react-icons/io'
 
 const Header = ()=>{

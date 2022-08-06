@@ -1,6 +1,5 @@
 
 import InfoCard from '../../Componets/Info-card'
-import '../../Assets/Styles/main-home.css'
 import { infoCards } from '../../Assets/Data/data'
 
 const MainHome = ()=>{
