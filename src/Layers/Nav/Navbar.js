@@ -13,9 +13,9 @@ const Navbar = ()=>{
     const [showLinks, setShowLinks] = useState(false)
     useEffect(()=>{
         if(showLinks){
-            linksContainerRef.current.style.height = `500px`
+            setShowLinks(true)
         }else{
-            linksContainerRef.current.style.height = '0px'
+            setShowLinks(false)
         }
     }, [showLinks])
     return(
