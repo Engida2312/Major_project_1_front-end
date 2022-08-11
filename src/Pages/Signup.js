@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 
 function Signup(){
@@ -10,7 +11,7 @@ function Signup(){
             <form action="" className="signup_form">
                 <div className="signup_login">
                     <p className="signup_member">Already Member?</p>
-                    <a id="signup_a" href="">LOGIN</a>
+                    <Link id="signup_a" to="/login">LOGIN</Link>
                 </div>
                 <h1 id="signup_h1">sign up to EYN</h1>
                 <p className="signup_title">Discover The World's Top Creatives</p>
