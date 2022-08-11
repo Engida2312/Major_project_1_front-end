@@ -153,7 +153,8 @@
 #signup_boxagree{
   margin-left: 5px;
   margin-top: 5px;
-  font-size: medium;
+  margin-bottom: 5px;
+  font-size: 13px;
 }
 
 #checkbox {
