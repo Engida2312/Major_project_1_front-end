@@ -3,25 +3,21 @@ import React, {useState, UseRef, useEffect} from 'react'
 import {AiOutlineMenu} from 'react-icons/ai'
 import {VscGithub} from 'react-icons/vsc'
 import SearchBar from '../../Componets/search-bar'
-import '../../Assets/Styles/nav.css'
-import '../../Assets/Styles/links.css'
-import '../../Assets/Styles/button.css'
-import '../../Assets/Styles/icons.css'
-import '../../Assets/Styles/list.css'
+
 
 const Navbar = ()=>{
     const [showLinks, setShowLinks] = useState(false)
     useEffect(()=>{
         if(showLinks){
-            linksContainerRef.current.style.height = `500px`
+            setShowLinks(true)
         }else{
-            linksContainerRef.current.style.height = '0px'
+            setShowLinks(false)
         }
     }, [showLinks])
     return(
         <nav>
             {/* nav header */}
-            <div className="nav-center">
+            <div className="nav_center margin_section">
                 <div className="nav-header">
                     <img src='' alt="logo" />
                     <AiOutlineMenu className="icon nav-toggle" onClick={()=>{
@@ -36,7 +32,7 @@ const Navbar = ()=>{
                 {/* nav left */}
                 <div className="nav_left_container">
                     <ul>
-                        <li><a className='link icon'  href=""><VscGithub/></a></li>
+                        <li><a className='link icon' id='vsCodeIcon' href=""><VscGithub/></a></li>
                         <li><a className='link' href="">Sign In</a></li>
                         <li><a className='btn' href="">Share your work</a></li>
                     </ul>
