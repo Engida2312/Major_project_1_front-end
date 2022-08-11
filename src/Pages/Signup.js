@@ -4,44 +4,31 @@ import React from "react";
 function Signup(){
   return(
   <div>
-<body>
-	<div className="container" id="container">
-	
-		<div className="form-container sign-in-container">
-        
-			<form action="" className="">
-                <div className="login">
-                    <p className="member">Already Member?</p>
-                    <a href="">LOGIN</a>
+<body id="signup_body">
+	<div className="signup_container">
+	    <div className="form-container">
+            <form action="" className="signup_form">
+                <div className="signup_login">
+                    <p className="signup_member">Already Member?</p>
+                    <a id="signup_a" href="">LOGIN</a>
                 </div>
-
-                <h1>sign up to EYN</h1>
-                <p className="title">Discover The World's Top Creatives</p>
-               
-
-                <div className="inside">
-                    <label>Name	</label><input type="Name" />
-                    <label>Email</label><input type="email"  />
-                    <label>Password</label><input type="password"  />
+                <h1 id="signup_h1">sign up to EYN</h1>
+                <p className="signup_title">Discover The World's Top Creatives</p>
+                <div className="signup_inside">
+                    <label className="signup_label">Name	</label><input className="signup_input" type="Name" />
+                    <label className="signup_label">Email</label><input className="signup_input" type="email"  />
+                    <label className="signup_label">Password</label><input className="signup_input" type="password"  />
                     
-                    <div class="check">
-                        <input id="checkbox" type="checkbox" required/>
-                         <label id="agree" for="checkbox"> I agree to these <a href="#">Terms and Conditions</a>.</label>
+                    <div class="signup_check">
+                        <input id="signup_checkbox" type="checkbox" required/>
+                        <label id="signup_boxagree" for="checkbox"> I agree to these <a className="termandcondition" href="#">Terms and Conditions</a>.</label>
                     </div>
-                    
-                   
-            
-                    <button>CREATE ACCOUNT</button>
+                    <button id="signup_button">CREATE ACCOUNT</button>
                 </div>
 		    </form>
         </div>
-
-
         <div className="sign_up_right">
-            
-                
-            <h1>Welcome To EYN!</h1>
-                    
+             <h1 id="signup_h1">Welcome To EYN!</h1>
         </div>
     </div>
 </body>

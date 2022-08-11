@@ -1,9 +1,9 @@
 
 const InfoCard = ({infoCards})=>{
     return<>
-        <div id={info.id} className="info_card">
-            <h3>{info.title}</h3>
-            <p>{info.descrioption}</p>
+        <div id={infoCards.id} className="info_card">
+            <h3>{infoCards.title}</h3>
+            <p>{infoCards.descrioption}</p>
         </div>
     </>
 }
