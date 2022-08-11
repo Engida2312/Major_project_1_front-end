@@ -3,6 +3,7 @@ import React, {useState, UseRef, useEffect} from 'react'
 import {AiOutlineMenu} from 'react-icons/ai'
 import {VscGithub} from 'react-icons/vsc'
 import SearchBar from '../../Componets/search-bar'
+import { Link } from 'react-router-dom';
 
 
 const Navbar = ()=>{
@@ -33,8 +34,8 @@ const Navbar = ()=>{
                 <div className="nav_left_container">
                     <ul>
                         <li><a className='link icon' id='vsCodeIcon' href=""><VscGithub/></a></li>
-                        <li><a className='link' href="">Sign In</a></li>
-                        <li><a className='btn' href="">Share your work</a></li>
+                        <li><Link className='link' to="/signup">Sign In</Link></li>
+                        <li><Link className='btn' to="/login">Share your work</Link></li>
                     </ul>
                 </div>
             </div>
