@@ -4,7 +4,7 @@ import React from "react";
 function Signup(){
   return(
   <div>
-<body id="signup_body">
+    <body id="signup_body">
 	<div className="signup_container">
 	    <div className="form-container">
             <form action="" className="signup_form">
@@ -31,7 +31,7 @@ function Signup(){
              <h1 id="signup_h1">Welcome To EYN!</h1>
         </div>
     </div>
-</body>
+    </body>
 
 </div>
 
