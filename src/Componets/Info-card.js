@@ -1,9 +1,10 @@
 
-const InfoCard = ({infoCards})=>{
+const InfoCard = ({data})=>{
+    const {id, title, description, icon} = data;
     return<>
-        <div id={info.id} className="info_card">
-            <h3>{info.title}</h3>
-            <p>{info.descrioption}</p>
+        <div className="info_card">
+            <h3><span className="icon">{icon}</span> {title}</h3>
+            <p className=''>{description}</p>
         </div>
     </>
 }
