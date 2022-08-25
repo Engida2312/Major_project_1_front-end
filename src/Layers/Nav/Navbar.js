@@ -6,6 +6,7 @@ import {VscGithub} from 'react-icons/vsc'
 import SearchBar from '../../Componets/search-bar'
 import logo from '../../Assets/Images/avatar.png'
 
+
 const Navbar = ()=>{
     const [showLinks, setShowLinks] = useState(false)
     useEffect(()=>{
@@ -34,8 +35,8 @@ const Navbar = ()=>{
                 <div className="nav_left_container">
                     <ul>
                         <li><a className='link icon' id='vsCodeIcon' target={'_blank'} href="https://github.com/Engida2312/Major_project_1_front-end"><VscGithub/></a></li>
-                        <li><Link className='link' to="">Sign In</Link></li>
-                        <li><Link className='btn' to="">Share your work</Link></li>
+                        <li><Link className='link' to="/login">Sign In</Link></li>
+                        <li><Link className='btn' to="/Signup">Share your work</Link></li>
                     </ul>
                 </div>
             </div>
