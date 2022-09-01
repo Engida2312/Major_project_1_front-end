@@ -4,12 +4,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Chango&family=Montserrat:ital,wght@0,400;0,500;0,600;0,800;1,500&display=swap');
 
 
-*{
-	box-sizing: border-box;
-}
+
 
 #signup_body{
-	background: #576574;
+	/* background: #576574; */
 	display: flex;
 	justify-content: center;
 	align-items: center;

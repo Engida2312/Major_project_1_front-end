@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const Header = ()=>{
     return(
-        <header>
+        <header>  
             <div className="header_container margin_section">
                 <div className="header_left">
                     <h1 className="headline">Make your development faster</h1>
