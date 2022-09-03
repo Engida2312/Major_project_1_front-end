@@ -1,8 +1,10 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Footer from './Layers/Footer/Footer';
 import Home from './Pages/Home'
 import Signup from './Pages/Signup'
 import Login from './Pages/Login'
-import Components from './Page/Components';
+import Components from './Pages/Components';
 import AddComponents from './Pages/AddComponent';
 import Dashboard from './Pages/dashboard';
 import Error from './Pages/Error';

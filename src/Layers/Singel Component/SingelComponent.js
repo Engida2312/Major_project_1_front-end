@@ -28,7 +28,7 @@ const SingelComponent = (id) => {
         <p className='comp-sub-title sub-title-marg'>You are easy two steps behind to create a highly responsive web app. </p>
         <div className='comp-steps-container'>
             <h1 className='comp-sub-elem-hdr sub-elem-hdr-marg'>Steps</h1>
-            <ol className='comp-sub-title'>
+            <ol className='comp-sub-title '>
                 <li>
                     1. choose the component you want to use from the side bar.
                 </li>
