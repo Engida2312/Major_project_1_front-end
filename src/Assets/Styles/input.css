@@ -2,7 +2,7 @@
 .input{
     height: 36px;
     padding: 0 1rem;
-    border: 1px solid var(--clr-border-light);
+    border: 1px solid var(--clr-border-dark);
     border-radius: 10px;
     transition: 100ms border ease-in-out;
     background-color: var(--clr-primary-1);

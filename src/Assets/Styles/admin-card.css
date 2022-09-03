@@ -1,0 +1,5 @@
+.admin_card{
+    width: fit-content;
+    padding: 1rem;
+    justify-content: space-between;
+}

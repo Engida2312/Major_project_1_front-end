@@ -28,6 +28,7 @@
 .sub-title-marg{
     margin: 0.5rem 0 0 0;
 }
+
 .component_container{
     position:fixed;
     display: flex;
