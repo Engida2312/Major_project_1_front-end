@@ -45,8 +45,9 @@ function Login(){
                     <label className="signup_label">Password</label><input className="signup_input" type="password" id="password" name="password" value={values.password}  onChange={handleChange} />
                     {errors.password && <p className="error">{errors.password}</p>}
                     
-                    
+                    <Link id="passforget" to="">Forgot Password?</Link>
                     <button id="signup_button" onClick={handleFormSubmit}>LOGIN</button>
+                    
                 </div>
 		    </form>
         </div>
