@@ -4,9 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Chango&family=Montserrat:ital,wght@0,400;0,500;0,600;0,800;1,500&display=swap');
 
 
-*{
-	box-sizing: border-box;
-}
+
 
 #signup_body{
 	background: #576574;
@@ -33,7 +31,7 @@
 	margin: 20px 0 30px;
 }
 #signup_button{
-    font-family: cursive;
+  font-family: cursive;
 	border-radius: 20px;
 	border: 1px solid #FF4B2B;
 	background-color: #FF4B2B;
@@ -44,7 +42,7 @@
 	letter-spacing: 1px;
 	align-items: left;
 	margin-bottom: 10px;
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 #signup_button:active {
@@ -124,6 +122,9 @@
   width: 100%;
   display: flex;
   justify-content: end;
+  margin-top: 10px;
+  padding-bottom: 15px;
+  padding-top: 10px;
   
 }
 .signup_member{
@@ -135,7 +136,6 @@
 #signup_a{
     font-family: Mouse Memoirs;
     display: inline;
-    margin-top: 15px;
     font-size: medium;
   
   }
@@ -169,4 +169,9 @@
   margin-top: 15px;
   font-size: medium;
 
+}
+.error{
+  color: #FF4B2B;
+  font-size: 13px;
+  margin-top: -8px;
 }
