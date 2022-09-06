@@ -5,6 +5,7 @@ import Footer from './Layers/Footer/Footer';
 import Home from './Pages/Home'
 import Signup from './Pages/Signup'
 import Login from './Pages/Login'
+import { Profile } from './Pages/Profile';
 import Components from './Page/Components';
 import Dashboard from './Pages/dashboard';
 import Error from './Pages/Error';
@@ -24,6 +25,7 @@ import './Assets/Styles/card.css'
 import './Assets/Styles/main-home.css'
 import './Assets/Styles/signup.css'
 import './Assets/Styles/admin.css'
+import './Assets/Styles/profile.css'
 
 function App() {
   return <>
@@ -34,6 +36,7 @@ function App() {
             <Route index element={<Home />} />
             <Route  path='signup' element={<Signup/>} />
             <Route  path='login' element={<Login />} />
+            <Route  path='profile' element={<Profile />} />
             <Route  path='components' element={<Components/>} />
             <Route path='*' element={<Error/>} />
           </Route>
