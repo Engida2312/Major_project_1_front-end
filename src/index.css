@@ -16,8 +16,8 @@ body {
 
 :root {
   /* dark shades of primary color*/
-  --clr-primary-1: #222f3e;
-  --clr-primary-2: #576574;
+  --clr-primary-1: #112444;
+  --clr-primary-2: #1D3153;
   --clr-primary-3: #F3F3F9;
   --clr-primary-4: rgba(217, 217, 217, 0.05);;
 
@@ -47,6 +47,15 @@ body {
   align-items: center;
   justify-content: center;
 }
+.flex{
+  display: flex;
+}
+.justify_content_sb{
+  justify-content: space-between;
+}
+.align_items_c{
+  align-items: center;
+}
 .gap-1{
   gap: 1rem;
 }
@@ -60,6 +69,35 @@ body {
 .margin_section {
   padding-left: 6.5rem;
   padding-right: 6.5rem;
+}
+.m-1{
+  margin: 1rem;
+}
+.m-2{
+  margin: 2rem;
+}
+.m-3 {
+  margin: 3rem;
+}
+.m-4 {
+  margin: 4rem;
+}
+.m-5 {
+  margin: 5rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.col{
+  flex-direction: column;
+}
+.admin_main_container{
+  margin-left: 250px;
+  padding: 2rem;
+  background-color: var(--clr-primary-1);
+  min-height: 100vh;
 }
 
  @media (max-width: 48em) {

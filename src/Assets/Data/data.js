@@ -16,7 +16,7 @@ export const infoCards = [
     },
       {
         id: 3,
-        title: 'Flaxable',
+        title: 'albe  ',
         description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum rem, quam natus, ipsa ex tempor',
         icon: <MdOutlineDeveloperMode/>,
     },
