@@ -52,14 +52,14 @@
 	color: black;
 	font-size: 12px;
 	font-weight: bold;
-	padding: 12px 45px;
-	letter-spacing: 1px;
+	
+	letter-spacing: 2px;
 	align-items: left;
-	width: 180px;
+	width: 170px;
 	height: 30px;
 	position: relative;
 	top: 50px;
-	left: 430px;
+	left: 450px;
 	
 
 }
