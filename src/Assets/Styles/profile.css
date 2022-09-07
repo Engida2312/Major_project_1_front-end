@@ -40,6 +40,11 @@
 	top: 200px;
 
 }
+.liked{
+	position: relative;
+	top: 200px;
+	left: 10px;
+}
 .profile_button{
 	border-radius: 20px;
 	border: 1px solid #FF4B2B;
@@ -79,6 +84,11 @@ hr{
 	left: 300px;
 	height: 30px;
 
+}
+.linkedin{
+	position: relative;
+	top: 200px;
+	left: 310px;
 }
 
 .lower{

@@ -7,31 +7,35 @@ import Logo from './../Assets/Images/avatar.png'
 export const Profile = () => {
   return (
     <div>
-         <div class="upper">
-	   	<div class="avatar">
-	   		<img class="profile_img" src={Logo} alt="av"/>
+         <div className="upper">
+	   	<div className="avatar">
+	   		<img className="profile_img" src={Logo} alt="av"/>
 
 		</div>
-	   	<h1 class="profile_h1">Nahom</h1>
-	   	<p class="profile_p">Developer</p>
+	   	<h1 className="profile_h1">Nahom</h1>
+	   	<p className="profile_p">Developer</p>
 
 	  
-		 <div class="collection">
-	   	<button>Collections</button>
-	   	<button>Liked Shots</button>
+		 <div className="collection">
+	   	<button className='btn'>Collections</button>
+		</div>
+		<div className='liked'>
+	   	<button className='btn'>Liked Shots</button>
 	   
 	   </div>
 
-	    <button class="profile_button">Edit Profile</button>
+	    <button className="profile_button">Edit Profile</button>
 	    <div class="git">
-	    	 <button class="">Github</button>
-	   	<button class="">Linkedin</button>
+	    	 <button className='btn'>Github</button>
+		</div>
+		<div className='linkedin'>
+	   	<button className='btn'>Linkedin</button>
 	    </div>
 	   
 	</div>
 	   <hr/>
 
-   <div class="lower">
+   <div className="lower">
    
    <section>
                 <div className="cards_container margin_top_4 margin_section">
