@@ -52,6 +52,7 @@
 	color: black;
 	font-size: 12px;
 	font-weight: bold;
+	cursor: pointer;
 	
 	letter-spacing: 2px;
 	align-items: left;
@@ -67,6 +68,13 @@ button{
 	border-radius: 20%;
 	border-color: #fff;
 	
+}
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
 }
 hr{
 	padding: 0;
