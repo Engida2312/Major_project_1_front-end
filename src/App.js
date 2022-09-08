@@ -11,6 +11,7 @@ import Dashboard from './Pages/dashboard';
 import Error from './Pages/Error';
 import ClientSharedLayout from './Layers/SharedLayouts/ClientSharedLayout';
 import AdminSharedLayout from './Layers/SharedLayouts/AdminSharedLayout'
+import Editprofile from './Pages/Editprofile'
 
 import './index.css'
 import './Assets/Styles/footer.css'
@@ -37,6 +38,7 @@ function App() {
             <Route  path='signup' element={<Signup/>} />
             <Route  path='login' element={<Login />} />
             <Route  path='profile' element={<Profile />} />
+            <Route  path='editprofile' element={<Editprofile />} />
             <Route  path='components' element={<Components/>} />
             <Route path='*' element={<Error/>} />
           </Route>

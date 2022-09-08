@@ -46,7 +46,7 @@
 	left: 10px;
 }
 .profile_button{
-	border-radius: 20px;
+	
 	border: 1px solid #FF4B2B;
 	background-color: #FF4B2B;
 	color: black;
@@ -65,7 +65,7 @@
 
 }
 button{
-	border-radius: 20%;
+	
 	border-color: #fff;
 	
 }
@@ -73,7 +73,7 @@ button:active {
 	transform: scale(0.95);
 }
 
-button:focus {
+Link:focus {
 	outline: none;
 }
 hr{

@@ -1,12 +1,14 @@
 import React from 'react'
 import ComponentCard from '../Componets/componet-card'
 import Logo from './../Assets/Images/avatar.png'
+import { Link } from 'react-router-dom';
 
 
 
 export const Profile = () => {
   return (
     <div>
+			
          <div className="upper">
 	   	<div className="avatar">
 	   		<img className="profile_img" src={Logo} alt="av"/>
@@ -24,7 +26,8 @@ export const Profile = () => {
 	   
 	   </div>
 
-	    <button className="profile_button">Edit Profile</button>
+	    
+		<Link to="/editprofile"><button className="profile_button">Edit Profile</button></Link>
 	    <div class="git">
 	    	 <button className='btn'>Github</button>
 		</div>
