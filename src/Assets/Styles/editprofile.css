@@ -1,61 +1,23 @@
-.a_sidebar_container{
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: var(--clr-primary-2);
-    height: 100vh;
-    width: 250px;
-    border-right: 1px solid var(--clr-primary-3);
-    margin-top: 60px;
-}
 
 .edit_img{
-    
-
-	width: 170px;
-	height: 170px;
-	margin-left: 350px;
+	width: 100px;
+	height: 100px;
+	margin-left: 275px;
     
 }
 .right{
     margin-left: 250px;
 }
 .edit_h2{
+    margin-left: 30px;
     padding: 20px;
 }
-
-.edit_form {
-    width: 20vw;
-    max-width: 500px;
-    min-width: 300px;
-    margin-left: 300px;
-    padding-bottom: 2em;
-  }
-  
-  .edit_fieldset {
-    border: none;
-      padding: 2rem 0;
-  }
-  
-
-  .first{
-    display: inline;
-  }
-  
-  input {
+.input_field_img{
     margin: 10px 0 0 0;
-      width: 100%;
+    width: 100%;
     min-height: 2em;
   }
-  
-  .input_field{
-    background-color: #0a0a23;
-    border: 1px solid #0a0a23;
-    color: #ffffff;
-  }
-
-
-  .imgpic {
+  .imgpic{
     color: transparent;
   }
   .imgpic::-webkit-file-upload-button {
@@ -63,20 +25,18 @@
   }
   .imgpic::before {
     content: 'Upload Image';
-    -webkit-user-select: none;
-    
     color: black;
     display: inline-block;
     border: 1px solid #FF4B2B;
 	background-color: #FF4B2B;
     border-radius: 3px;
-    padding: 5px 8px;
+    padding: 5px 5px;
     outline: none;
     cursor: pointer;
     font-weight: 700;
     font-size: 10pt;
     position: relative;
-    left: 385px;
+    left: 280px;
   }
   .imgpic:hover::before {
     border-color: black;
@@ -87,13 +47,10 @@
   .imgpic:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
   }
-  
- 
-  
- .save{
+.save{
     display: block;
-    width: 0%;
-    margin: 1em auto;
+    margin-left: 50px;
+    margin-top: 30px;
     height: 2em;
     font-size: 1.1rem;
     background-color: #FF4B2B;
@@ -102,12 +59,42 @@
     min-width: 100px;
   }
   
- .pic{
-    display: block;
-    position: relative;
 
- }
-  
+.form-style-1 {
+	margin-left: 50px;
+	max-width: 550px;
+	font: 14px "Lucida Grande", sans-serif;
+}
+.form-style-1 li {
+	display: block;
+	list-style: none;
+	
+}
+.form-style-1 label{
+	margin:0 0 8px 0;
+	padding-top:30px;
+	display:block;
+	font-weight: bold;
+}
+
+.form-style-1 input[type=text], 
+.form-style-1 input[type=email]
+{
+	background-color: #112444;
+    color: #ffffff;
+	border:1px solid #0a0a23;
+	padding: 8px;
+	margin:0px;
+}
+.form-style-1 .field-divided{
+	width: 49.6%;
+   
+}
+
+.form-style-1 .field-long{
+	width: 100%;
+}
+
 
 
 

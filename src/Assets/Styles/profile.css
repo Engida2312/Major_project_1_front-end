@@ -5,10 +5,12 @@
 	background-color: #1D3153;
 }
 .profile_img{
-
-	width: 200px;
-	height: 200px;
+	position: relative;
+	width: 150px;
+	height: 150px;
 	margin-top: 20px;
+	left: 40px;
+	
 }
 .avatar{
 	margin-left: 50px;
@@ -18,7 +20,7 @@
 	color:#fff;
     position: relative;
     top: 40px;
-    left: 200px;
+    left: 170px;
 
 	 padding: 0;
 	
@@ -28,7 +30,7 @@
 	color: #fff;
 	position: relative;
 	top: 80px;
-    left: 80px;
+    left: 50px;
     padding: 0;
 	
 	
@@ -38,12 +40,13 @@
 .collection{
 	position: relative;
 	top: 200px;
+	left: -30px;
 
 }
 .liked{
 	position: relative;
 	top: 200px;
-	left: 10px;
+	left: -20px;
 }
 .profile_button{
 	
@@ -53,7 +56,6 @@
 	font-size: 12px;
 	font-weight: bold;
 	cursor: pointer;
-	
 	letter-spacing: 1.5px;
 	align-items: left;
 	width: 110px;
