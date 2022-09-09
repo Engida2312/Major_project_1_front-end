@@ -1,8 +1,30 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import validation from "./validation";
+import { useState, useEffect } from "react";
 
 
 function Login(){
+    const [values, setValues] = useState({
+        
+        email:"",
+        password:""
+    })
+    const [errors, setErrors] = useState({});
+    
+    const handleChange=(event)=>{
+        setValues({
+            ...values,
+            [event.target.name]: event.target.value,
+        })
+    
+    }
+    const handleFormSubmit=(event)=>{
+        event.preventDefault();
+        setErrors(validation(values));
+    }
+
+
   return(
   <div>
     <body id="signup_body">
@@ -17,11 +39,15 @@ function Login(){
                 <p className="signup_title">Discover The World's Top Creatives</p>
                 <div className="signup_inside">
                     
-                    <label className="signup_label">Email</label><input className="signup_input" type="email"  />
-                    <label className="signup_label">Password</label><input className="signup_input" type="password"  />
+                    <label className="signup_label">Email</label><input className="signup_input" type="email" id="email" name="email" value={values.email} onChange={handleChange}  />
+                    {errors.email && <p className="error">{errors.email}</p>}
+
+                    <label className="signup_label">Password</label><input className="signup_input" type="password" id="password" name="password" value={values.password}  onChange={handleChange} />
+                    {errors.password && <p className="error">{errors.password}</p>}
                     
+                    <Link id="passforget" to="">Forgot Password?</Link>
+                    <button id="signup_button" onClick={handleFormSubmit}>LOGIN</button>
                     
-                    <button id="signup_button">LOGIN</button>
                 </div>
 		    </form>
         </div>
