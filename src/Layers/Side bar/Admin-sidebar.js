@@ -35,7 +35,7 @@ const AdminSidebar = ()=>{
                         <li><a href="/add-event">Add Components</a></li>
                     </div>
                 </ul>
-                <li className="accordion_header link"><MdOutlineCategory/> Catagoriies </li>
+                <li className="accordion_header link"><MdOutlineCategory/> Catagories </li>
                 <ul className="accordion_body_container">
                     <div className="accordion_body">
                         <li><a href="/all-inactive-organizers">All Catagories</a></li>
