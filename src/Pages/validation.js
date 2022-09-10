@@ -6,6 +6,16 @@ const validation = (values) => {
     if(!values.name){
         errors.name="Name is required"
     }
+    else if(values.name.length<3){
+        errors.name="Sorry that is not a name"
+    }
+    
+    if(!values.lastname){
+        errors.lastname="Last Name is required"
+     }
+    else if(values.lastname.length<3){
+        errors.lastname="Sorry that is not your last name"
+    }
     if(!values.email){
         errors.email="Email is required"
     }else if(!/\S+@\S+\.\S+/.test(values.email)){

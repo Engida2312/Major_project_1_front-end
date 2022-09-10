@@ -2,6 +2,7 @@ import React from 'react'
 import ComponentCard from '../Componets/componet-card'
 import Logo from './../Assets/Images/avatar.png'
 import { Link } from 'react-router-dom';
+import {socialLinks} from './../Assets/Data/data'
 
 
 
@@ -27,14 +28,19 @@ export const Profile = () => {
 	   </div>
 
 	    
-		<Link to="/editprofile"><button className="profile_button">Edit Profile</button></Link>
-	    <div class="git">
-	    	 <button className='btn'>Github</button>
-		</div>
-		<div className='linkedin'>
-	   	<button className='btn'>Linkedin</button>
-	    </div>
+		<Link to="/editprofile"><button className="profile_button btn">Edit Profile</button></Link>
 	   
+		<div className="social_links social_profile">
+		<ul>
+	    {
+             socialLinks.map((link)=>{
+                 return(
+                <li key={link.id}><a target={'_blank'} className="icon" href={link.url}> {link.icon}</a></li>
+                 )
+            })
+    	 }
+		 </ul>
+		 </div>
 	</div>
 	   <hr/>
 
