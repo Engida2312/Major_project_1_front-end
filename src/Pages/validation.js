@@ -23,13 +23,26 @@ const validation = (values) => {
     }
     if(!values.password){
         errors.password="Password is required"
-    }else if(values.password.length>12){
-        errors.password="Password must not be more than 12"
     }
+   
     else if (values.password.length<8){
-        errors.password="Password must be more than 8"
+        errors.password="password must be more than 8"
 
     }
+    else if(!/^(?=.*[A-Za-z])/.test(values.password)){
+        errors.password="password must contain letters"
+    }
+    else if(!/^(?=.*[!@#$%^&*])/.test(values.password)){
+        errors.password="password must contain special character"
+    }
+    else if(!/^(?=.*[0-9])/.test(values.password)){
+        errors.password="password must contain numbers"
+    }
+    else if (values.password.length>20){
+        errors.password="password must not be more than 20"
+
+    }
+   
     return errors;
 
 }
