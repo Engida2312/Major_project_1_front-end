@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom'
 import validation from "./validation";
 import { useState, useEffect } from "react";
-
+import axios from '../API/axios'
 
 function Signup(){
     const [values, setValues] = useState({
@@ -10,6 +11,7 @@ function Signup(){
         email:"",
         password:""
     })
+    const [redirect, setRedirect] = useState(false)
     const [errors, setErrors] = useState({});
     
     const handleChange=(event)=>{
@@ -19,9 +21,28 @@ function Signup(){
         })
     
     }
-    const handleFormSubmit=(event)=>{
+    
+    const navigate = useNavigate();
+    const handleFormSubmit = async (event)=>{
         event.preventDefault();
         setErrors(validation(values));
+        const res = await axios.post('http://127.0.0.1:8000/api/register', values)
+        if(res.data.status === 200){
+            console.log(res.data)
+            setValues({
+                name:"",
+                email:"",
+                password:""
+            })
+            // setRedirect(true)
+            navigate('/login');
+        }else{
+            console.log('error')
+        }
+
+        if(redirect){
+            console.log('djdjdk')
+        }
     }
 
   return(
@@ -29,7 +50,7 @@ function Signup(){
     <body id="signup_body">
 	<div className="signup_container">
 	    <div className="form-container">
-            <form action="" className="signup_form">
+            <form action=""  className="signup_form">
                 <div className="signup_login">
                     <p className="signup_member">Already Member?</p>
                     <Link id="signup_a" to="/login">LOGIN</Link>

@@ -7,7 +7,7 @@ import Login from './Pages/Login'
 import Components from './Pages/Components';
 import AddComponents from './Pages/AddComponent';
 import { Profile } from './Pages/Profile';
-import Components from './Page/Components';
+// import Components from './Page/Components';
 import Dashboard from './Pages/dashboard';
 import Error from './Pages/Error';
 import ClientSharedLayout from './Layers/SharedLayouts/ClientSharedLayout';

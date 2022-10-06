@@ -18,7 +18,6 @@ const validation = (values) => {
     }
     else if (values.password.length<8){
         errors.password="Password must be more than 8"
-
     }
     return errors;
 

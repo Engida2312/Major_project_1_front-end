@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from 'react-router-dom';
 import validation from "./validation";
-import { useState, useEffect } from "react";
+import {useState, useEffect, useContext } from "react";
+import AuthContext from "../Context/AuthProvider";
+// import axios from "../API/axios";
+// const LOGIN_URL = 'login'
+import axios from '../API/axios'
+import {useNavigate} from 'react-router-dom'
 
 
 function Login(){
+      
     const [values, setValues] = useState({
-        
         email:"",
         password:""
     })
     const [errors, setErrors] = useState({});
     
+    const navigate = useNavigate();
     const handleChange=(event)=>{
         setValues({
             ...values,
@@ -19,9 +25,41 @@ function Login(){
         })
     
     }
-    const handleFormSubmit=(event)=>{
+    const handleFormSubmit= async(event)=>{
         event.preventDefault();
         setErrors(validation(values));
+        
+        try{
+            const response = await axios.post('http://127.0.0.1:8000/api/login',
+            JSON.stringify({email: values.email, password: values.password}),
+            {
+                headers:{'Content-Type': 'application/json'},
+                withCredentials: true
+            }); 
+            
+            console.log(response.data.message + ' ss')
+            // const accessToken = response?.data?.accessToken;
+            // const roles = response?.data?.roles;
+            // setAuth({email, password, roles, accessToken})
+            setValues({
+                email:"",
+                password:""
+            })
+            navigate('/');
+
+        }catch(err){
+            if(!err?.response){
+                setErrors('No server Response');
+            }else if(err.response?.status === 400){
+                setErrors('Missing Username or Passwod')
+            }else if(err.response?.status === 401){
+                setErrors('Unauthorized');
+
+            }else{
+                setErrors('Login failed');
+            }
+        }
+       
     }
 
 
