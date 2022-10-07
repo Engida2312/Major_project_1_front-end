@@ -1,12 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
-import componentReducer from './reducers/componentReducer'
-
+import categoryReducer from './reducers/categoryReducer'
 
 
 const store = configureStore(
- { reducer: {
-    component: componentReducer
-  }}
-);
+  {
+    reducer: {
+      category: categoryReducer
+    },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+      serializableCheck: false
+    }),
+  });
 
 export default store;

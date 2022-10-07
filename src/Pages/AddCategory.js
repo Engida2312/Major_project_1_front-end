@@ -1,36 +1,36 @@
 import React, {useState, useContext} from 'react'
 import { useDispatch } from 'react-redux';
-import { addComponent } from '../Redux/reducers/componentReducer';
+import { AddCategory } from '../Redux/reducers/categoryReducer';
 
-const AddComponent = () => {
+const AddCategorys = () => {
     const dispatch = useDispatch();
-    const[component, setComponent] = useState({
+    const[category, setCategory] = useState({
         title:'',
-        description: ''
+        discription: ''
     })
-    const {title, description} = component;
+    const {title, discription} = category;
     const onChange = (e)=>{
-               setComponent({...component,[e.target.name]:e.target.value})
+               setCategory({...category,[e.target.name]:e.target.value})
     }
-    const onSubmit = e =>{
+    const onSubmit = async (e) =>{
         e.preventDefault();
-        console.log(component)
-        dispatch(addComponent(component))
-        setComponent({
+        console.log(category)
+         dispatch(AddCategory(category))
+        setCategory({
             title:'',
-            description: ''
+            discription: ''
         })
     }
     return (
         <div className='component_container'>
             <div className='compnent-elements hdr-mrg'>
-               <h1 className='hdr-title-marg'>Add Component</h1>
+               <h1 className='hdr-title-marg'>Add Category</h1>
                <form  onSubmit={onSubmit}>
                <div className='flex' style={{display:'flex', flexDirection:'column', width:'20rem'}}>
                     <label className='sub-title-marg' htmlFor='Cname'>Name</label>
-                    <input className='sub-title-marg' value={title} type='text' id='Cname'placeholder='Component Name' name='title' onChange={onChange} ></input>
+                    <input className='sub-title-marg' value={title} type='text' id='Cname'placeholder='Component Name' name='title' onChange={onChange} required></input>
                     <label className='sub-title-marg' htmlFor='Cdescription'>Description</label>
-                    <input className='sub-title-marg' value={description} type='text' id='Cdescription' placeholder='Description' name='description' onChange={onChange} ></input>
+                    <input className='sub-title-marg' value={discription} type='text' id='Cdescription' placeholder='Description' name='discription' onChange={onChange} ></input>
                     <input className='sub-title-marg' type='submit' value='Add Component'/>
                </div>
                </form>
@@ -40,4 +40,4 @@ const AddComponent = () => {
     )
 }
 
-export default AddComponent;
+export default AddCategorys;
