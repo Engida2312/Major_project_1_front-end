@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import {useNavigate} from 'react-router-dom'
 import validation from "./validation";
 import { useState, useEffect } from "react";
-import axios from '../API/axios'
+import axios from "axios";
 
 function Signup(){
     const [values, setValues] = useState({
@@ -26,28 +26,45 @@ function Signup(){
     const handleFormSubmit = async (event)=>{
         event.preventDefault();
         setErrors(validation(values));
-        const res = await axios.post('http://127.0.0.1:8000/api/register', values)
-        if(res.data.status === 200){
-            console.log(res.data)
-            setValues({
-                name:"",
-                email:"",
-                password:""
-            })
-            // setRedirect(true)
-            navigate('/login');
-        }else{
-            console.log('error')
-        }
+        axios.post('http://127.0.0.1:8000/api/register', values)
+            .then((res)=>{
+                console.log(res.data)
 
-        if(redirect){
-            console.log('djdjdk')
-        }
+                // if(res.data.status === 200){
+                    setValues({
+                        name:"",
+                        email:"",
+                        password:""
+                    })
+                    navigate('/login');
+                // }else{
+                //     console.log('error')
+                // }
+            })
+            .catch(function (error) {
+                if (error.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+                } else if (error.request) {
+                // The request was made but no response was received
+                // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                // http.ClientRequest in node.js
+                console.log(error.request);
+                } else {
+                // Something happened in setting up the request that triggered an Error
+                console.log('Error', error.message);
+                }
+                console.log(error.config);
+            });
+        
     }
 
   return(
   <div>
-    <body id="signup_body">
+    <div id="signup_body">
 	<div className="signup_container">
 	    <div className="form-container">
             <form action=""  className="signup_form">
@@ -68,9 +85,9 @@ function Signup(){
                     <label className="signup_label">Password</label><input className="signup_input" type="password" id="password" name="password" value={values.password}  onChange={handleChange} />
                     {errors.password && <p className="error">{errors.password}</p>}
                     
-                    <div class="signup_check">
+                    <div className="signup_check">
                         <input id="signup_checkbox" type="checkbox" required/>
-                        <label id="signup_boxagree" for="checkbox"> I agree to these <a className="termandcondition" href="#">Terms and Conditions</a>.</label>
+                        <label id="signup_boxagree" htmlFor="checkbox"> I agree to these <a className="termandcondition" href="#">Terms and Conditions</a>.</label>
                     </div>
                     <button id="signup_button" onClick={handleFormSubmit}>CREATE ACCOUNT</button>
                 </div>
@@ -80,7 +97,7 @@ function Signup(){
              <h1 id="signup_h1">Welcome To EYN!</h1>
         </div>
     </div>
-    </body>
+    </div>
 
 </div>
 
