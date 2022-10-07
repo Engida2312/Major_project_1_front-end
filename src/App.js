@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GetCategory } from './Redux/reducers/categoryReducer';
-import Footer from './Layers/Footer/Footer';
+// import Footer from './Layers/Footer/Footer';
 import Home from './Pages/Home'
 import Signup from './Pages/Signup'
 import Login from './Pages/Login'
 import Components from './Pages/Components';
-import AddComponents from './Pages/AddComponent';
+// import AddComponents from './Pages/AddComponent';
 import { Profile } from './Pages/Profile';
 // import Components from './Page/Components';
 import AddCategory from './Pages/AddCategory';
