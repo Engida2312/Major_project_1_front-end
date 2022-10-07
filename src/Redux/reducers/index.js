@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import componentReducer from "./componentReducer";
+import categoryReducer from "./categoryReducer";
 export default combineReducers({
-    componet: componentReducer
+    category: categoryReducer
 });
