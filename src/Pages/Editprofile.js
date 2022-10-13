@@ -26,7 +26,10 @@ function handleChange(e) {
   const [loading, setLoading] = useState(true);
 
  
-
+  const handleInput = (e) =>{
+    e.persist();
+    setUserInput({...userInput,[e.target.name]:e.target.value})
+}
 
 useEffect(()=>{
  const user_id = props.match.params.id;
@@ -46,11 +49,6 @@ useEffect(()=>{
       
 }
 )});
-
-const handleInput = (e) =>{
-  e.persist();
-  setUserInput({...userInput,[e.target.name]:e.target.value})
-}
 
 
 const updateUser = (e) =>{
