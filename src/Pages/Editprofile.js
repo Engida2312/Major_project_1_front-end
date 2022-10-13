@@ -23,12 +23,10 @@ function handleChange(e) {
   const [userInput,setUserInput] = useState([]);
   const [error,setError] = useState([]);
   const [userImage,setUserImage] = useState([]);
+  const [loading, setLoading] = useState(true);
 
  
-  const handleInput = (e) =>{
-    e.persist();
-    setUserInput({...userInput,[e.target.name]:e.target.value})
-}
+
 
 useEffect(()=>{
  const user_id = props.match.params.id;
@@ -37,6 +35,7 @@ useEffect(()=>{
       if(res.data.status === 200){
           setUserInput(res.data.user);
           setUserImage(res.data.user);
+          setLoading(false);
 
       }
       else if(res.data.status === 404){
@@ -47,6 +46,11 @@ useEffect(()=>{
       
 }
 )});
+
+const handleInput = (e) =>{
+  e.persist();
+  setUserInput({...userInput,[e.target.name]:e.target.value})
+}
 
 
 const updateUser = (e) =>{
