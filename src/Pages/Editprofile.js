@@ -13,6 +13,12 @@ import swal from 'sweetalert';
 
 function Editprofile (props){
 
+
+  const [file, setFile] = useState();
+function handleChange(e) {
+    console.log(e.target.files);
+    setFile(URL.createObjectURL(e.target.files[0]));
+}
   
   const [userInput,setUserInput] = useState([]);
   const [error,setError] = useState([]);
@@ -83,11 +89,7 @@ const updateUser = (e) =>{
 }
  
 
-const [file, setFile] = useState();
-function handleChange(e) {
-    console.log(e.target.files);
-    setFile(URL.createObjectURL(e.target.files[0]));
-}
+
    
     return(
         
