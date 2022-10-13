@@ -31,8 +31,8 @@ function handleChange(e) {
 }
 
 useEffect(()=>{
- const id = props.match.params.id;
-  axios.get(`http://localhost:8000/api/editprofile/${id}`).then(res=>{
+ const user_id = props.match.params.id;
+  axios.get(`http://localhost:8000/api/editprofile/${user_id}`).then(res=>{
     
       if(res.data.status === 200){
           setUserInput(res.data.user);
@@ -64,7 +64,7 @@ const updateUser = (e) =>{
       icon: "info",
     }).then((value) => {
       if(value === true){
-          const id = props.match.params.id;
+          const user_id = props.match.params.id;
           const userData = new FormData();   
 
           userData.append('uimage',userImage.uimage);
@@ -74,7 +74,7 @@ const updateUser = (e) =>{
           userData.append('github',userInput.github);
           userData.append('linkedin',userInput.linkedin);
 
-          axios.post(`http://localhost:8000/api/updateprofile/${id}`, userData).then(res=>{
+          axios.post(`http://localhost:8000/api/updateprofile/${user_id}`, userData).then(res=>{
               if(res.data.status === 200){
                   swal("Success",res.data.message,"success");
                   setError([]);
