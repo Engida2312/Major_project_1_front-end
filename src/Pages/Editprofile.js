@@ -26,7 +26,7 @@ function Editprofile (props){
 
 useEffect(()=>{
  const id = props.match.params.id;
-  axios.get(`http://localhost:8000/api/editprofile/{id}`).then(res=>{
+  axios.get(`http://localhost:8000/api/editprofile/${id}`).then(res=>{
     
       if(res.data.status === 200){
           setUserInput(res.data.user);
@@ -68,7 +68,7 @@ const updateUser = (e) =>{
           userData.append('github',userInput.github);
           userData.append('linkedin',userInput.linkedin);
 
-          axios.post(`http://localhost:8000/api/updateprofile/{id}`, userData).then(res=>{
+          axios.post(`http://localhost:8000/api/updateprofile/${id}`, userData).then(res=>{
               if(res.data.status === 200){
                   swal("Success",res.data.message,"success");
                   setError([]);
