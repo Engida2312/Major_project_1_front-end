@@ -102,7 +102,7 @@ const updateUser = (e) =>{
     
     <form class="form-style-1" >
 
-	   		<img src={file} alt={userImage.uimage} width="100px" height="100px" className="edit_img" onChange={handleChange}/>
+	   		<img src={file} alt={userImage.uimage} width="100px" height="100px" className="edit_img" onChange={handleChange} name="uimage"/>
             <input type="file" name="avatar" id="avatar" className="imgpic input_field_img " onChange={handleInput} value={userImage.uimage}/>
 
 		
@@ -111,7 +111,7 @@ const updateUser = (e) =>{
        
                 
                     <label>Full Name </label>
-                    <input type="text"  class="field-divided" placeholder="First" name="name" onChange={handleInput} value={userInput.firstname} /> <input type="text"  class="field-divided" placeholder="Last" name="lastname" onChange={handleInput} value={userInput.lastname}/>
+                    <input type="text"  class="field-divided" placeholder="First" name="firstname" onChange={handleInput} value={userInput.firstname} /> <input type="text"  class="field-divided" placeholder="Last" name="lastname" onChange={handleInput} value={userInput.lastname}/>
                     
                     
                         <label>Email </label>
@@ -119,9 +119,9 @@ const updateUser = (e) =>{
                         
 
                         <label>Linkedin Link </label>
-                        <input type="email" name="field3" class="field-long" onChange={handleInput} value={userInput.linkedin}/>
+                        <input type="text" name="linkedin" class="field-long" onChange={handleInput} value={userInput.linkedin}/>
                         <label>Github Link </label>
-                        <input type="email" name="field3" class="field-long" onChange={handleInput} value={userInput.github}/>
+                        <input type="text" name="github" class="field-long" onChange={handleInput} value={userInput.github}/>
                         
                         <button className="save btn" >Change Password</button>
                         
