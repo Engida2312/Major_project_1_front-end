@@ -2,7 +2,7 @@
 .edit_img{
 	width: 120px;
 	height: 120px;
-	margin-left: 275px;
+	margin-left: 230px;
     
 }
 .right{
@@ -36,7 +36,7 @@
     font-weight: 700;
     font-size: 10pt;
     position: relative;
-    left: 290px;
+    left: 245px;
   }
   .imgpic:hover::before {
     border-color: black;

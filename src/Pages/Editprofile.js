@@ -4,63 +4,124 @@ import './../Assets/Styles/editprofile.css'
 import Logo from './../Assets/Images/avatar.png'
 import validation from "./validation";
 import { useState, useEffect } from "react";
+import axios from "axios";
+import Axios from "axios";
+import swal from 'sweetalert';
 
 
 
 
+function Editprofile (props){
 
-function Editprofile(){
+  
+  const [userInput,setUserInput] = useState([]);
+  const [error,setError] = useState([]);
+  const [userImage,setUserImage] = useState([]);
 
-    const [values, setValues] = useState({
-        name:"",
-        email:"",
-        lastname:""
-    })
-    const [errors, setErrors] = useState({});
+ 
+  const handleInput = (e) =>{
+    e.persist();
+    setUserInput({...userInput,[e.target.name]:e.target.value})
+}
+
+useEffect(()=>{
+ const id = props.match.params.id;
+  axios.get(`http://localhost:8000/api/editprofile/{id}`).then(res=>{
     
-    const handleChange=(event)=>{
-        setValues({
-            ...values,
-            [event.target.name]: event.target.value,
-        })
-    
-    }
-    const handleFormSubmit=(event)=>{
-        event.preventDefault();
-        setErrors(validation(values));
-    }
+      if(res.data.status === 200){
+          setUserInput(res.data.user);
+          setUserImage(res.data.user);
+
+      }
+      else if(res.data.status === 404){
+          swal("Error",res.data.message,"error");
+          
+      }
+        
+      
+}
+)});
+
+
+const updateUser = (e) =>{
+  e.preventDefault();
+  swal({
+      Title:"Confirmation",
+      text: "Confirm to Update Profile Data",
+      buttons: {           
+          confirm: {
+              text: "Confirm",
+              value: true,
+          },
+          cancel:"Cancel",
+      },
+      icon: "info",
+    }).then((value) => {
+      if(value === true){
+          const id = props.match.params.id;
+          const userData = new FormData();   
+
+          userData.append('uimage',userImage.uimage);
+          userData.append('firstname',userInput.firstname);
+          userData.append('lastname',userInput.lastname);
+          userData.append('email',userInput.email);
+          userData.append('github',userInput.github);
+          userData.append('linkedin',userInput.linkedin);
+
+          axios.post(`http://localhost:8000/api/updateprofile/{id}`, userData).then(res=>{
+              if(res.data.status === 200){
+                  swal("Success",res.data.message,"success");
+                  setError([]);
+                  
+              }
+              else if(res.data.status === 404){
+                  swal("Error",res.data.message,"error");
+              }
+          });
+      }
+  });
+}
+ 
+
+const [file, setFile] = useState();
+function handleChange(e) {
+    console.log(e.target.files);
+    setFile(URL.createObjectURL(e.target.files[0]));
+}
+   
     return(
         
-    <div>
+    <div> 
        
     <div className="right">
     <h2 className="edit_h2">Edit Profile</h2>
     
-        
-	   		<img className="edit_img" src={Logo} alt="av"/>
-            <input type="file" name="file" className="imgpic input_field_img " />
+    <form class="form-style-1" >
+
+	   		<img src={file} alt={userImage.uimage} width="100px" height="100px" className="edit_img" onChange={handleChange}/>
+            <input type="file" name="avatar" id="avatar" className="imgpic input_field_img " onChange={handleInput} value={userImage.uimage}/>
 
 		
 
 
-        <form class="form-style-1">
+       
                 
                     <label>Full Name </label>
-                    <input type="text"  class="field-divided" placeholder="First" name="name" value={values.name} onChange={handleChange} /> <input type="text"  class="field-divided" placeholder="Last" name="lastname" value={values.lastname} onChange={handleChange}/>
-                    {errors.name && <p className="error">{errors.name}</p>} {errors.lastname && <p className="ex">{errors.lastname}</p>}
+                    <input type="text"  class="field-divided" placeholder="First" name="name" onChange={handleInput} value={userInput.firstname} /> <input type="text"  class="field-divided" placeholder="Last" name="lastname" onChange={handleInput} value={userInput.lastname}/>
+                    
                     
                         <label>Email </label>
-                        <input type="email"  class="field-long" placeholder="nahom@email.com" name="email" value={values.email} onChange={handleChange}/>
-                        {errors.email && <p className="error">{errors.email}</p>}
+                        <input type="email"  class="field-long" name="email" />
+                        
 
                         <label>Linkedin Link </label>
-                        <input type="email" name="field3" class="field-long" placeholder="linkedin.com/in/nahom-saketa-64970a245/"/>
+                        <input type="email" name="field3" class="field-long" onChange={handleInput} value={userInput.linkedin}/>
                         <label>Github Link </label>
-                        <input type="email" name="field3" class="field-long"placeholder=" https://github.com/Na-ak-11" />
+                        <input type="email" name="field3" class="field-long" onChange={handleInput} value={userInput.github}/>
                         
                         <button className="save btn" >Change Password</button>
                         
-                        <button className="btn save" onClick={handleFormSubmit}>save</button>
+                        <button className="btn save"  onClick={updateUser}>save change</button>
          </form>
 
 

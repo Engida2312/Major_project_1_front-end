@@ -5,7 +5,6 @@ import Home from './Pages/Home'
 import Signup from './Pages/Signup'
 import Login from './Pages/Login'
 import { Profile } from './Pages/Profile';
-import Components from './Page/Components';
 import Components from './Pages/Components';
 import AddComponents from './Pages/AddComponent';
 import Dashboard from './Pages/dashboard';
