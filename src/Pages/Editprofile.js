@@ -100,9 +100,9 @@ const updateUser = (e) =>{
     <div className="right">
     <h2 className="edit_h2">Edit Profile</h2>
     
-    <form class="form-style-1" >
+    <form class="form-style-1" onSubmit={updateUser}>
 
-	   		<img src={file} alt={userImage.uimage} width="100px" height="100px" className="edit_img" onChange={handleChange} name="uimage"/>
+	   		<img src={file} alt={userImage.uimage} className="edit_img" onChange={handleChange} name="uimage"/>
             <input type="file" name="avatar" id="avatar" className="imgpic input_field_img " onChange={handleInput} value={userImage.uimage}/>
 
 		
@@ -125,7 +125,7 @@ const updateUser = (e) =>{
                         
                         <button className="save btn" >Change Password</button>
                         
-                        <button className="btn save"  onClick={updateUser}>save change</button>
+                        <button className="btn save" >save change</button>
          </form>
 
 
