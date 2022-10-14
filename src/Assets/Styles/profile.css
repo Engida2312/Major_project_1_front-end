@@ -1,6 +1,7 @@
 
 .upper{
 	display: flex;
+	
 	height: 250px;
 	background-color: #1D3153;
 }
@@ -40,13 +41,13 @@
 .collection{
 	position: relative;
 	top: 200px;
-	left: -30px;
+	left: -80px;
 
 }
 .liked{
 	position: relative;
 	top: 200px;
-	left: -20px;
+	left: -60px;
 }
 .profile_button{
 	background-color: #FF4B2B;
@@ -60,7 +61,7 @@
 	height: 30px;
 	position: relative;
 	top: 50px;
-	left: 650px;
+	left: 600px;
 }
 button{
 	
@@ -77,6 +78,7 @@ Link:focus {
 hr{
 	padding: 0;
 	margin: 0;
+	
 }
 
 .buttong{
@@ -93,7 +95,7 @@ hr{
 .social_profile{
 	position: relative;
 	top: 200px;
-	left: 500px;
+	left: 450px;
 	height: 30px;
 
 }
