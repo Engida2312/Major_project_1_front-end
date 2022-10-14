@@ -49,8 +49,6 @@
 	left: -20px;
 }
 .profile_button{
-	
-	border: 1px solid #FF4B2B;
 	background-color: #FF4B2B;
 	color: black;
 	font-size: 12px;
@@ -63,8 +61,6 @@
 	position: relative;
 	top: 50px;
 	left: 650px;
-	
-
 }
 button{
 	
@@ -88,20 +84,16 @@ hr{
 	height: 30px;
 
 }
-.git{
+
+.lower{
+	height: 400px;
+	background :#1D3153;
+}
+
+.social_profile{
 	position: relative;
 	top: 200px;
 	left: 500px;
 	height: 30px;
 
-}
-.linkedin{
-	position: relative;
-	top: 200px;
-	left: 510px;
-}
-
-.lower{
-	height: 400px;
-	background :#1D3153;
 }

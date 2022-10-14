@@ -8,11 +8,12 @@ import { GetCategory } from './Redux/reducers/categoryReducer';
 import Home from './Pages/Home'
 import Signup from './Pages/Signup'
 import Login from './Pages/Login'
-import Components from './Pages/Components';
 // import AddComponents from './Pages/AddComponent';
-import { Profile } from './Pages/Profile';
 import AddCategory from './Pages/AddCategory';
 import UpdateCategory from './Pages/UpdateCategory';
+import { Profile } from './Pages/Profile';
+import Components from './Pages/Components';
+import AddComponents from './Pages/AddComponent';
 import Dashboard from './Pages/dashboard';
 import Error from './Pages/Error';
 import ClientSharedLayout from './Layers/SharedLayouts/ClientSharedLayout';
