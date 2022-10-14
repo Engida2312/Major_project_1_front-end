@@ -10,10 +10,10 @@ import Signup from './Pages/Signup'
 import Login from './Pages/Login'
 import { Profile } from './Pages/Profile';
 import Components from './Pages/Components';
-import AddComponents from './Pages/AddComponent';
-import Components from './Pages/Components';
 // import AddComponents from './Pages/AddComponent';
-import { Profile } from './Pages/Profile';
+// import Components from './Pages/Components';
+// import AddComponents from './Pages/AddComponent';
+// import { Profile } from './Pages/Profile';
 import AddCategory from './Pages/AddCategory';
 import UpdateCategory from './Pages/UpdateCategory';
 import Dashboard from './Pages/dashboard';
