@@ -26,24 +26,24 @@ function Editprofile (props){
         setUserInput({...userInput,[e.target.name]:e.target.value})
     }
 
-    useEffect(()=>{
-    const user_id = props.match.params.id;
-    axios.get(`http://localhost:8000/api/editprofile/${user_id}`).then(res=>{
+//     useEffect(()=>{
+//     // const user_id = props.match.params.id;
+//     axios.get(`http://localhost:8000/api/editprofile/${user_id}`).then(res=>{
         
-        if(res.data.status === 200){
-            setUserInput(res.data.user);
-            setUserImage(res.data.user);
-            setLoading(false);
+//         if(res.data.status === 200){
+//             setUserInput(res.data.user);
+//             setUserImage(res.data.user);
+//             setLoading(false);
 
-        }
-        else if(res.data.status === 404){
-            swal("Error",res.data.message,"error");
+//         }
+//         else if(res.data.status === 404){
+//             swal("Error",res.data.message,"error");
             
-        }
+//         }
         
       
-}
-)});
+// }
+// )});
 
 
 const updateUser = (e) =>{
@@ -61,7 +61,7 @@ const updateUser = (e) =>{
       icon: "info",
     }).then((value) => {
       if(value === true){
-          const user_id = props.match.params.id;
+        //   const user_id = props.match.params.id;
           const userData = new FormData();   
 
           userData.append('uimage',userImage.uimage);
@@ -95,23 +95,23 @@ const updateUser = (e) =>{
     <div className="right">
     <h2 className="edit_h2">Edit Profile</h2>
     
-    <form class="form-style-1" onSubmit={updateUser}>
+    <form className="form-style-1" onSubmit={updateUser}>
 
 	   		<img src={file} alt={userImage.uimage} className="edit_img" onChange={handleChange} name="uimage"/>
             <input type="file" name="avatar" id="avatar" className="imgpic input_field_img " onChange={handleInput} value={userImage.uimage}/>
 
             <label>Full Name </label>
-            <input type="text"  class="field-divided" placeholder="First" name="firstname" onChange={handleInput} value={userInput.firstname} /> <input type="text"  class="field-divided" placeholder="Last" name="lastname" onChange={handleInput} value={userInput.lastname}/>
+            <input type="text"  className="field-divided" placeholder="First" name="firstname" onChange={handleInput} value={userInput.firstname} /> <input type="text"  className="field-divided" placeholder="Last" name="lastname" onChange={handleInput} value={userInput.lastname}/>
             
             
             <label>Email </label>
-            <input type="email"  class="field-long" name="email" />
+            <input type="email"  className="field-long" name="email" />
             
 
             <label>Linkedin Link </label>
-            <input type="text" name="linkedin" class="field-long" onChange={handleInput} value={userInput.linkedin}/>
+            <input type="text" name="linkedin" className="field-long" onChange={handleInput} value={userInput.linkedin}/>
             <label>Github Link </label>
-            <input type="text" name="github" class="field-long" onChange={handleInput} value={userInput.github}/>
+            <input type="text" name="github" className="field-long" onChange={handleInput} value={userInput.github}/>
             
             <button className="save btn" >Change Password</button>
             
