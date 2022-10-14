@@ -47,7 +47,7 @@ export const Profile = () => {
 
 		</div>
 	   	<h1 className="profile_h1">{user.firstname + " " + user.lastname}</h1>
-	   	<p className="profile_p">Developer</p>
+	   	<p className="profile_p">{user.role}</p>
 
 	  
 		 <div className="collection">
