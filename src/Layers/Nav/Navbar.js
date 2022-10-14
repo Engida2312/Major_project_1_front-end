@@ -1,13 +1,24 @@
 
 import React, {useState, UseRef, useEffect} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {AiOutlineMenu} from 'react-icons/ai'
 import {VscGithub} from 'react-icons/vsc'
 import SearchBar from '../../Componets/search-bar'
 import logo from '../../Assets/Images/avatar.png'
 
+import {useSelector, useDispatch} from 'react-redux'
+import {logout, reset} from '../../Features/Auth/authSlice'
 
 const Navbar = ()=>{
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const {user} = useSelector((state)=> state.auth)
+    const onLogout = ()=>{
+        dispatch(logout())
+        dispatch(reset())
+        navigate('/')
+    }
+
     const [showLinks, setShowLinks] = useState(false)
     useEffect(()=>{
         if(showLinks){
@@ -35,8 +46,16 @@ const Navbar = ()=>{
                 <div className="nav_left_container">
                     <ul>
                         <li><a className='link icon' id='vsCodeIcon' target={'_blank'} href="https://github.com/Engida2312/Major_project_1_front-end"><VscGithub/></a></li>
-                        <li><Link className='link' to="/login">Sign In</Link></li>
-                        <li><Link className='btn' to="/Signup">Share your work</Link></li>
+                        {
+                            user ? (<>
+                                <li>
+                                    <button className='btn' onClick={onLogout} >Logout</button>
+                                </li>
+                            </>) : (<>
+                                <li><Link className='link' to="/login">Login</Link></li>
+                                <li><Link className='btn' to="/Signup">Share your work</Link></li>
+                            </>)
+                        }
                     </ul>
                 </div>
             </div>
