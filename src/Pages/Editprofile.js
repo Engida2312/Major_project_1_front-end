@@ -7,25 +7,33 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import swal from 'sweetalert';
 import {useSelector, useDispatch} from 'react-redux'
+import { userUpdate } from "../Features/updateSlice";
 
-function Editprofile (props){
+
+function Editprofile (){
     const {user} = useSelector((state)=> state.auth)
-
-    const [file, setFile] = useState();
-    function handleChange(e) {
-        console.log(e.target.files);
-        setFile(URL.createObjectURL(e.target.files[0]));
-    }
+  
+   
     
-    // const [user,setUserInput] = useState([]);
-    const [error,setError] = useState([]);
-    const [userImage,setUserImage] = useState([]);
-    const [loading, setLoading] = useState(true);
+    
+    const [firstname, setFirstname] = useState(user.firstname);
+    const [lastname, setLastname] = useState(user.lastname);
+    const [email, setEmail] = useState(user.email);
+    const [linkedin, setLinkedin] = useState(user.linkedin);
+    const [github, setGithub] = useState(user.github);
+    const [error, setError] = useState(null);
+
+    
 
     
     const handleInput = (e) =>{
         e.persist();
-        // setUserInput({...user,[e.target.name]:e.target.value})
+        setFirstname({...firstname,[e.target.name]:e.target.value})
+        setLastname({...lastname,[e.target.name]:e.target.value})
+        setEmail({...email,[e.target.name]:e.target.value})
+        setGithub({...github,[e.target.name]:e.target.value})
+        setLinkedin({...linkedin,[e.target.name]:e.target.value})
+
     }
 
 //     useEffect(()=>{
@@ -99,8 +107,8 @@ const updateUser = (e) =>{
     
     <form className="form-style-1" onSubmit={updateUser}>
 
-	   		<img src={file} alt={userImage.uimage} className="edit_img" onChange={handleChange} name="uimage"/>
-            <input type="file" name="avatar" id="avatar" className="imgpic input_field_img " onChange={handleInput} value={userImage.uimage}/>
+	   		<img src="" alt="" className="edit_img"  name="uimage"/>
+            <input type="file" name="avatar" id="avatar" className="imgpic input_field_img " />
 
             <label>Full Name </label>
             <input type="text"  className="field-divided" placeholder="First" name="firstname" onChange={handleInput} value={user.firstname} />
