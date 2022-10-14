@@ -4,15 +4,9 @@ import { apiSlice } from "./api/apiSlice";
 import authReducer from '../Features/Auth/authSlice'
 import categoryReducer from './reducers/categoryReducer'
 
-// const store = configureStore(
-//  { reducer: {
-//     component: componentReducer
-//   }}
-// );
-
 export const store = configureStore({
     reducer:{
-        [apiSlice.reducerPath]: apiSlice.reducer,
+        // [apiSlice.reducerPath]: apiSlice.reducer,
         auth: authReducer,
         category: categoryReducer,
     },

@@ -1,7 +1,11 @@
-import React from "react";
+import {useState, useEffect} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom';
-import {useRef, useState, useEffect, useContext } from "react";
-
+import validation from "./validation";
+import {toast} from 'react-toastify'
+import {login, reset}  from '../Features/Auth/authSlice'
+import Spinner from '../Componets/spinner'
+import cookie from 'js-cookie'
 // import validation from "./validation";
 // import AuthContext from "../Context/AuthProvider";
 
@@ -63,63 +67,63 @@ import {useRef, useState, useEffect, useContext } from "react";
 //     }
 
 
-import { useDispatch } from "react-redux";
-import { setCredentials } from "../Features/Auth/authSlice";
-import { useLoginMutation } from "../Features/Auth/authApiSlice";
-
-const Login = ()=>{
-    const userRef = useRef()
-    const errRef = useRef()
-    const [user, setUser] = useState('')
-    const [pwd, setPwd] = useState('')
-    const [errMsg, setErrMsg] = useState('')
+function Login() {
+    const [formData, setFormData] = useState({
+      email: '',
+      password: "",
+    })
+    //destructure the form data use state
+    const {email, password} = formData
+  
     const navigate = useNavigate()
-
+    const dispatch = useDispatch()
+  
+    const {user, isLoading, isError, isSuccess, message } = useSelector(
+      (state)=> state.auth
+    )
+  
     useEffect(()=>{
-        // useRef.current.focus()
-    }, [])
-
-    useEffect(()=>{
-        setErrMsg('')
-    }, [user, pwd])
-
-    const handleSubmit = async (e)=>{
-        e.preventDefault()
-        // console.log(user, pwd)
-        try{
-            const userData = await login({user, pwd}).unwrap()
-            console.log(userData)
-            dispatch(setCredentials({...userData, user}))
-            setUser('')
-            setPwd('')
-            navigate('/')
-        }catch(err){
-            if(!err?.response){
-                setErrMsg('No Server response')
-            }else if(err.response?.status === 400 ){
-                setErrMsg('Missing Username or password')
-            }else if(err.response?.status === 401){
-                setErrMsg('Unauthorized')
-            }else{
-                setErrMsg('Login failed')
-            }
-            errRef.current.focus();
+      if(isError){
+        toast.error(message)
+      }
+      
+      if(isSuccess || user){
+        cookie.set('token', user.token)
+        navigate('/')
+      }
+  
+      dispatch(reset())
+      
+    }, [user, isError, isSuccess, message, navigate, dispatch])
+  
+    if(isLoading){
+        return <Spinner/>
+    }
+  
+    // on change function
+    const onChange = (e)=>{
+      setFormData((previousState)=>({
+          ...previousState,
+          [e.target.name]: e.target.value,
+        })
+      )
+    }
+    // on submit function
+    const onSubmit = (e)=>{
+      e.preventDefault()
+        const userData = {
+          email,
+          password,
         }
+        dispatch(login(userData))
     }
 
-    const [login, {isLoading}] = useLoginMutation()
-    const dispatch = useDispatch()
-
-
-    const handleUserInput = (e) => setUser(e.target.value)
-
-    const handlePwdInput = (e) => setPwd(e.target.value)
 
     return(
         <div id="signup_body">
             <div className="signup_container">
                 <div className="form-container">
-                    <form action="" className="signup_form" onSubmit={handleSubmit}>
+                    <form onSubmit={onSubmit}  className="signup_form">
                         <div className="signup_login">
                             <p className="signup_member">Are you New Here?</p>
                             <Link id="signup_a" to="/signup">SIGNUP</Link>
@@ -127,19 +131,17 @@ const Login = ()=>{
                         <h1 id="signup_h1">  to EYN</h1>
                         <p className="signup_title">Discover The World's Top Creatives</p>
                         <div className="signup_inside">
-                            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                            {/* <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p> */}
 
                             <label className="signup_label">Email</label>
-                            <input
+                            <input 
                                 className="signup_input" 
-                                type="email"
+                                type="email" 
                                 id="email" 
-                                // name="email"
-                                ref={userRef}
-                                value={user}
-                                onChange={handleUserInput}  
-                                required
-                                />
+                                name="email" 
+                                value={email} 
+                                onChange={onChange}
+                            />
                             {/* {errors.email && <p className="error">{errors.email}</p>} */}
 
                             <label className="signup_label">Password</label>
@@ -147,11 +149,10 @@ const Login = ()=>{
                                 className="signup_input" 
                                 type="password" 
                                 id="password" 
-                                value={pwd}
-                                // name="password" 
-                                onChange={handlePwdInput} 
-                                required
-                                />
+                                name="password" 
+                                value={password}  
+                                onChange={onChange} 
+                            />
                             {/* {errors.password && <p className="error">{errors.password}</p>} */}
                             
                             <Link id="passforget" to="">Forgot Password?</Link>

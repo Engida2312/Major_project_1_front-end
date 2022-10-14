@@ -10,19 +10,19 @@ export const infoCards = [
     },
       {
         id: 2,
-        title: 'Maintainable',
+        title: 'Accessable',
         description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum rem, quam natus, ipsa ex tempor',
         icon: <MdOutlineDeveloperMode/>,
     },
       {
         id: 3,
-        title: 'albe  ',
+        title: 'Maintainable',
         description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum rem, quam natus, ipsa ex tempor',
         icon: <MdOutlineDeveloperMode/>,
     },
       {
         id: 4,
-        title: 'Flaxable',
+        title: 'open-soure',
         description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum rem, quam natus, ipsa ex tempor',
         icon: <MdOutlineDeveloperMode/>,
     },

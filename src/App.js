@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/inject-style'
 import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GetCategory } from './Redux/reducers/categoryReducer';
@@ -9,7 +11,6 @@ import Login from './Pages/Login'
 import Components from './Pages/Components';
 // import AddComponents from './Pages/AddComponent';
 import { Profile } from './Pages/Profile';
-// import Components from './Page/Components';
 import AddCategory from './Pages/AddCategory';
 import UpdateCategory from './Pages/UpdateCategory';
 import Dashboard from './Pages/dashboard';
@@ -35,14 +36,12 @@ import './Assets/Styles/profile.css'
 
 function App() {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(GetCategory())
-
   });
+  
   return <>
     <Router>
-      {/* <Navbar/> */}
       <Routes>
         <Route path='/' element={<ClientSharedLayout />}>
           <Route index element={<Home />} />
@@ -60,9 +59,7 @@ function App() {
           <Route path='login' element={<Login />} />
         </Route>
       </Routes>
-      {/* <Footer/> */}
     </Router>
-
   </>;
 }
 
