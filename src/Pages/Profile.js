@@ -1,12 +1,43 @@
 import React from 'react'
 import ComponentCard from '../Componets/componet-card'
 import Logo from './../Assets/Images/avatar.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {socialLinks} from './../Assets/Data/data'
-
-
+import userEvent from '@testing-library/user-event';
+import {useSelector, useDispatch} from 'react-redux'
+import axios from 'axios';
+import swal from 'sweetalert';
+import { useState, useEffect } from "react";
 
 export const Profile = () => {
+  const navigate = useNavigate()
+  const {user} = useSelector((state)=> state.auth)
+   
+  const [userInput,setUserInput] = useState([]);
+  const [error,setError] = useState([]);
+  const [userImage,setUserImage] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+ // redirect to edit profile page
+ const toEditProfile = ()=>{
+  axios.get(`http://localhost:8000/api/editprofile/${user.id}`).then(res=>{       
+    if(res.data.status === 200){
+      console.log(res.data)
+        setUserInput(res.data.user);
+        // setUserImage(res.data.user);
+        setLoading(false);
+        navigate(`/Editprofile`)
+    }
+    else if(res.data.status === 404){
+        swal("Error",res.data.message,"error");
+        
+    }
+  })
+}
+        
+      
+  
+
   return (
     <div>
 			
@@ -15,7 +46,7 @@ export const Profile = () => {
 	   		<img className="profile_img" src={Logo} alt="av"/>
 
 		</div>
-	   	<h1 className="profile_h1">Nahom</h1>
+	   	<h1 className="profile_h1">{user.firstname + " " + user.lastname}</h1>
 	   	<p className="profile_p">Developer</p>
 
 	  
@@ -27,8 +58,8 @@ export const Profile = () => {
 	   
 	   </div>
 
-	    
-		<Link to="/editprofile"><button className="profile_button btn">Edit Profile</button></Link>
+	  
+		<button className="profile_button btn" onClick={toEditProfile}>Edit Profile</button>
 	   
 		<div className="social_links social_profile">
 		<ul>

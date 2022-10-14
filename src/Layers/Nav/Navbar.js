@@ -19,7 +19,7 @@ const Navbar = ()=>{
     }
     // redirect to profile page
     const toProfile = ()=>{
-        navigate(`/Editprofile`)
+        navigate(`/Profile`)
     }
 
     const [showLinks, setShowLinks] = useState(false)

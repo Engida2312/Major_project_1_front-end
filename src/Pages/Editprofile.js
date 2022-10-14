@@ -5,9 +5,11 @@ import Logo from './../Assets/Images/avatar.png'
 import validation from "./validation";
 import { useState, useEffect } from "react";
 import axios from "axios";
-// import swal from 'sweetalert';
+import swal from 'sweetalert';
+import {useSelector, useDispatch} from 'react-redux'
 
 function Editprofile (props){
+    const {user} = useSelector((state)=> state.auth)
 
     const [file, setFile] = useState();
     function handleChange(e) {
@@ -15,7 +17,7 @@ function Editprofile (props){
         setFile(URL.createObjectURL(e.target.files[0]));
     }
     
-    const [userInput,setUserInput] = useState([]);
+    // const [user,setUserInput] = useState([]);
     const [error,setError] = useState([]);
     const [userImage,setUserImage] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -23,7 +25,7 @@ function Editprofile (props){
     
     const handleInput = (e) =>{
         e.persist();
-        setUserInput({...userInput,[e.target.name]:e.target.value})
+        // setUserInput({...user,[e.target.name]:e.target.value})
     }
 
 //     useEffect(()=>{
@@ -47,6 +49,7 @@ function Editprofile (props){
 
 
 const updateUser = (e) =>{
+   
   e.preventDefault();
   swal({
       Title:"Confirmation",
@@ -64,18 +67,17 @@ const updateUser = (e) =>{
         //   const user_id = props.match.params.id;
           const userData = new FormData();   
 
-          userData.append('uimage',userImage.uimage);
-          userData.append('firstname',userInput.firstname);
-          userData.append('lastname',userInput.lastname);
-          userData.append('email',userInput.email);
-          userData.append('github',userInput.github);
-          userData.append('linkedin',userInput.linkedin);
+        //   userData.append('uimage',userImage.uimage);
+          userData.append('firstname',user.firstname);
+          userData.append('lastname',user.lastname);
+          userData.append('email',user.email);
+          userData.append('github',user.github);
+          userData.append('linkedin',user.linkedin);
 
-          axios.post(`http://localhost:8000/api/updateprofile/${user_id}`, userData).then(res=>{
+          axios.post(`http://localhost:8000/api/updateprofile/${user.id}`, userData).then(res=>{
               if(res.data.status === 200){
                   swal("Success",res.data.message,"success");
                   setError([]);
-                  
               }
               else if(res.data.status === 404){
                   swal("Error",res.data.message,"error");
@@ -101,17 +103,18 @@ const updateUser = (e) =>{
             <input type="file" name="avatar" id="avatar" className="imgpic input_field_img " onChange={handleInput} value={userImage.uimage}/>
 
             <label>Full Name </label>
-            <input type="text"  className="field-divided" placeholder="First" name="firstname" onChange={handleInput} value={userInput.firstname} /> <input type="text"  className="field-divided" placeholder="Last" name="lastname" onChange={handleInput} value={userInput.lastname}/>
+            <input type="text"  className="field-divided" placeholder="First" name="firstname" onChange={handleInput} value={user.firstname} />
+             <input type="text"  className="field-divided" placeholder="Last" name="lastname" onChange={handleInput} value={user.lastname}/>
             
             
             <label>Email </label>
-            <input type="email"  className="field-long" name="email" />
+            <input type="email"  className="field-long" name="email"value={user.email} />
             
 
             <label>Linkedin Link </label>
-            <input type="text" name="linkedin" className="field-long" onChange={handleInput} value={userInput.linkedin}/>
+            <input type="text" name="linkedin" className="field-long" onChange={handleInput} value={user.linkedin}/>
             <label>Github Link </label>
-            <input type="text" name="github" className="field-long" onChange={handleInput} value={userInput.github}/>
+            <input type="text" name="github" className="field-long" onChange={handleInput} value={user.github}/>
             
             <button className="save btn" >Change Password</button>
             
