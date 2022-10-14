@@ -9,12 +9,14 @@ import cookie from 'js-cookie'
 
 function Signup() {
     const [formData, setFormData] = useState({
-      name: '',
+      firstname: '',
+      lastname: '',
       email: '',
       password: "",
     })
+
     //destructure the form data use state
-    const {name, email, password} = formData
+    const {firstname, lastname, email, password} = formData
   
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -37,6 +39,7 @@ function Signup() {
       
     }, [user, isError, isSuccess, message, navigate, dispatch])
   
+    console.log(message)
     if(isLoading){
         return <Spinner/>
     }
@@ -49,73 +52,18 @@ function Signup() {
         })
       )
     }
+
     // on submit function
     const onSubmit = (e)=>{
       e.preventDefault()
         const userData = {
-          name,
+          firstname,
+          lastname,
           email,
           password,
         }
         dispatch(register(userData))
     }
-
-// function Signup(){
-//     const [values, setValues] = useState({
-//         name:"",
-//         email:"",
-//         password:""
-//     })
-//     const [redirect, setRedirect] = useState(false)
-//     const [errors, setErrors] = useState({});
-    
-//     const handleChange=(event)=>{
-//         setValues({
-//             ...values,
-//             [event.target.name]: event.target.value,
-//         })
-    
-//     }
-    
-//     const navigate = useNavigate();
-//     const handleFormSubmit = async (event)=>{
-//         event.preventDefault();
-//         setErrors(validation(values));
-//         axios.post('http://127.0.0.1:8000/api/register', values)
-//             .then((res)=>{
-//                 console.log(res.data)
-
-//                 // if(res.data.status === 200){
-//                     setValues({
-//                         name:"",
-//                         email:"",
-//                         password:""
-//                     })
-//                     navigate('/login');
-//                 // }else{
-//                 //     console.log('error')
-//                 // }
-//             })
-//             .catch(function (error) {
-//                 if (error.response) {
-//                 // The request was made and the server responded with a status code
-//                 // that falls out of the range of 2xx
-//                 console.log(error.response.data);
-//                 console.log(error.response.status);
-//                 console.log(error.response.headers);
-//                 } else if (error.request) {
-//                 // The request was made but no response was received
-//                 // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-//                 // http.ClientRequest in node.js
-//                 console.log(error.request);
-//                 } else {
-//                 // Something happened in setting up the request that triggered an Error
-//                 console.log('Error', error.message);
-//                 }
-//                 console.log(error.config);
-//             });
-        
-//     }
 
   return(
   <div>
@@ -131,13 +79,22 @@ function Signup() {
                 <p className="signup_title">Discover The World's Top Creatives</p>
                 <div className="signup_inside">
 
-                    <label className="signup_label">Name</label>
+                    <label className="signup_label">First Name</label>
                     <input 
                         className="signup_input" 
-                        type="Name" 
-                        id="name" 
-                        name="name" 
-                        value={name} 
+                        type="text" 
+                        id="firstname" 
+                        name="firstname" 
+                        value={firstname} 
+                        onChange={onChange} 
+                    />
+                    <label className="signup_label">Last Name</label>
+                    <input 
+                        className="signup_input" 
+                        type="text" 
+                        id="lastname" 
+                        name="lastname" 
+                        value={lastname} 
                         onChange={onChange} 
                     />
                     {/* {errors.name && <p className="error">{errors.name}</p>} */}
@@ -181,8 +138,7 @@ function Signup() {
         </div>
     </div>
     </div>
-
-</div>
+  </div>
 
   );
 }

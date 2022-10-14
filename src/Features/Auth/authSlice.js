@@ -12,7 +12,6 @@ const initialState = {
     message: '',
 }
 
-
 // register user 
 export const register = createAsyncThunk(
     'auth/register', 
@@ -45,14 +44,13 @@ export const login = createAsyncThunk(
     }
 })
 
+// logout
 export const logout = createAsyncThunk(
     'auth/logout',
     async ()=>{
         await authService.logout()
     }
 )
-
-
 
 export const authSlice = createSlice({
     name: 'auth',
@@ -101,28 +99,5 @@ export const authSlice = createSlice({
     }
 })
 
-// const authSlice = createSlice({
-//     name: 'auth',
-//     initialState: {user: null, token: null},
-//     reducers:{
-//         setCredentials:(state, action)=>{
-//             const {user, accessToken}= action.payload
-//             state.user = user
-//             state.token = accessToken
-//         },
-//         logout:(state, action)=>{
-//             state.user = null
-//             state.token = null
-//         }
-//     },
-// })
-
-// export const {setCredentials, logout} = authSlice.actions
-
-
-
 export const {reset} = authSlice.actions
 export default authSlice.reducer
-
-// export const selectCurrentUser = (state)=> state.auth.user
-// export const selectCurrentToken = (state)=> state.auth.token

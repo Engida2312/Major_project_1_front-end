@@ -5,7 +5,6 @@ import {AiOutlineMenu} from 'react-icons/ai'
 import {VscGithub} from 'react-icons/vsc'
 import SearchBar from '../../Componets/search-bar'
 import logo from '../../Assets/Images/avatar.png'
-
 import {useSelector, useDispatch} from 'react-redux'
 import {logout, reset} from '../../Features/Auth/authSlice'
 
@@ -17,6 +16,10 @@ const Navbar = ()=>{
         dispatch(logout())
         dispatch(reset())
         navigate('/')
+    }
+    // redirect to profile page
+    const toProfile = ()=>{
+        navigate(`/editProfile/${user.id}`)
     }
 
     const [showLinks, setShowLinks] = useState(false)
@@ -49,7 +52,20 @@ const Navbar = ()=>{
                         {
                             user ? (<>
                                 <li>
-                                    <button className='btn' onClick={onLogout} >Logout</button>
+                                    <div className="profile_circle_container">
+                                        <div className='profile_circle center_center'>
+                                            <h4>
+                                                {user.firstname.charAt(0).toUpperCase() + user.lastname.charAt(0).toUpperCase()} 
+                                            </h4>
+                                        </div>
+                                        <div className="nav_profile_content">
+                                            <ul>
+                                                <li><h3>Hi,  {user.firstname}</h3></li>
+                                                <li><p className='link' onClick={toProfile} >Profile</p></li>
+                                                <li><p className='link' onClick={onLogout} >Logout</p></li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </li>
                             </>) : (<>
                                 <li><Link className='link' to="/login">Login</Link></li>
