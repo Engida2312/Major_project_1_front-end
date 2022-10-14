@@ -2,70 +2,11 @@ import {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom';
 import validation from "./validation";
-import {toast} from 'react-toastify'
+import {ToastContainer, toast, Zoom, Bounce} from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css"
 import {login, reset}  from '../Features/Auth/authSlice'
 import Spinner from '../Componets/spinner'
 import cookie from 'js-cookie'
-// import validation from "./validation";
-// import AuthContext from "../Context/AuthProvider";
-
-// import axios from '../API/axios'
-// import {useNavigate} from 'react-router-dom'
-
-
-// function Login(){
-      
-//     const [values, setValues] = useState({
-//         email:"",
-//         password:""
-//     })
-//     const [errors, setErrors] = useState({});
-    
-//     const navigate = useNavigate();
-//     const handleChange=(event)=>{
-//         setValues({
-//             ...values,
-//             [event.target.name]: event.target.value,
-//         })
-    
-//     }
-//     const handleFormSubmit= async(event)=>{
-//         event.preventDefault();
-//         setErrors(validation(values));
-        
-//         try{
-//             const response = await axios.post('http://127.0.0.1:8000/api/login',
-//             JSON.stringify({email: values.email, password: values.password}),
-//             {
-//                 headers:{'Content-Type': 'application/json'},
-//                 withCredentials: true
-//             }); 
-            
-//             console.log(response.data.message + ' ss')
-//             // const accessToken = response?.data?.accessToken;
-//             // const roles = response?.data?.roles;
-//             // setAuth({email, password, roles, accessToken})
-//             setValues({
-//                 email:"",
-//                 password:""
-//             })
-//             navigate('/');
-
-//         }catch(err){
-//             if(!err?.response){
-//                 setErrors('No server Response');
-//             }else if(err.response?.status === 400){
-//                 setErrors('Missing Username or Passwod')
-//             }else if(err.response?.status === 401){
-//                 setErrors('Unauthorized');
-
-//             }else{
-//                 setErrors('Login failed');
-//             }
-//         }
-       
-//     }
-
 
 function Login() {
     const [formData, setFormData] = useState({
@@ -89,7 +30,12 @@ function Login() {
       
       if(isSuccess || user){
         cookie.set('token', user.token)
-        navigate('/')
+
+        if(user.role === 'admin'){
+          navigate('/dashboard')
+        }else if(user.role === 'user'){
+          navigate('/')
+        }
       }
   
       dispatch(reset())
@@ -117,8 +63,6 @@ function Login() {
         }
         dispatch(login(userData))
     }
-
-
     return(
         <div id="signup_body">
             <div className="signup_container">

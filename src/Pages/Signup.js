@@ -2,7 +2,8 @@ import {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom';
 import validation from "./validation";
-import {toast} from 'react-toastify'
+import {ToastContainer, toast, Zoom, Bounce} from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css"
 import {register, reset}  from '../Features/Auth/authSlice'
 import Spinner from '../Componets/spinner'
 import cookie from 'js-cookie'
@@ -32,12 +33,14 @@ function Signup() {
       
       if(isSuccess || user){
         cookie.set('token', user.token)
+        // toast.loading("loading...", 200)
+
         navigate('/')
       }
   
       dispatch(reset())
       
-    }, [user, isError, isSuccess, message, navigate, dispatch])
+    }, [user, isError, isLoading, isSuccess, message, navigate, dispatch])
   
     console.log(message)
     if(isLoading){

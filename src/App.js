@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/inject-style'
+import {ToastContainer, toast, Zoom, Bounce} from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css"
 import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GetCategory } from './Redux/reducers/categoryReducer';
@@ -61,6 +61,11 @@ function App() {
         </Route>
       </Routes>
     </Router>
+    <ToastContainer
+          draggable={false}
+          transition={Zoom}
+          autoClose={8000}
+        />
   </>;
 }
 

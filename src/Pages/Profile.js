@@ -6,7 +6,7 @@ import {socialLinks} from './../Assets/Data/data'
 import userEvent from '@testing-library/user-event';
 import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios';
-import swal from 'sweetalert';
+import swal from 'sweetalert2';
 import { useState, useEffect } from "react";
 
 export const Profile = () => {
