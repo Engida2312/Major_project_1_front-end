@@ -30,7 +30,6 @@ function Login() {
       
       if(isSuccess || user){
         cookie.set('token', user.token)
-
         if(user.role === 'admin'){
           navigate('/dashboard')
         }else if(user.role === 'user'){
@@ -63,6 +62,7 @@ function Login() {
         }
         dispatch(login(userData))
     }
+
     return(
         <div id="signup_body">
             <div className="signup_container">
@@ -72,7 +72,7 @@ function Login() {
                             <p className="signup_member">Are you New Here?</p>
                             <Link id="signup_a" to="/signup">SIGNUP</Link>
                         </div>
-                        <h1 id="signup_h1">  to EYN</h1>
+                        <h1 id="signup_h1"> Login</h1>
                         <p className="signup_title">Discover The World's Top Creatives</p>
                         <div className="signup_inside">
                             {/* <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p> */}
