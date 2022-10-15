@@ -7,13 +7,14 @@ import { SingleCategory, UpdateCategory } from '../Redux/reducers/categoryReduce
 
 const UpdateCategorys = () => {
     const navigate = useNavigate();
-    const categorystore = useSelector((state) => state.category.si_category)
+    const categorystore = useSelector((state) => state.category)
+    const SingleCategory = categorystore.si_category
     const params = useParams();
     const dispatch = useDispatch();
     const error = categorystore.error
     const [category, setCategory] = useState({
-        title: '',
-        discription: ''
+        title: SingleCategory.title,
+        discription: SingleCategory.discription
     })
     useEffect(() => {
         dispatch(SingleCategory(params.id))
@@ -33,10 +34,6 @@ const UpdateCategorys = () => {
         console.log(category)
           dispatch(UpdateCategory([params.id, category]))
           navigate('/components')
-        setCategory({
-            title: '',
-            discription: ''
-        })
     }
     return (
         <div className='component_container'>
