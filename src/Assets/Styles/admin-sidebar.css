@@ -6,6 +6,7 @@
     height: 100vh;
     width: 250px;
     border-right: 1px solid var(--clr-primary-3);
+    z-index: 100;
 }
 .a_sidebar_top{
     border-bottom: solid 1px var(--clr-primary-3);

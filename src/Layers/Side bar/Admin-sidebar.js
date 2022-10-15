@@ -7,7 +7,6 @@ import {MdOutlineCategory} from 'react-icons/md'
 import {FiUsers} from 'react-icons/fi'
 import {useSelector, useDispatch} from 'react-redux'
 import {logout, reset} from '../../Features/Auth/authSlice'
-
 import '../../Assets/Styles/admin-sidebar.css'
 import '../../Assets/Styles/accordion.css'
 
@@ -44,7 +43,7 @@ const AdminSidebar = ()=>{
         <div className="a_sidebar_bottom center_center col">
             <ul className="">
                 <li className="accordion_header"><Link to="/dashboard" className="link"><GoDashboard /> Dashbord</Link></li>
-                <li className="accordion_header link"><CgComponents/> Components</li>
+                <li className="accordion_header link"><CgComponents/><Link to='/dashboard/AddComponent' > Components </Link></li>
                 <ul className="accordion_body_container">
                     <div className="accordion_body">
                         <li><a href="/all-events">All Components</a></li>
@@ -52,7 +51,7 @@ const AdminSidebar = ()=>{
                         <li><a href="/add-event">Add Components</a></li>
                     </div>
                 </ul>
-                <li className="accordion_header link"><MdOutlineCategory/> Catagories </li>
+                <li className="accordion_header link"><MdOutlineCategory/><Link to='/dashboard/addCategory' > Catagories </Link>  </li>
                 <ul className="accordion_body_container">
                     <div className="accordion_body">
                         <li><a href="/all-inactive-organizers">All Catagories</a></li>

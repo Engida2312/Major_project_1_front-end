@@ -17,8 +17,8 @@ const UpdateCategorys = () => {
     console.log(SingleCat)
     const error = categorystore.error
     const [category, setCategory] = useState({
-        title: SingleCat.title,
-        discription: SingleCat.discription
+        title: '',
+        discription: ''
     })
     const { title, discription } = category;
     const onChange = (e) => {
