@@ -16,7 +16,9 @@
 	height: 100vh;
     width: 94vw;
 }
-
+#signup_body a{
+  color: var(--clr-primary-1)
+}
 #signup_h1{
 	font-weight: bold;
 	margin-top: 0;

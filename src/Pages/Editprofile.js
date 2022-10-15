@@ -12,18 +12,37 @@ import { userUpdate } from "../Features/updateSlice";
 
 function Editprofile (){
     const {user} = useSelector((state)=> state.auth)
-  
-   
-    
-    
-    const [firstname, setFirstname] = useState(user.firstname);
-    const [lastname, setLastname] = useState(user.lastname);
-    const [email, setEmail] = useState(user.email);
-    const [linkedin, setLinkedin] = useState(user.linkedin);
-    const [github, setGithub] = useState(user.github);
-    // const [error, setError] = useState(null);
+    const [errors, setErrors] = useState(null);
+    const [file, setFile] = useState();
+    function handleChange(e) {
+        console.log(e.target.files);
+        setFile(URL.createObjectURL(e.target.files[0]));
+    }
+    useEffect(()=>{
+        if(errors != null && Object.keys(errors).length === 0){
+         
+            const userData = new FormData();   
 
-    
+            //   userData.append('uimage',userImage.uimage);
+              userData.append('firstname',newuser.firstname);
+              userData.append('lastname',newuser.lastname);
+              userData.append('email',newuser.email);
+              userData.append('github',newuser.github);
+              userData.append('linkedin',newuser.linkedin);
+              axios.post(`http://localhost:8000/api/updateprofile/${user.id}`, userData).then(res=>{
+                  if(res.data.status === 200){
+                      swal("Success",res.data.message,"success");
+                      setError([]);
+                  }
+                  
+                  else if(res.data.status === 404){
+                      swal("Error",res.data.message,"error");
+                  }
+              });
+        }
+         
+      },[errors])
+     
     const [newuser,setUserInput] = useState({
         firstname: user.firstname,
         lastname:user.lastname,
@@ -42,6 +61,8 @@ function Editprofile (){
 const updateUser = (e) =>{
    
   e.preventDefault();
+ 
+  setErrors(validation(newuser));
 //   swal({
 //       Title:"Confirmation",
 //       text: "Confirm to Update Profile Data",
@@ -56,25 +77,7 @@ const updateUser = (e) =>{
 //     }).then((value) => {
     //   if(value === true){
         //   const user_id = props.match.params.id;
-          const userData = new FormData();   
-
-        //   userData.append('uimage',userImage.uimage);
-          userData.append('firstname',newuser.firstname);
-          userData.append('lastname',newuser.lastname);
-          userData.append('email',newuser.email);
-        //   userData.append('github',newuser.github);
-        //   userData.append('linkedin',newuser.linkedin);
-
-          axios.post(`http://localhost:8000/api/updateprofile/${user.id}`, userData).then(res=>{
-              if(res.data.status === 200){
-                  swal("Success",res.data.message,"success");
-                  setError([]);
-              }
-              
-              else if(res.data.status === 404){
-                  swal("Error",res.data.message,"error");
-              }
-          });
+         
     //   }
 //   });
 }
@@ -93,17 +96,18 @@ const updateUser = (e) =>{
 
             <label>Full Name </label>
             <input type="text"  className="field-divided" placeholder="First" name="firstname" onChange={handleInput} value={newuser.firstname} />
+            {errors?.firstname && <p className="error">{errors.firstname}</p>}
              <input type="text"  className="field-divided" placeholder="Last" name="lastname" onChange={handleInput} value={newuser.lastname}/>
-            
+             {errors?.lastname && <p className="error">{errors.lastname}</p>}
             
             <label>Email </label>
             <input type="email"  className="field-long" onChange={handleInput} name="email"value={newuser.email} />
-            
+            {errors?.email && <p className="error">{errors.email}</p>}
 
-            {/* <label>Linkedin Link </label>
+            <label>Linkedin Link </label>
             <input type="text" name="linkedin" className="field-long" onChange={handleInput} value={newuser.linkedin}/>
             <label>Github Link </label>
-            <input type="text" name="github" className="field-long" onChange={handleInput} value={newuser.github}/> */}
+            <input type="text" name="github" className="field-long" onChange={handleInput} value={newuser.github}/>
             
             <button className="save btn" >Change Password</button>
             

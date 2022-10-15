@@ -24,12 +24,18 @@ export const GetCategory = createAsyncThunk('category', () => {
 export const AddCategory = createAsyncThunk('category/add-category', (newCategory) => {
     return axios.post('http://127.0.0.1:8000/api/add-category', newCategory)
         .then((response) => response.data)
+        .catch((err)=>{
+            console.log(err)
+        })
 })
 //update category
 export const UpdateCategory = createAsyncThunk('category/update-category', ([id, Category]) => {
     console.log(Category);
     return axios.put(`http://127.0.0.1:8000/api/update-category/${id}`, Category)
         .then((response) => response.data)
+        .catch((err)=>{
+            console.log(err)
+        })
 })
 const componentSlice = createSlice({
     name: 'category',
