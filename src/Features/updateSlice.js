@@ -20,7 +20,7 @@ const updateSlice = createSlice({
 
         userUpdate(state, action) {
             const {firstname, lastname, email, github, linkedin } = action.payload;
-            const {user} = state.find((user) => user.id === id);    
+            // const {user} = state.find((user) => user.id === id);    
             if (user) {
                 user.firstname = firstname;
                 user.lastname = lastname;

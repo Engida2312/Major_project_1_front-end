@@ -88,7 +88,7 @@ const updateUser = (e) =>{
     
     <form className="form-style-1" onSubmit={updateUser}>
 
-	   		<img src={file} alt={userImage.uimage} className="edit_img" onChange={handleChange} name="uimage"/>
+	   		<img src="" alt="" className="edit_img" name="uimage"/>
             {/* <input type="file" name="avatar" id="avatar" className="imgpic input_field_img " onChange={handleInput} value={userImage.uimage}/> */}
 
             <label>Full Name </label>
