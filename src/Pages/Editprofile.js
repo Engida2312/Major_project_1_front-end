@@ -5,7 +5,7 @@ import Logo from './../Assets/Images/avatar.png'
 import validation from "./validation";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import swal from 'sweetalert';
+import swal from 'sweetalert2';
 import {useSelector, useDispatch} from 'react-redux'
 import { userUpdate } from "../Features/updateSlice";
 
@@ -35,26 +35,6 @@ function Editprofile (){
         setLinkedin({...linkedin,[e.target.name]:e.target.value})
 
     }
-
-//     useEffect(()=>{
-//     // const user_id = props.match.params.id;
-//     axios.get(`http://localhost:8000/api/editprofile/${user_id}`).then(res=>{
-        
-//         if(res.data.status === 200){
-//             setUserInput(res.data.user);
-//             setUserImage(res.data.user);
-//             setLoading(false);
-
-//         }
-//         else if(res.data.status === 404){
-//             swal("Error",res.data.message,"error");
-            
-//         }
-        
-      
-// }
-// )});
-
 
 const updateUser = (e) =>{
    
@@ -94,10 +74,7 @@ const updateUser = (e) =>{
       }
   });
 }
- 
 
-
-   
     return(
         
     <div> 
@@ -128,15 +105,7 @@ const updateUser = (e) =>{
             
             <button className="btn save" >save change</button>
          </form>
-
-
-
-    </div>
-        
-
-
-
-
-      </div>  );
-    }
-    export default Editprofile
+      </div>
+  </div>  );
+}
+export default Editprofile

@@ -5,7 +5,6 @@ import categoryReducer from './reducers/categoryReducer'
 
 export const store = configureStore({
     reducer:{
-        // [apiSlice.reducerPath]: apiSlice.reducer,
         auth: authReducer,
         category: categoryReducer,
     },
