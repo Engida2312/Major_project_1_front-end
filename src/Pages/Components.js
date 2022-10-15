@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 import SideBar from '../Layers/Side bar/SideBar'
 import SingelComponent from '../Layers/Singel Component/SingelComponent'
 
@@ -8,6 +7,7 @@ const Components = () => {
     const categorystore = useSelector((state) => state.category)
     const categorys = categorystore.categorys
     console.log(categorys)
+    const error = categorystore.error
     var category_list = '';
     const Highlighting = (id) => {
         const lists = document.querySelectorAll('.sid-element');

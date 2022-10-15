@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GetCategory } from './Redux/reducers/categoryReducer';
+import { GetComponent } from './Redux/reducers/componentReducer';
 import Footer from './Layers/Footer/Footer';
 import Home from './Pages/Home'
 import Signup from './Pages/Signup'
@@ -9,6 +10,7 @@ import Login from './Pages/Login'
 import Components from './Pages/Components';
 import AddCategory from './Pages/AddCategory';
 import UpdateCategory from './Pages/UpdateCategory';
+import Landing from './Pages/landingPage';
 import Dashboard from './Pages/dashboard';
 import Error from './Pages/Error';
 import ClientSharedLayout from './Layers/SharedLayouts/ClientSharedLayout';
@@ -33,8 +35,9 @@ function App() {
 
   useEffect(() => {
     dispatch(GetCategory())
+    dispatch(GetComponent())
 
-  });
+  },[]);
   return <>
     <Router>
       {/* <Navbar/> */}
@@ -46,6 +49,7 @@ function App() {
           <Route path='components' element={<Components />} />
           <Route path='addCategory' element={<AddCategory />} />
           <Route path='components/updateCategory/:id' element={<UpdateCategory />} />
+          <Route path='components/AddComponent' element={<Landing />} />
           <Route path='*' element={<Error />} />
         </Route>
         <Route path='/dashboard' element={<AdminSharedLayout />}>
