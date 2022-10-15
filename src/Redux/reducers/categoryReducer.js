@@ -1,11 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
+import swal from 'sweetalert';
+
 const initialState = {
     loading: false,
     categorys: [],
     si_category: [],
     error: ''
 }
+
 // singleCategory
 export const SingleCategory = createAsyncThunk('single-category/id', (id) => {
     return axios.get(`http://127.0.0.1:8000/api/single-category/${id}`)
@@ -58,8 +61,13 @@ const componentSlice = createSlice({
             state.error = action.error.message
         })
         builder.addCase(AddCategory.fulfilled, (state, action) => {
-            console.log(action.payload.message)
             state.loading = false
+            swal({
+                title: "success",
+                text: action.payload.message,
+                icon: "success",
+                buttons: "Ok"
+              })
         })
         builder.addCase(AddCategory.rejected, (state, action) => {
             state = []
@@ -69,8 +77,14 @@ const componentSlice = createSlice({
             state.loading = true
         })
         builder.addCase(UpdateCategory.fulfilled, (state, action) => {
-            console.log(action.payload.message)
             state.loading = false
+            swal({
+                title: "success",
+                text: action.payload.message,
+                icon: "success",
+                buttons: "Ok"
+              })
+            
         })
         builder.addCase(UpdateCategory.rejected, (state, action) => {
             state = []
