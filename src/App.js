@@ -4,13 +4,15 @@ import "react-toastify/dist/ReactToastify.css"
 import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GetCategory } from './Redux/reducers/categoryReducer';
-// import Footer from './Layers/Footer/Footer';
+import { GetComponent } from './Redux/reducers/componentReducer';
+import Footer from './Layers/Footer/Footer';
 import Home from './Pages/Home'
 import Signup from './Pages/Signup'
 import Login from './Pages/Login'
 // import AddComponents from './Pages/AddComponent';
 import AddCategory from './Pages/AddCategory';
 import UpdateCategory from './Pages/UpdateCategory';
+import Landing from './Pages/landingPage';
 import { Profile } from './Pages/Profile';
 import Components from './Pages/Components';
 // import AddComponents from './Pages/AddComponent';
@@ -39,8 +41,9 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(GetCategory())
-  });
-  
+    dispatch(GetComponent())
+
+  },[dispatch]);
   return <>
     <Router>
       <Routes>
@@ -53,6 +56,7 @@ function App() {
           <Route path='components' element={<Components />} />
           <Route path='addCategory' element={<AddCategory />} />
           <Route path='components/updateCategory/:id' element={<UpdateCategory />} />
+          <Route path='components/AddComponent' element={<Landing />} />
           <Route path='*' element={<Error />} />
         </Route>
         <Route path='/dashboard' element={<AdminSharedLayout />}>

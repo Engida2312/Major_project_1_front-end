@@ -1,6 +1,9 @@
 import React, { useContext, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { AiFillEye } from 'react-icons/ai'
+import { AiFillHeart } from 'react-icons/ai'
+import defaultAvatar from '../../Assets/Images/avatar.png'
 
 
 const SingelComponent = (id) => {
@@ -50,12 +53,38 @@ const SingelComponent = (id) => {
                     </ol>
                 </div>
                 <div className='comp-snipt-container'>
-                    <h1 className='comp-sub-elem-hdr sub-elem-hdr-marg'>example components</h1>
                     {singleElement.length === 0 ?
-                        <div></div>
+                       <h1 className='comp-sub-elem-hdr sub-elem-hdr-marg'>example components</h1>
                         :
-                        <Link to={`updateCategory/${id.id}`}><button>update</button></Link>
+                        <div>
+                            <h1 className='comp-sub-elem-hdr sub-elem-hdr-marg'>Available components</h1>
+                            <Link to={`updateCategory/${id.id}`}><button>update</button></Link>
+                        </div>
+                       
                     }
+
+                    <div className="card">
+                        <iframe
+                            height="375" width="700"
+                            src="https://www.interviewbit.com/embed/snippet/f37b06918e8a8b08bef3"
+                            title='Interviewbit Ide snippet/f37b06918e8a8b08bef3'
+                            loading="lazy" allow="clipboard-write"
+                            allowfullscreen referrerpolicy="unsafe-url"
+                            sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation  allow-popups-to-escape-sandbox">
+                        </iframe>
+                        <div className="card_bottom center_center gap-1">
+                            <div className='card_detail_left center_center gap-0_5'>
+                                <a href=""><img src={defaultAvatar} className='profile_img' alt="profile" /></a>
+                                <p>yohannes</p>
+                            </div>
+
+                            <div className='card_detail_right center_center gap-0_5'>
+                                <AiFillHeart /><span>903</span>
+                                <AiFillEye /><span>293</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
