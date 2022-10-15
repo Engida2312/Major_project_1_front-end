@@ -1,0 +1,44 @@
+.accordion_header,
+.dropdown-btn {
+    font-size: 0.95rem;
+    /* font-weight: 600; */
+    padding: 20px 80px 20px 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #f8f9fa;
+
+}
+
+.admin-sidebar .content .accordion_body_container li:hover a {
+    /* transition: 0.5s; */
+    color: #ffd43b;
+}
+
+.accordion_header::after {
+    content: "\00BB";
+    /* font-size: 2.2rem; */
+    position: absolute;
+    right: 20px;
+    transition: 0.5s;
+}
+
+.accordion_header.active::after {
+    transform: rotate(90deg);
+    color: #ffd43b;
+
+}
+
+.accordion_body_container {
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.3s;
+    background-color: #515e7b;
+
+}
+
+.accordion_body {
+    padding: 0 20px 20px;
+    line-height: 1.5rem;
+}

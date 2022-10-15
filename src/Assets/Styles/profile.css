@@ -1,0 +1,99 @@
+
+.upper{
+	display: flex;
+	height: 250px;
+	background-color: #1D3153;
+}
+.profile_img{
+	position: relative;
+	width: 150px;
+	height: 150px;
+	margin-top: 20px;
+	left: 40px;
+	
+}
+.avatar{
+	margin-left: 50px;
+	
+}
+.profile_h1{
+	color:#fff;
+    position: relative;
+    top: 40px;
+    left: 170px;
+
+	 padding: 0;
+	
+}
+.profile_p{
+	
+	color: #fff;
+	position: relative;
+	top: 80px;
+    left: 50px;
+    padding: 0;
+	
+	
+}
+
+
+.collection{
+	position: relative;
+	top: 200px;
+	left: -30px;
+
+}
+.liked{
+	position: relative;
+	top: 200px;
+	left: -20px;
+}
+.profile_button{
+	background-color: #FF4B2B;
+	color: black;
+	font-size: 12px;
+	font-weight: bold;
+	cursor: pointer;
+	letter-spacing: 1.5px;
+	align-items: left;
+	width: 110px;
+	height: 30px;
+	position: relative;
+	top: 50px;
+	left: 650px;
+}
+button{
+	
+	border-color: #fff;
+	
+}
+button:active {
+	transform: scale(0.95);
+}
+
+Link:focus {
+	outline: none;
+}
+hr{
+	padding: 0;
+	margin: 0;
+}
+
+.buttong{
+	
+	height: 30px;
+
+}
+
+.lower{
+	height: 400px;
+	background :#1D3153;
+}
+
+.social_profile{
+	position: relative;
+	top: 200px;
+	left: 500px;
+	height: 30px;
+
+}

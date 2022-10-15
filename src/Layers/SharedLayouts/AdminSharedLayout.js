@@ -6,6 +6,7 @@ const AdminSharedLayout = () => {
     <>
         <AdminSidebar/>
         <Outlet />
+        
     </>
   );
 };
