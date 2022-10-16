@@ -8,9 +8,11 @@ import { SingleCategory, UpdateCategory } from '../Redux/reducers/categoryReduce
 const UpdateCategorys = () => {
     const navigate = useNavigate();
     const params = useParams();
+    const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(SingleCategory(params.id))
+        setLoading()
     }, []);
     const categorystore = useSelector((state) => state.category)
     const SingleCat = categorystore.si_category
