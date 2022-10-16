@@ -7,24 +7,19 @@ import { SingleCategory, UpdateCategory } from '../Redux/reducers/categoryReduce
 
 const UpdateCategorys = () => {
     const navigate = useNavigate();
-    const categorystore = useSelector((state) => state.category)
-    const SingleCategory = categorystore.si_category
     const params = useParams();
     const dispatch = useDispatch();
-    const error = categorystore.error
-    const [category, setCategory] = useState({
-        title: SingleCategory.title,
-        discription: SingleCategory.discription
-    })
     useEffect(() => {
         dispatch(SingleCategory(params.id))
     }, []);
-
-    // setCategory({
-    //     title: categorystore.title,
-    //     discription: categorystore.discription
-    // })
-    
+    const categorystore = useSelector((state) => state.category)
+    const SingleCat = categorystore.si_category
+    console.log(SingleCat)
+    const error = categorystore.error
+    const [category, setCategory] = useState({
+        title: SingleCat.title,
+        discription: SingleCat.discription
+    })
     const { title, discription } = category;
     const onChange = (e) => {
         setCategory({ ...category, [e.target.name]: e.target.value })
@@ -34,6 +29,15 @@ const UpdateCategorys = () => {
         console.log(category)
           dispatch(UpdateCategory([params.id, category]))
           navigate('/components')
+          setCategory({
+            title: '',
+            discription: ''
+        })
+    }
+    if(categorystore.loading){
+        return(
+            <h1>loading...</h1>
+        )
     }
     return (
         <div className='component_container'>

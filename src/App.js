@@ -43,7 +43,7 @@ function App() {
     dispatch(GetCategory())
     dispatch(GetComponent())
 
-  },[]);
+  },[dispatch]);
   return <>
     <Router>
       <Routes>
