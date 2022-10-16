@@ -9,6 +9,8 @@ import Spinner from '../Componets/spinner'
 import cookie from 'js-cookie'
 
 function Signup() {
+  const [errors, setErrors] = useState(null);
+
     const [formData, setFormData] = useState({
       firstname: '',
       lastname: '',
@@ -33,19 +35,20 @@ function Signup() {
       
       if(isSuccess || user){
         cookie.set('token', user.token)
-        // toast.loading("loading...", 200)
-
         navigate('/')
       }
-  
       dispatch(reset())
       
-    }, [user, isError, isLoading, isSuccess, message, navigate, dispatch])
+    }, [user, isError, isSuccess, message, navigate, dispatch])
   
     console.log(message)
-    if(isLoading){
-        return <Spinner/>
-    }
+    useEffect(()=>{
+      if(errors != null && Object.keys(errors).length === 0){
+        dispatch(register(formData))
+      }
+       
+    },[errors])
+   
   
     // on change function
     const onChange = (e)=>{
@@ -59,29 +62,34 @@ function Signup() {
     // on submit function
     const onSubmit = (e)=>{
       e.preventDefault()
+          setErrors(validation(formData));
+
         const userData = {
           firstname,
           lastname,
           email,
           password,
         }
-        dispatch(register(userData))
+      
     }
 
+    
+  if(isLoading){
+      return <Spinner/>
+  }
   return(
-  <div>
-    <div id="signup_body">
-	<div className="signup_container">
+
+  <div id="signup_body">
+    <div className="signup_container">
 	    <div className="form-container">
             <form onSubmit={onSubmit}  className="signup_form">
                 <div className="signup_login">
                     <p className="signup_member">Already Member?</p>
                     <Link id="signup_a" to="/login">LOGIN</Link>
                 </div>
-                <h1 id="signup_h1">sign up to EYN</h1>
+                <h1 id="signup_h1">Sign up</h1>
                 <p className="signup_title">Discover The World's Top Creatives</p>
                 <div className="signup_inside">
-
                     <label className="signup_label">First Name</label>
                     <input 
                         className="signup_input" 
@@ -91,6 +99,8 @@ function Signup() {
                         value={firstname} 
                         onChange={onChange} 
                     />
+                    {errors?.firstname && <p className="error">{errors.firstname}</p>}
+
                     <label className="signup_label">Last Name</label>
                     <input 
                         className="signup_input" 
@@ -100,7 +110,7 @@ function Signup() {
                         value={lastname} 
                         onChange={onChange} 
                     />
-                    {/* {errors.name && <p className="error">{errors.name}</p>} */}
+                    {errors?.lastname && <p className="error">{errors.lastname}</p>}
 
                     <label className="signup_label">Email</label>
                     <input 
@@ -111,7 +121,7 @@ function Signup() {
                         value={email} 
                         onChange={onChange}
                     />
-                    {/* {errors.email && <p className="error">{errors.email}</p>} */}
+                    {errors?.email && <p className="error">{errors.email}</p>}
 
                     <label className="signup_label">Password</label>
                     <input 
@@ -123,7 +133,7 @@ function Signup() {
                         onChange={onChange} 
                     />
 
-                    {/* {errors.password && <p className="error">{errors.password}</p>} */}
+                    {errors?.password && <p className="error">{errors.password}</p>}
                     
                     {/* <div className="signup_check">
                         <input 
@@ -141,8 +151,6 @@ function Signup() {
         </div>
     </div>
     </div>
-  </div>
-
   );
 }
 export default Signup;

@@ -10,61 +10,74 @@ import {useSelector, useDispatch} from 'react-redux'
 
 function Editprofile (props){
     const {user} = useSelector((state)=> state.auth)
-
+    const [errors, setErrors] = useState(null);
     const [file, setFile] = useState();
     function handleChange(e) {
         console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
     }
-    
-    // const [user,setUserInput] = useState([]);
+    useEffect(()=>{
+        if(errors != null && Object.keys(errors).length === 0){
+         
+            const userData = new FormData();   
+
+            //   userData.append('uimage',userImage.uimage);
+              userData.append('firstname',newuser.firstname);
+              userData.append('lastname',newuser.lastname);
+              userData.append('email',newuser.email);
+              userData.append('github',newuser.github);
+              userData.append('linkedin',newuser.linkedin);
+              axios.post(`http://localhost:8000/api/updateprofile/${user.id}`, userData).then(res=>{
+                  if(res.data.status === 200){
+                      swal("Success",res.data.message,"success");
+                      setError([]);
+                  }
+                  
+                  else if(res.data.status === 404){
+                      swal("Error",res.data.message,"error");
+                  }
+              });
+        }
+         
+      },[errors])
+     
+    const [newuser,setUserInput] = useState({
+        firstname: user.firstname,
+        lastname:user.lastname,
+        email: user.email,
+        github:user.github,
+        linkedin:user.linkedin,
+    });
     const [error,setError] = useState([]);
     const [userImage,setUserImage] = useState([]);
     const [loading, setLoading] = useState(true);
-
     
     const handleInput = (e) =>{
-        e.persist();
-        // setUserInput({...user,[e.target.name]:e.target.value})
+        setUserInput({...newuser,[e.target.name]:e.target.value})
     }
 
 const updateUser = (e) =>{
    
   e.preventDefault();
-  swal({
-      Title:"Confirmation",
-      text: "Confirm to Update Profile Data",
-      buttons: {           
-          confirm: {
-              text: "Confirm",
-              value: true,
-          },
-          cancel:"Cancel",
-      },
-      icon: "info",
-    }).then((value) => {
-      if(value === true){
+ 
+  setErrors(validation(newuser));
+//   swal({
+//       Title:"Confirmation",
+//       text: "Confirm to Update Profile Data",
+//       buttons: {           
+//           confirm: {
+//               text: "Confirm",
+//               value: true,
+//           },
+//           cancel:"Cancel",
+//       },
+//       icon: "info",
+//     }).then((value) => {
+    //   if(value === true){
         //   const user_id = props.match.params.id;
-          const userData = new FormData();   
-
-        //   userData.append('uimage',userImage.uimage);
-          userData.append('firstname',user.firstname);
-          userData.append('lastname',user.lastname);
-          userData.append('email',user.email);
-          userData.append('github',user.github);
-          userData.append('linkedin',user.linkedin);
-
-          axios.post(`http://localhost:8000/api/updateprofile/${user.id}`, userData).then(res=>{
-              if(res.data.status === 200){
-                  swal("Success",res.data.message,"success");
-                  setError([]);
-              }
-              else if(res.data.status === 404){
-                  swal("Error",res.data.message,"error");
-              }
-          });
-      }
-  });
+         
+    //   }
+//   });
 }
 
     return(
@@ -77,21 +90,22 @@ const updateUser = (e) =>{
     <form className="form-style-1" onSubmit={updateUser}>
 
 	   		<img src={file} alt={userImage.uimage} className="edit_img" onChange={handleChange} name="uimage"/>
-            <input type="file" name="avatar" id="avatar" className="imgpic input_field_img " onChange={handleInput} value={userImage.uimage}/>
+            {/* <input type="file" name="avatar" id="avatar" className="imgpic input_field_img " onChange={handleInput} value={userImage.uimage}/> */}
 
             <label>Full Name </label>
-            <input type="text"  className="field-divided" placeholder="First" name="firstname" onChange={handleInput} value={user.firstname} />
-             <input type="text"  className="field-divided" placeholder="Last" name="lastname" onChange={handleInput} value={user.lastname}/>
-            
+            <input type="text"  className="field-divided" placeholder="First" name="firstname" onChange={handleInput} value={newuser.firstname} />
+            {errors?.firstname && <p className="error">{errors.firstname}</p>}
+             <input type="text"  className="field-divided" placeholder="Last" name="lastname" onChange={handleInput} value={newuser.lastname}/>
+             {errors?.lastname && <p className="error">{errors.lastname}</p>}
             
             <label>Email </label>
-            <input type="email"  className="field-long" name="email"value={user.email} />
-            
+            <input type="email"  className="field-long" onChange={handleInput} name="email"value={newuser.email} />
+            {errors?.email && <p className="error">{errors.email}</p>}
 
             <label>Linkedin Link </label>
-            <input type="text" name="linkedin" className="field-long" onChange={handleInput} value={user.linkedin}/>
+            <input type="text" name="linkedin" className="field-long" onChange={handleInput} value={newuser.linkedin}/>
             <label>Github Link </label>
-            <input type="text" name="github" className="field-long" onChange={handleInput} value={user.github}/>
+            <input type="text" name="github" className="field-long" onChange={handleInput} value={newuser.github}/>
             
             <button className="save btn" >Change Password</button>
             

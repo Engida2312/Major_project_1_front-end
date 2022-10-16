@@ -103,7 +103,7 @@ nav{
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 2, 2, 0.877);
     z-index: 5000;
     display: flex;
     justify-content: center;
@@ -114,7 +114,7 @@ nav{
     width: 64px;
     height: 64px;
     border: 8px solid;
-    border-color: #000 transparent #555 transparent;
+    border-color: rgb(71, 207, 241) transparent rgb(11, 108, 146) transparent;
     border-radius: 50%;
     animation: spin 1.2s linear infinite;
   }

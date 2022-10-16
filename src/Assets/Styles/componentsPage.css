@@ -37,16 +37,18 @@
 }
 
 .component_container{
-    position:fixed;
+    /* position:fixed; */
     display: flex;
     flex-direction: column;
-    top: 60px;
-    bottom: 0;
-    left: 0;
-    background-color: #1D3153;
-    width: 100%;
+
+    /* top: 60px; */
+    /* bottom: 0; */
+    /* left: 0; */
+    /* background-color: #1D3153; */
+    /* width: 100%; */
     color: white;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
+
     
 }
 .compnent-elements{

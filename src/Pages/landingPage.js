@@ -44,18 +44,20 @@ const Landing = () => {
        
     }
     return (
+        <div className="admin_main_container">
+
         <div className='component_container'>
-                        {error? <div className='show_error'><h2>{error}</h2></div> :''}
+            {error? <div className='show_error'><h2>{error}</h2></div> :''}
             <div className='compnent-elements hdr-mrg '>
                 <h1 className='hdr-title-marg'>Add component</h1>
                 <form onSubmit={onSubmit}>
                     <div className='flex' style={{ display: 'flex', flexDirection: 'column', width: '20rem' }}>
                        <label className='sub-title-marg' htmlFor='Cname'>Name</label>
-                        <input className='sub-title-marg' value={name} type='text' id='Cname' placeholder='Component Name' name='name' onChange={onChange}required ></input>
+                        <input className='sub-title-marg input' value={name} type='text' id='Cname' placeholder='Component Name' name='name' onChange={onChange}required ></input>
                         <label className='sub-title-marg' htmlFor='Cdescription'>Description</label>
-                        <input className='sub-title-marg' value={discription} type='text' id='Cdescription' placeholder='Description' name='discription' onChange={onChange} ></input>
+                        <textarea className='sub-title-marg' value={discription} type='text' id='Cdescription' placeholder='Description' name='discription' onChange={onChange} ></textarea>
                         <label className='sub-title-marg' htmlFor='category'>Category</label>
-                        <select name="category_id" id="categorys" onChange={onChange} required>
+                        <select name="category_id" className="input" id="categorys" onChange={onChange} required>
                             {categorys.map(category => (
                                 <option value={category.id}>{category.title}</option>
                             ))}
@@ -77,6 +79,7 @@ const Landing = () => {
             </div>
             <br></br>
 
+        </div>
         </div>
 
     )

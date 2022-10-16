@@ -15,7 +15,7 @@ import UpdateCategory from './Pages/UpdateCategory';
 import Landing from './Pages/landingPage';
 import { Profile } from './Pages/Profile';
 import Components from './Pages/Components';
-// import AddComponents from './Pages/AddComponent';
+// import AddComponents from './Pages/AddCategory';
 import Dashboard from './Pages/dashboard';
 import Error from './Pages/Error';
 import ClientSharedLayout from './Layers/SharedLayouts/ClientSharedLayout';
@@ -54,14 +54,14 @@ function App() {
           <Route  path='profile' element={<Profile />} />
           <Route  path='editprofile' element={<Editprofile />} />
           <Route path='components' element={<Components />} />
-          <Route path='addCategory' element={<AddCategory />} />
           <Route path='components/updateCategory/:id' element={<UpdateCategory />} />
-          <Route path='components/AddComponent' element={<Landing />} />
           <Route path='*' element={<Error />} />
         </Route>
         <Route path='/dashboard' element={<AdminSharedLayout />}>
           <Route index element={<Dashboard />} />
           <Route path='login' element={<Login />} />
+          <Route path='addCategory' element={<AddCategory />} />
+          <Route path='AddComponent' element={<Landing />} />
         </Route>
       </Routes>
     </Router>
