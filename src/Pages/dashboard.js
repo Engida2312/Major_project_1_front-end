@@ -3,6 +3,7 @@ import Table from '../Componets/table'
 const Dashboard = ()=>{
     return<>
         <MainDashboard/>
+        <Table />
     </>
 }
 
