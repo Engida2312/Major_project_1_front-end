@@ -4,7 +4,6 @@ import authReducer from '../Features/Auth/authSlice'
 import categoryReducer from './reducers/categoryReducer'
 import componentReducer from './reducers/componentReducer'
 
-
 const store = configureStore(
   {
     reducer: {

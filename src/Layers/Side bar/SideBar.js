@@ -10,9 +10,6 @@ const SideBar = ({ category: { id, title }, onHighlight }) => {
        </Link>
       <label className='hvr-pointer' htmlFor={id}>{title} </label>
        </div>
-
-   
-
   )
 }
 export default SideBar

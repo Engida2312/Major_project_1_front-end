@@ -48,11 +48,10 @@
     /* width: 100%; */
     color: white;
     /* overflow-y: scroll; */
-
     
 }
 .compnent-elements{
-   margin-left: 15rem;
+   /* margin-left: 15rem; */
 }
 .side-bar-container{
     position: fixed;

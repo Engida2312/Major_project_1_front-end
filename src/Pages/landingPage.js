@@ -50,8 +50,10 @@ const Landing = () => {
             {error? <div className='show_error'><h2>{error}</h2></div> :''}
             <div className='compnent-elements hdr-mrg '>
                 <h1 className='hdr-title-marg'>Add component</h1>
+                {/* codepen compiler for react here */}
+                <iframe src="https://codepen.io/engida2312/embed/yLjrpYL?default-tab=js%2Cresult&editable=true" title=" " width="100%" height="500" frameBorder="0" marginwidth="0" marginheight="0"loading="lazy" allowtransparency="true"  allowFullScreen></iframe>
                 <form onSubmit={onSubmit}>
-                    <div className='flex' style={{ display: 'flex', flexDirection: 'column', width: '20rem' }}>
+                    <div className='flex' style={{ display: 'flex', flexDirection: 'column', width: '50%' }}>
                        <label className='sub-title-marg' htmlFor='Cname'>Name</label>
                         <input className='sub-title-marg input' value={name} type='text' id='Cname' placeholder='Component Name' name='name' onChange={onChange}required ></input>
                         <label className='sub-title-marg' htmlFor='Cdescription'>Description</label>
@@ -60,20 +62,12 @@ const Landing = () => {
                         <select name="category_id" className="input" id="categorys" onChange={onChange} required>
                             {categorys.map(category => (
                                 <option value={category.id}>{category.title}</option>
-                            ))}
+                                ))}
                         </select>
                         <label className='sub-title-marg' htmlFor='code_ref'>Code Input</label>
-                            <iframe
-                                height="375" width="700"
-                                src="https://www.interviewbit.com/embed/snippet/f37b06918e8a8b08bef3"
-                                title='Interviewbit Ide snippet/f37b06918e8a8b08bef3'
-                                loading="lazy" allow="clipboard-write"
-                                allowfullscreen referrerpolicy="unsafe-url"
-                                sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation  allow-popups-to-escape-sandbox">
-                            </iframe>
                         <textarea id='code_ref' className='sub-title-marg' style={{ width: '43rem' }} name='code_referance' placeholder='submite the code here after checking in the code editor' rows="10" cols="50" required>
                         </textarea>
-                        <input className='sub-title-marg submit' type='submit' value='Add Component' />
+                        <input className='sub-title-marg btn' type='submit' value='Add Component' />
                     </div>
                 </form>
             </div>

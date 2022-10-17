@@ -8,14 +8,33 @@ import {FiUsers} from 'react-icons/fi'
 import {useSelector, useDispatch} from 'react-redux'
 import {logout, reset} from '../../Features/Auth/authSlice'
 import '../../Assets/Styles/admin-sidebar.css'
-import '../../Assets/Styles/accordion.css'
+import { useState } from "react";
 
 
 const AdminSidebar = ()=>{
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const {user} = useSelector((state)=>state.auth)
+    const [selected, setSelected] = useState(null)
+    const [active, setActive] = useState(null)
 
+    // active for accordion 
+    const isActive = (i)=>{
+        if(selected === i){
+            return setActive(null);
+        }
+        setActive(i)
+    }
+
+    // toggle for accordion 
+    const toggle = (i)=>{
+        if(selected === i){
+            return setSelected(null);
+        }
+        setSelected(i)
+    }
+
+    // logout
     const onLogout = ()=>{
         dispatch(logout())
         dispatch(reset())
@@ -25,7 +44,6 @@ const AdminSidebar = ()=>{
 
     <nav className="flex justify_content_sb align_items_c admin_top_nav">
         <SearchBar/>
-    
         <li><p className='btn' onClick={onLogout} >Logout</p></li>
     </nav>
     <div className="a_sidebar_container">
@@ -37,38 +55,54 @@ const AdminSidebar = ()=>{
                     + user.firstname.slice(1) 
                     + " " + user.lastname.charAt(0).toUpperCase()
                     + user.lastname.slice(1)
-                    }</h3>
+                    }
+                </h3>
             </div>
         </div>
         <div className="a_sidebar_bottom center_center col">
-            <ul className="">
-                <li className="accordion_header"><Link to="/dashboard" className="link"><GoDashboard /> Dashbord</Link></li>
-                <li className="accordion_header link"><CgComponents/><Link to='/dashboard/AddComponent' > Components </Link></li>
-                <ul className="accordion_body_container">
+            <ul>
+                <li className={selected === 0 ? ('accordion_header link active') : ('accordion_header link')}  onClick={()=>toggle(0)} >
+                    <Link to="/dashboard" className="link"><GoDashboard /> Dashbord</Link>
+                    </li>
+                <li className={selected === 1 ? ('accordion_header link active') : ('accordion_header link')}  onClick={()=>toggle(1)} ><CgComponents/> Components</li>
+                <ul className={selected === 1 ? ('accordion_body_container show') : ('accordion_body_container')} >
                     <div className="accordion_body">
-                        <li><a href="/all-events">All Components</a></li>
-                        <li><a href="/event/all/active">New Components</a></li>
-                        <li><a href="/add-event">Add Components</a></li>
+                        <li className={active === 10 ? ('active') : ('')}  onClick={()=>isActive(10)}>
+                            <a href="/all-events">All Components</a>
+                        </li>
+                        <li className={active === 11 ? ('active') : ('')}  onClick={()=>isActive(11)}>
+                            <a href="/event/all/active">New Components</a>
+                        </li>
+                        <li  className={active === 12 ? ('active') : ('')}  onClick={()=>isActive(12)}>
+                            <Link to='/dashboard/AddComponent' > Add Components</Link>
+                        </li>
                     </div>
                 </ul>
-                <li className="accordion_header link"><MdOutlineCategory/><Link to='/dashboard/addCategory' > Catagories </Link>  </li>
-                <ul className="accordion_body_container">
+                <li className={selected === 2 ? ('accordion_header link active') : ('accordion_header link')}  onClick={()=>toggle(2)}><MdOutlineCategory/>Catagory</li>
+                <ul className={selected === 2 ? ('accordion_body_container show') : ('accordion_body_container')} >
                     <div className="accordion_body">
-                        <li><a href="/all-inactive-organizers">All Catagories</a></li>
-                        <li><a href="/organizer/register">Add catagory</a></li>
+                        <li className={active === 20 ? ('active') : ('')}  onClick={()=>isActive(20)}>
+                            <a href="/all-inactive-organizers">All Catagories</a>
+                        </li>
+                        <li className={active === 21 ? ('active') : ('')}  onClick={()=>isActive(21)}>
+                            <Link to='/dashboard/addCategory' >Add catagory</Link>
+                        </li>
                     </div>
                 </ul>
-                <li className="accordion_header link"><FiUsers/> Users </li>
-                <ul className="accordion_body_container">
+                <li className={selected === 3 ? ('accordion_header link active') : ('accordion_header link')}  onClick={()=>toggle(3)}><FiUsers/> Users </li>
+                <ul className={selected === 3 ? ('accordion_body_container show') : ('accordion_body_container')} >
                     <div className="accordion_body">
-                        <li><a href="/all-inactive-organizers">Contributers</a></li>
-                        <li><a href="/organizer/register">All users</a></li>
+                        <li className={active === 30 ? ('active') : ('')}  onClick={()=>isActive(30)}>
+                            <a href="/all-inactive-organizers">Contributers</a>
+                        </li>
+                        <li className={active === 31 ? ('active') : ('')}  onClick={()=>isActive(31)}>
+                            <a href="/organizer/register">All users</a>
+                        </li>
                     </div>
                 </ul>
             </ul>
         </div>
     </div>
-  
   </>
 }
 

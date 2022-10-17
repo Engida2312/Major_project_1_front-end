@@ -9,6 +9,7 @@ const Table = ()=>{
         { componentname: "NA", componenttype: 2, catagory: "NA", addcategory: "NA", deletedcategory: "NA"},
         { componentname: "NA", componenttype: 2, catagory: "NA", addcategory: "NA", deletedcategory: "NA"},
       ]
+      
     return (
         <div className="tablecss">
         <table>

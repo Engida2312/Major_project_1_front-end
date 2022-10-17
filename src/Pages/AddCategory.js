@@ -34,7 +34,7 @@ const AddCategorys = () => {
             <div className='component_container'>
                 {error? <div className='show_error'><h2>{error}</h2></div> :''}
                 <div className='hdr-mrg'>
-                    <h1 className='hdr-title-marg'>Add Category</h1>
+                    <h1 className='hdr-title-marg'>Add Category</h1>                    
                     <form onSubmit={onSubmit}>
                         <div className='flex' style={{ display: 'flex', flexDirection: 'column', width: '20rem' }}>
                             <label className='sub-title-marg' htmlFor='Cname'>Name</label>
@@ -46,7 +46,7 @@ const AddCategorys = () => {
                     </form>
                 </div>
                 <br></br>
-                {/* <iframe height="375" width="700" src="https://www.interviewbit.com/embed/snippet/f37b06918e8a8b08bef3" title='Interviewbit Ide snippet/f37b06918e8a8b08bef3' loading="lazy" allow="clipboard-write" allowfullscreen referrerpolicy="unsafe-url" sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation allow-popups-to-escape-sandbox"></iframe> */}
+                {/* <iframe height="375" width="700" src="https://www.interviewbit.com/embed/snippet/f37b06918e8a8b08bef3" title='Interviewbit Ide snippet/f37b06918e8a8b08bef3' loading="lazy" allow="clipboard-write" allowFullScreen referrerpolicy="unsafe-url" sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation allow-popups-to-escape-sandbox"></iframe> */}
 
             </div>
         </div>
