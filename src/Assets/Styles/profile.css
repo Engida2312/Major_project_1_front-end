@@ -21,7 +21,7 @@
 	color:#fff;
     position: relative;
     top: 40px;
-    left: 170px;
+    left: 100px;
 
 	 padding: 0;
 	
@@ -31,7 +31,7 @@
 	color: #fff;
 	position: relative;
 	top: 80px;
-    left: 50px;
+    left: -150px;
     padding: 0;
 	
 	
@@ -41,13 +41,13 @@
 .user_profile_container .collection{
 	position: relative;
 	top: 200px;
-	left: -80px;
+	left: -200px;
 
 }
 .liked{
 	position: relative;
 	top: 200px;
-	left: -60px;
+	left: -180px;
 }
 .profile_button{
 	background-color: #FF4B2B;
@@ -61,7 +61,7 @@
 	height: 30px;
 	position: relative;
 	top: 50px;
-	left: 600px;
+	left: 450px;
 }
 button{
 	
@@ -95,7 +95,7 @@ hr{
 .social_profile{
 	position: relative;
 	top: 200px;
-	left: 450px;
+	left: 300px;
 	height: 30px;
 
 }
