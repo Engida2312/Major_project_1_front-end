@@ -1,5 +1,6 @@
 import StatCard from "../../Componets/stat-card";
 import SearchBar from "../../Componets/search-bar";
+import Table from "../../Componets/table"
 
 const MainDashboard = ()=>{
     return(
@@ -13,6 +14,8 @@ const MainDashboard = ()=>{
                         <StatCard/>
                         <StatCard/>
                     </div>
+     
+                    <Table />
                 </section>
             </div>
         </main>

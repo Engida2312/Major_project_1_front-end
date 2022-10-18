@@ -19,7 +19,8 @@ export const register = createAsyncThunk(
     try {
         return await authService.register(user)
     } catch (error) {
-        const message = (error.response && 
+        const message = (
+            error.response && 
             error.response.data &&
             error.response.data.message) || 
             error.message || 
@@ -47,8 +48,17 @@ export const login = createAsyncThunk(
 // logout
 export const logout = createAsyncThunk(
     'auth/logout',
-    async ()=>{
-        await authService.logout()
+    async (user, thunkAPI)=>{
+        try {
+            return await authService.logout(user)
+        } catch (error) {
+            const message = (error.response && 
+                error.response.data &&
+                error.response.data.message) || 
+                error.message || 
+                error.toString()
+            return thunkAPI.rejectWithValue(message)
+        }
     }
 )
 
