@@ -26,18 +26,18 @@ const login = async(userData)=>{
 }
 
 // logout user 
-const logout = async(userData)=>{
-    try {
-        const response = await axios.post(API_URL_LOGOUT, userData) 
-        if(response.data){
+const logout = async()=>{
+    // try {
+        // const response = await axios.post(API_URL_LOGOUT, userData) 
+        // if(response.data){
             localStorage.removeItem('user')
             Cookies.remove('token')
-        }
-    } catch (error) {
-        console.log(error.response)
-    }
+    //     }
+    // } catch (error) {
+    //     console.log(error.response)
+    // }
   
-    return response.data
+    // return response.data
 }
 
 // all users
