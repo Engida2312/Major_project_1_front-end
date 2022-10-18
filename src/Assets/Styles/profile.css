@@ -4,41 +4,7 @@
 	
 	height: 250px;
 	background-color: #1D3153;
-}
-.user_img{
-	position: relative;
-	width: 150px;
-	height: 150px;
-	margin-top: 20px;
-	left: 40px;
-	
-}
-.userimage{
-	margin-left: 50px;
-	
-}
-.user_profile_container .profile_h1{
-	color:#fff;
-    position: relative;
-    top: 40px;
-    left: 100px;
 
-	 padding: 0;
-	
-}
-.user_profile_container .profile_p{
-	
-	color: #fff;
-	position: relative;
-	top: 80px;
-    left: -150px;
-    padding: 0;
-	
-	
-}
-
-
-.user_profile_container .collection{
 	position: relative;
 	top: 200px;
 	left: -200px;
