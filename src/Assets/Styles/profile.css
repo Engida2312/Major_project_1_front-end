@@ -1,5 +1,5 @@
 
-.upper{
+.user_profile_container .upper{
 	display: flex;
 	
 	height: 250px;
@@ -17,7 +17,7 @@
 	margin-left: 50px;
 	
 }
-.profile_h1{
+.user_profile_container .profile_h1{
 	color:#fff;
     position: relative;
     top: 40px;
@@ -26,7 +26,7 @@
 	 padding: 0;
 	
 }
-.profile_p{
+.user_profile_container .profile_p{
 	
 	color: #fff;
 	position: relative;
@@ -38,7 +38,7 @@
 }
 
 
-.collection{
+.user_profile_container .collection{
 	position: relative;
 	top: 200px;
 	left: -200px;
@@ -87,10 +87,10 @@ hr{
 
 }
 
-.lower{
+/* .lower{
 	height: 400px;
 	background :#1D3153;
-}
+} */
 
 .social_profile{
 	position: relative;

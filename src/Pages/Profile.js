@@ -39,7 +39,7 @@ export const Profile = () => {
   
 
   return (
-    <div>
+    <div className='user_profile_container'>
 			
          <div className="upper">
 	   	<div className="userimage">

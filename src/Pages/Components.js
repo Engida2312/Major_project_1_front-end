@@ -31,6 +31,7 @@ const Components = () => {
 
         <div className='component_container'>
             <div className='side-bar-container'>
+                
                 <div className='side-bar'>
                     <h1 className='sid-hdr-mrg'>Components</h1>
                     <div className='sid-elem-cont'>

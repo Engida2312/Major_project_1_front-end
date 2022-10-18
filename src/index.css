@@ -3,6 +3,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  text-decoration: none;
 }
 body {
   margin: 0;
@@ -11,6 +12,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--clr-primary-2);
   color: var(--clr-primary-3);
+  
   /* height: 1000vh; */
 }
 
@@ -23,7 +25,7 @@ body {
 
   --clr-white: #fff;
   --clr-border-light: rgb(148, 169, 182);
-  --clr-border-dark: #334159;
+  --clr-border-dark: #485975;
   --clr-black: #000;
   --transition: all 0.3s linear;
 
