@@ -7,8 +7,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import swal from 'sweetalert2';
 import {useSelector, useDispatch} from 'react-redux'
+import { userUpdate } from "../Features/updateSlice";
 
-function Editprofile (props){
+
+function Editprofile (){
     const {user} = useSelector((state)=> state.auth)
     const [errors, setErrors] = useState(null);
     const [file, setFile] = useState();
@@ -89,7 +91,7 @@ const updateUser = (e) =>{
     
     <form className="form-style-1" onSubmit={updateUser}>
 
-	   		<img src={file} alt={userImage.uimage} className="edit_img" onChange={handleChange} name="uimage"/>
+	   		<img src="" alt="" className="edit_img" name="uimage"/>
             {/* <input type="file" name="avatar" id="avatar" className="imgpic input_field_img " onChange={handleInput} value={userImage.uimage}/> */}
 
             <label>Full Name </label>

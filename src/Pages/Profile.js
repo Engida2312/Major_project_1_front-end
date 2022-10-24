@@ -39,11 +39,11 @@ export const Profile = () => {
   
 
   return (
-    <div>
+    <div className='user_profile_container'>
 			
          <div className="upper">
-	   	<div className="avatar">
-	   		<img className="profile_img" src={Logo} alt="av"/>
+	   	<div className="userimage">
+	   		<img className="user_img" src={Logo} alt="av"/>
 
 		</div>
 	   	<h1 className="profile_h1">{user.firstname + " " + user.lastname}</h1>

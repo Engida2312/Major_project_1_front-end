@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
-import swal from 'sweetalert';
+import swal from 'sweetalert2';
 
 const initialState = {
     loading: false,

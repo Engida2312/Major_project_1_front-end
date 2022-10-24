@@ -56,11 +56,11 @@ function Login() {
     // on submit function
     const onSubmit = (e)=>{
       e.preventDefault()
-        const userData = {
-          email,
-          password,
-        }
-        dispatch(login(userData))
+      const userData = {
+        email,
+        password,
+      }
+      dispatch(login(userData))
     }
 
     return(

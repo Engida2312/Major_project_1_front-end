@@ -36,6 +36,7 @@ import './Assets/Styles/main-home.css'
 import './Assets/Styles/signup.css'
 import './Assets/Styles/admin.css'
 import './Assets/Styles/profile.css'
+import './Assets/Styles/accordion.css'
 
 function App() {
   const dispatch = useDispatch();
