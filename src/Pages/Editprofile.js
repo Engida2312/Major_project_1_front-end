@@ -5,7 +5,8 @@ import Logo from './../Assets/Images/avatar.png'
 import validation from "./validation";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import swal from 'sweetalert2';
+// import swal from 'sweetalert2';
+import swal from 'sweetalert';
 import {useSelector, useDispatch} from 'react-redux'
 import { userUpdate } from "../Features/updateSlice";
 
@@ -92,7 +93,7 @@ const updateUser = (e) =>{
     <form className="form-style-1" onSubmit={updateUser}>
 
 	   		<img src="" alt="" className="edit_img" name="uimage"/>
-            {/* <input type="file" name="avatar" id="avatar" className="imgpic input_field_img " onChange={handleInput} value={userImage.uimage}/> */}
+            <input type="file" name="avatar" id="avatar" className="imgpic input_field_img " onChange={handleInput} value={userImage.uimage}/>
 
             <label>Full Name </label>
             <input type="text"  className="field-divided" placeholder="First" name="firstname" onChange={handleInput} value={newuser.firstname} />
