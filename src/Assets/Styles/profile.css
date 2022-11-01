@@ -99,3 +99,7 @@ hr{
 	height: 30px;
 
 }
+.profile_p{
+	position: relative;
+	/* top: 60px; */
+}
