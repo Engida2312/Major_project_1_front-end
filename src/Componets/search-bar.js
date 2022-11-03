@@ -13,6 +13,7 @@ const SearchBar = ()=>{
         if(e.which === 13){
             if(search.trim()){
                  dispatch(searchCategory(search))
+                 setSearch('')
             }
         }
     }

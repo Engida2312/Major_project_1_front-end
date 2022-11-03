@@ -23,7 +23,7 @@ export const GetCategory = createAsyncThunk('category', () => {
 // searchCategory
 export const searchCategory = createAsyncThunk('search-category', (search) => {
     return axios.get(`http://127.0.0.1:8000/api/search/${search}`)
-        .then((response) => console.log(response.data))
+        .then((response) => response.data)
         .catch((err)=>{
             console.log(err)
         })
@@ -64,8 +64,20 @@ const componentSlice = createSlice({
             state.si_category = []
             state.error = action.error.message
         })
+        builder.addCase(searchCategory.pending, (state, action) => {
+            state.loading = true
+            state.si_category = []
+        })
+        builder.addCase(searchCategory.fulfilled, (state, action) => {
+            state.si_category = action.payload.message.data
+            state.loading = false
+        })
+        builder.addCase(searchCategory.rejected, (state, action) => {
+            state.error = action.error.message
+        })
         builder.addCase(SingleCategory.pending, (state, action) => {
             state.loading = true
+            state.si_category = []
         })
         builder.addCase(SingleCategory.fulfilled, (state, action) => {
             state.si_category = action.payload.message
