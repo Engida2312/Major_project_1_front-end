@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import SideBar from '../Layers/Side bar/SideBar'
-import SingelComponent from '../Layers/Singel Component/SingelComponent'
+import SingelCategory from '../Layers/Singel Category/SingelCategory'
 
 const Components = () => {
     const categorystore = useSelector((state) => state.category)
@@ -40,7 +40,7 @@ const Components = () => {
 
                 </div>
             </div>
-            <SingelComponent id={titleid}  />
+            <SingelCategory id={titleid}  />
 
 
 

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
-import swal from 'sweetalert2';
+import swal from 'sweetalert';
 
 const initialState = {
     loading: false,
@@ -20,7 +20,15 @@ export const GetCategory = createAsyncThunk('category', () => {
     return axios.get('http://127.0.0.1:8000/api/category')
         .then((response) => response.data)
 })
-//addComponent
+// searchCategory
+export const searchCategory = createAsyncThunk('search-category', (search) => {
+    return axios.get(`http://127.0.0.1:8000/api/search/${search}`)
+        .then((response) => console.log(response.data))
+        .catch((err)=>{
+            console.log(err)
+        })
+})
+//addCategory
 export const AddCategory = createAsyncThunk('category/add-category', (newCategory) => {
     return axios.post('http://127.0.0.1:8000/api/add-category', newCategory)
         .then((response) => response.data)

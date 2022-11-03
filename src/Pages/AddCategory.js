@@ -41,7 +41,7 @@ const AddCategorys = () => {
                             <input className='sub-title-marg input' value={title} type='text' id='Cname' placeholder='Component Name' name='title' onChange={onChange} required></input>
                             <label className='sub-title-marg' htmlFor='Cdescription'>Description</label>
                             <textarea rows={10} className='sub-title-marg description' value={discription} type='text' id='Cdescription' placeholder='Description' name='discription' onChange={onChange} ></textarea>
-                            <input className='sub-title-marg  submit btn' type='submit' value='Add Component' />
+                            <input className='sub-title-marg  submit btn' type='submit' value='Add Category' />
                         </div>
                     </form>
                 </div>

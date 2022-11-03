@@ -35,7 +35,10 @@
 .submit:hover{
     background: #4dff4d;
 }
-
+.code_flex_container{
+    display: flex;
+    justify-content: space-between;
+}
 .component_container{
     /* position:fixed; */
     display: flex;
@@ -51,7 +54,7 @@
     
 }
 .compnent-elements{
-   /* margin-left: 15rem; */
+   margin-left: 15rem;
 }
 .side-bar-container{
     position: fixed;

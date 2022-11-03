@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
-import swal from 'sweetalert2';
+import swal from 'sweetalert';
 
 const initialState = {
     loading: false,
@@ -59,6 +59,9 @@ const componentSlice = createSlice({
         })
         builder.addCase(SingleComponent.rejected, (state, action) => {
             state.error = action.error.message
+        })
+        builder.addCase(AddComponent.pending, (state, action) => {
+            state.loading = true
         })
         builder.addCase(AddComponent.fulfilled, (state, action) => {
             state.loading = false
