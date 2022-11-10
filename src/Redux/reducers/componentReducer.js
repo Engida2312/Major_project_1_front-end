@@ -60,6 +60,9 @@ const componentSlice = createSlice({
         builder.addCase(SingleComponent.rejected, (state, action) => {
             state.error = action.error.message
         })
+        builder.addCase(AddComponent.pending, (state, action) => {
+            state.loading = true
+        })
         builder.addCase(AddComponent.fulfilled, (state, action) => {
             state.loading = false
             swal({

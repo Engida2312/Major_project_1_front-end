@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {ToastContainer, toast, Zoom, Bounce} from 'react-toastify'
+import { ToastContainer, toast, Zoom, Bounce } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css"
 import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -12,7 +12,7 @@ import Login from './Pages/Login'
 // import AddComponents from './Pages/AddComponent';
 import AddCategory from './Pages/AddCategory';
 import UpdateCategory from './Pages/UpdateCategory';
-import Landing from './Pages/landingPage';
+import Landing from './Pages/AddComponent';
 import { Profile } from './Pages/Profile';
 import Components from './Pages/Components';
 // import AddComponents from './Pages/AddCategory';
@@ -21,6 +21,8 @@ import Error from './Pages/Error';
 import ClientSharedLayout from './Layers/SharedLayouts/ClientSharedLayout';
 import AdminSharedLayout from './Layers/SharedLayouts/AdminSharedLayout'
 import Editprofile from './Pages/Editprofile'
+import SingleComponent from './Pages/SingleComponent'
+import SingleCategory from './Layers/Singel Category/SingelCategory'
 
 import './index.css'
 import './Assets/Styles/footer.css'
@@ -44,7 +46,7 @@ function App() {
     dispatch(GetCategory())
     dispatch(GetComponent())
 
-  },[dispatch]);
+  }, [dispatch]);
   return <>
     <Router>
       <Routes>
@@ -52,9 +54,11 @@ function App() {
           <Route index element={<Home />} />
           <Route path='signup' element={<Signup />} />
           <Route path='login' element={<Login />} />
-          <Route  path='profile' element={<Profile />} />
-          <Route  path='editprofile' element={<Editprofile />} />
+          <Route path='profile' element={<Profile />} />
+          <Route path='editprofile' element={<Editprofile />} />
           <Route path='components' element={<Components />} />
+          <Route path='components/:id' element={<SingleComponent />} />
+          <Route path='components/category/:id' element={<SingleCategory />} />
           <Route path='components/updateCategory/:id' element={<UpdateCategory />} />
           <Route path='*' element={<Error />} />
         </Route>
@@ -67,10 +71,10 @@ function App() {
       </Routes>
     </Router>
     <ToastContainer
-          draggable={false}
-          transition={Zoom}
-          autoClose={8000}
-        />
+      draggable={false}
+      transition={Zoom}
+      autoClose={8000}
+    />
   </>;
 }
 

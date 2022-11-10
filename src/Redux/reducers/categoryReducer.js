@@ -20,7 +20,15 @@ export const GetCategory = createAsyncThunk('category', () => {
     return axios.get('http://127.0.0.1:8000/api/category')
         .then((response) => response.data)
 })
-//addComponent
+// searchCategory
+export const searchCategory = createAsyncThunk('search-category', (search) => {
+    return axios.get(`http://127.0.0.1:8000/api/search/${search}`)
+        .then((response) => response.data)
+        .catch((err)=>{
+            console.log(err)
+        })
+})
+//addCategory
 export const AddCategory = createAsyncThunk('category/add-category', (newCategory) => {
     return axios.post('http://127.0.0.1:8000/api/add-category', newCategory)
         .then((response) => response.data)
@@ -56,8 +64,20 @@ const componentSlice = createSlice({
             state.si_category = []
             state.error = action.error.message
         })
+        builder.addCase(searchCategory.pending, (state, action) => {
+            state.loading = true
+            state.si_category = []
+        })
+        builder.addCase(searchCategory.fulfilled, (state, action) => {
+            state.si_category = action.payload.message.data
+            state.loading = false
+        })
+        builder.addCase(searchCategory.rejected, (state, action) => {
+            state.error = action.error.message
+        })
         builder.addCase(SingleCategory.pending, (state, action) => {
             state.loading = true
+            state.si_category = []
         })
         builder.addCase(SingleCategory.fulfilled, (state, action) => {
             state.si_category = action.payload.message
