@@ -3,7 +3,7 @@
 	display: flex;
 	
 	height: 250px;
-	background-color: #1D3153;
+	background-color: #001e3c;
 }
 .user_img{
 	position: relative;
@@ -95,7 +95,7 @@ hr{
 .social_profile{
 	position: relative;
 	top: 200px;
-	left: 300px;
+	left: 370px;
 	height: 30px;
 
 }
