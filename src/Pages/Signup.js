@@ -6,7 +6,6 @@ import {ToastContainer, toast, Zoom, Bounce} from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css"
 import {register, reset}  from '../Features/Auth/authSlice'
 import Spinner from '../Componets/spinner'
-import cookie from 'js-cookie'
 
 function Signup() {
   const [errors, setErrors] = useState(null);
@@ -29,26 +28,20 @@ function Signup() {
     )
   
     useEffect(()=>{
+      if(errors != null && Object.keys(errors).length === 0){
+        dispatch(register(formData))
+      }
       if(isError){
         toast.error(message)
       }
       
       if(isSuccess || user){
-        cookie.set('token', user.token)
         navigate('/')
       }
+
       dispatch(reset())
       
-    }, [user, isError, isSuccess, message, navigate, dispatch])
-  
-    console.log(message)
-    useEffect(()=>{
-      if(errors != null && Object.keys(errors).length === 0){
-        dispatch(register(formData))
-      }
-       
-    },[errors])
-   
+    }, [errors, user, isError, isSuccess, message, navigate, dispatch])
   
     // on change function
     const onChange = (e)=>{

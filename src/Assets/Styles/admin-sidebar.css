@@ -30,3 +30,6 @@
     padding: 0 2rem;
     margin-left: 250px;
 }
+.a_sidebar_bottom ul li{
+    cursor: pointer;
+}

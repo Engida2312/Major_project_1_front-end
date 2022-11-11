@@ -96,7 +96,7 @@ nav{
     
 }
 
-
+/* 
 .loadingSpinnerContainer {
     position: fixed;
     top: 0;
@@ -117,4 +117,4 @@ nav{
     border-color: rgb(71, 207, 241) transparent rgb(11, 108, 146) transparent;
     border-radius: 50%;
     animation: spin 1.2s linear infinite;
-  }
+  } */

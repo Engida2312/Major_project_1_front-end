@@ -20,7 +20,7 @@ export const Profile = () => {
 
  // redirect to edit profile page
  const toEditProfile = ()=>{
-  axios.get(`http://localhost:8000/api/editprofile/${user.id}`).then(res=>{       
+  axios.get(`/editprofile/${user.id}`).then(res=>{       
     if(res.data.status === 200){
       console.log(res.data)
         setUserInput(res.data.user);
@@ -34,8 +34,6 @@ export const Profile = () => {
     }
   })
 }
-        
-      
   
 
   return (
