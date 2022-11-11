@@ -13,6 +13,7 @@ import { userUpdate } from "../Features/updateSlice";
 
 function Editprofile (){
     const {user} = useSelector((state)=> state.auth)
+
     const [errors, setErrors] = useState('');
     const [file, setFile] = useState();
     function handleChange(e) {
@@ -63,23 +64,7 @@ const updateUser = (e) =>{
   setErrors(Pvalidation(newuser));
   console.log(errors)
   console.log(Object.keys(errors).length)
-            // swal({
-            //     Title:"Confirmation",
-            //     text: "Confirm to Update Profile Data",
-            //     buttons: {           
-            //         confirm: {
-            //             text: "Confirm",
-            //             value: true,
-            //         },
-            //         cancel:"Cancel",
-            //     },
-            //     icon: "info",
-            //     }).then((value) => {
-            //     if(value === true){
-            //         //   const user_id = props.match.params.id;
-                    
-            //     }
-            // });
+           
 }
 
     return(

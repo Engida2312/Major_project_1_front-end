@@ -81,6 +81,24 @@ export const userInfo = createAsyncThunk(
     }
 })
 
+//updateprofle
+export const update = createAsyncThunk(
+    'auth/update', 
+    async(user, thunkAPI)=>{
+    try {
+        return await authService.update(user)
+    } catch (error) {
+        console.log(error)
+        const message = (
+            error.response && 
+            error.response.data &&
+            error.response.data.message) || 
+            error.message || 
+            error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
 
 export const authSlice = createSlice({
     name: 'auth',

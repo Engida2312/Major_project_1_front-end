@@ -36,6 +36,14 @@ const userInfo = async()=>{
     return response.data
 }
 
+//updateprofile
+const update = async(userData)=>{
+    const response = await axios.post('/updateprofile', userData)
+    const content = JSON.stringify(response.data)
+    console.log(content)
+    return content
+}
+
 export function saveUserInLocalStorage(userData){
     
     localStorage.setItem('user', JSON.stringify(userData))
@@ -46,6 +54,7 @@ const authService ={
     login,
     logout,
     userInfo,
+    update,
 }   
 
 export default authService
