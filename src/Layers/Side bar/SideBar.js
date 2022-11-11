@@ -11,7 +11,7 @@ const SideBar = () => {
 
   const Highlighting = (id) => {
     setClicked(id);
-    // dispatch(SingleCategory(id));
+    dispatch(SingleCategory(id));
     navigate('/components/category/' + (id));
     const lists = document.querySelectorAll('.sid-element');
     lists.forEach(list => {

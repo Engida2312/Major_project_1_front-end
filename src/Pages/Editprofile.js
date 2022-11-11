@@ -21,7 +21,6 @@ function Editprofile (){
     }
     useEffect(()=>{
         if(errors != '' && Object.keys(errors).length === 0){
-         
             const userData = new FormData();   
             console.log(newuser)
             //   userData.append('uimage',userImage.uimage);
@@ -30,7 +29,7 @@ function Editprofile (){
               userData.append('email',newuser.email);
               userData.append('github',newuser.github);
               userData.append('linkedin',newuser.linkedin);
-              axios.post(`http://localhost:8000/api/updateprofile/${user.id}`, userData).then(res=>{
+              axios.post(`/updateprofile/${user.id}`, userData).then(res=>{
                   if(res.data.status === 200){
                       swal("Success",res.data.message,"success");
                   }
@@ -57,30 +56,30 @@ function Editprofile (){
         setUserInput({...newuser,[e.target.name]:e.target.value})
     }
 
-const updateUser = (e) =>{
-   
-  e.preventDefault();
-  setErrors(Pvalidation(newuser));
-  console.log(errors)
-  console.log(Object.keys(errors).length)
-            // swal({
-            //     Title:"Confirmation",
-            //     text: "Confirm to Update Profile Data",
-            //     buttons: {           
-            //         confirm: {
-            //             text: "Confirm",
-            //             value: true,
-            //         },
-            //         cancel:"Cancel",
-            //     },
-            //     icon: "info",
-            //     }).then((value) => {
-            //     if(value === true){
-            //         //   const user_id = props.match.params.id;
-                    
-            //     }
-            // });
-}
+    const updateUser = (e) =>{
+    
+    e.preventDefault();
+    setErrors(Pvalidation(newuser));
+    console.log(errors)
+    console.log(Object.keys(errors).length)
+                // swal({
+                //     Title:"Confirmation",
+                //     text: "Confirm to Update Profile Data",
+                //     buttons: {           
+                //         confirm: {
+                //             text: "Confirm",
+                //             value: true,
+                //         },
+                //         cancel:"Cancel",
+                //     },
+                //     icon: "info",
+                //     }).then((value) => {
+                //     if(value === true){
+                //         //   const user_id = props.match.params.id;
+                        
+                //     }
+                // });
+    }
 
     return(
         
@@ -115,6 +114,7 @@ const updateUser = (e) =>{
             <button type='submit' className="btn save" >save change</button>
          </form>
       </div>
-  </div>  );
+  </div>  
+  );
 }
 export default Editprofile

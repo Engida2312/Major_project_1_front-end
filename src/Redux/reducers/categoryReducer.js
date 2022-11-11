@@ -6,6 +6,7 @@ const initialState = {
     loading: false,
     categorys: [],
     si_category: [],
+    search: '',
     error: ''
 }
 
@@ -21,8 +22,10 @@ export const GetCategory = createAsyncThunk('category', () => {
         .then((response) => response.data)
 })
 // searchCategory
-export const searchCategory = createAsyncThunk('search-category', (search) => {
-    return axios.get(`http://127.0.0.1:8000/api/search/${search}`)
+
+
+export const searchCategory = createAsyncThunk('search-category', (searchTerm) => {
+    return axios.get(`http://127.0.0.1:8000/api/search/${searchTerm}`)
         .then((response) => response.data)
         .catch((err)=>{
             console.log(err)
@@ -49,7 +52,10 @@ const componentSlice = createSlice({
     name: 'category',
     initialState,
     reducers: {
-        // addCategory: AddCategory
+        handleChange:(state, {payload: {name, value}}) => {
+            state[name] = value 
+            console.log(value)
+       }
 
     },
     extraReducers: (builder) => {
@@ -119,5 +125,6 @@ const componentSlice = createSlice({
     }
 })
 
+export const {handleChange} = componentSlice.actions
 
 export default componentSlice.reducer;
