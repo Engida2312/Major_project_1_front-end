@@ -63,6 +63,7 @@ flex-direction: row;
 }
 .compnent-elements{
    margin-left: 15rem;
+   min-height: 100vh;
 }
 .side-bar-container{
     position: fixed;

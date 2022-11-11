@@ -8,11 +8,17 @@ import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios';
 import swal from 'sweetalert2';
 import { useState, useEffect } from "react";
+import { SingleUserComponent } from '../Redux/reducers/componentReducer';
 
 export const Profile = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
   const {user} = useSelector((state)=> state.auth)
-   
+  const {siUser_component} = useSelector((state)=> state.component)
+  useEffect(()=>{
+    dispatch(SingleUserComponent(user.id))
+  },[])
   const [userInput,setUserInput] = useState([]);
   const [error,setError] = useState([]);
   const [userImage,setUserImage] = useState([]);
@@ -76,13 +82,24 @@ export const Profile = () => {
    <div className="lower">
    
    <section>
-                <div className="cards_container margin_top_4 margin_section">
+     <div className="cards_container margin_top_4 margin_section">
+     {
+          siUser_component.map((item)=>{
+              // console.log(user)
+              
+              return <ComponentCard key={item.id} {...user}/>
+          })
+      }
+      </div>
+
+   
+                {/* <div className="cards_container margin_top_4 margin_section">
                     <ComponentCard/>
                     <ComponentCard/>
                     <ComponentCard/>
                     <ComponentCard/>
-                </div>
-            </section>
+                </div> */}
+      </section>
    	
    </div>
     </div>

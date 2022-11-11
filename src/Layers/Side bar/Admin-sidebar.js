@@ -54,6 +54,9 @@ const AdminSidebar = ()=>{
         // dispatch(reset())
         navigate('/dashboard/allComponents')
     }
+    const onAddComponent = ()=>{
+        navigate('/dashboard/AddComponent')
+    }
   return <>
     <nav className="flex justify_content_sb align_items_c admin_top_nav">
         <SearchBar/>
@@ -87,7 +90,7 @@ const AdminSidebar = ()=>{
                             <a href="/event/all/active">New Components</a>
                         </li>
                         <li  className={active === 12 ? ('active') : ('')}  onClick={()=>isActive(12)}>
-                            <p> Add Components</p>
+                            <p onClick={onAddComponent}> Add Components</p>
                         </li>
                     </div>
                 </ul>

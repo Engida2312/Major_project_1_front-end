@@ -7,6 +7,8 @@ import defaultAvatar from '../../Assets/Images/avatar.png'
 import { SingleCategoryComponent as Unique } from '../../Redux/reducers/componentReducer';
 import { useParams } from "react-router-dom";
 import SideBar from '../Side bar/SideBar'
+import Spinner from '../../Componets/spinner'
+
 
 const SingelCategory = () => {
     let { id } = useParams();
@@ -15,6 +17,9 @@ const SingelCategory = () => {
         dispatch(Unique(id))
 
     }, [id]);
+
+    // dispatch(SingleCategory(id));
+
     let navigate = useNavigate();
     const categorystore = useSelector((state) => state.category)
     const category = categorystore.si_category
@@ -29,18 +34,18 @@ const SingelCategory = () => {
     }
     if (categorystore.loading || componentstore.loading) {
         return (
-            <h1>loading...</h1>
+            <Spinner/>
         )
     }
     return (
         <>
-            <div className='side-bar-container'>
+            {/* <div className='side-bar-container'>
 
                 <div className='side-bar'>
                     <Link to='/components'><h1 className='sid-hdr-mrg'>Components</h1></Link>
                     <SideBar />
                 </div>
-            </div>
+            </div> */}
             <div className='compnent-elements'>
 
                 <div className='hdr-mrg' >

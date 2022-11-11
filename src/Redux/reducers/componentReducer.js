@@ -28,7 +28,6 @@ export const SingleUserComponent = createAsyncThunk('singleUser-component/id', (
 })
 // getcomponent
 export const GetComponent = createAsyncThunk('component', () => {
-
     return axios.get('http://127.0.0.1:8000/api/component')
         .then((response) => response.data)
 })
