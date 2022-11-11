@@ -4,9 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import validation from "./validation";
 import {ToastContainer, toast, Zoom, Bounce} from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css"
-import {login, reset}  from '../Features/Auth/authSlice'
+import {login, reset, userInfo}  from '../Features/Auth/authSlice'
 import Spinner from '../Componets/spinner'
-import cookie from 'js-cookie'
 
 function Login() {
     const [formData, setFormData] = useState({
@@ -19,26 +18,27 @@ function Login() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
   
-    const {user, isLoading, isError, isSuccess, message } = useSelector(
-      (state)=> state.auth
-    )
+    const {user, isLoading, isError, isSuccess, message } = useSelector( (state)=> state.auth )
   
     useEffect(()=>{
-      if(isError){
-        toast.error(message)
-      }
-      
+      console.log('login')
+     
       if(isSuccess || user){
-        cookie.set('token', user.token)
         if(user.role === 'admin'){
-          navigate('/dashboard')
-        }else if(user.role === 'user'){
-          navigate('/')
+          setTimeout(()=>{
+            navigate('/dashboard')
+          }, 1000)
+        }else{
+          setTimeout(()=>{
+            navigate('/')
+          }, 1000)
         }
+      }else {
+        navigate('/login')
       }
   
       dispatch(reset())
-      
+     
     }, [user, isError, isSuccess, message, navigate, dispatch])
   
     if(isLoading){
@@ -61,10 +61,11 @@ function Login() {
         password,
       }
       dispatch(login(userData))
+      dispatch(reset())
     }
 
     return(
-        <div id="signup_body">
+      <div id="signup_body">
             <div className="signup_container">
                 <div className="form-container">
                     <form onSubmit={onSubmit}  className="signup_form">
@@ -101,7 +102,7 @@ function Login() {
                             
                             <Link id="passforget" to="">Forgot Password?</Link>
                             {/* <button id="signup_button" onClick={handleFormSubmit}>LOGIN</button> */}
-                            <button id="signup_button">LOGIN</button>
+                            <button id="signup_button" disabled={isLoading}>{ isLoading ? 'Loading...' : 'Submit' }</button>
                         </div>
                     </form>
                 </div>

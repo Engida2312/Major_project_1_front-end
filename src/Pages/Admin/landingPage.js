@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { AddComponent } from '../Redux/reducers/componentReducer';
+import { AddComponent } from '../../Redux/reducers/componentReducer';
 import { useNavigate } from "react-router-dom";
-
-
 
 const Landing = () => {
     const categorystore = useSelector((state) => state.category)
@@ -51,7 +49,10 @@ const Landing = () => {
             <div className='compnent-elements hdr-mrg '>
                 <h1 className='hdr-title-marg'>Add component</h1>
                 {/* codepen compiler for react here */}
-                <iframe src="https://codepen.io/engida2312/embed/yLjrpYL?default-tab=js%2Cresult&editable=true" title=" " width="100%" height="500" frameBorder="0" marginwidth="0" marginheight="0"loading="lazy" allowtransparency="true"  allowFullScreen></iframe>
+                <iframe src="https://codepen.io/engida2312/embed/yLjrpYL?default-tab=js%2Cresult&editable=true"
+                sandbox="allow-same-origin allow-scripts allow-top-navigation allow-popups allow-pointer-lock allow-forms"
+                 title=" " width="100%" height="500" frameBorder="0" marginwidth="0" marginheight="0"loading="lazy"
+                  allowtransparency="true"  allowFullScreen></iframe>
                 <form onSubmit={onSubmit}>
                     <div className='flex' style={{ display: 'flex', flexDirection: 'column', width: '50%' }}>
                        <label className='sub-title-marg' htmlFor='Cname'>Name</label>

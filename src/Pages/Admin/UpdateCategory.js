@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import { SingleCategory, UpdateCategory } from '../Redux/reducers/categoryReducer';
+import { SingleCategory, UpdateCategory } from '../../Redux/reducers/categoryReducer';
 
 const UpdateCategorys = () => {
     const navigate = useNavigate();

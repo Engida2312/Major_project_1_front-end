@@ -1,16 +1,21 @@
-import React, {useState, UseRef, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import {AiOutlineMenu} from 'react-icons/ai'
 import {VscGithub} from 'react-icons/vsc'
 import SearchBar from '../../Componets/search-bar'
 import logo from '../../Assets/Images/avatar.png'
 import {useSelector, useDispatch} from 'react-redux'
-import {logout, reset} from '../../Features/Auth/authSlice'
+import {logout, reset, userInfo} from '../../Features/Auth/authSlice'
 
 const Navbar = ()=>{
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const {user} = useSelector((state)=> state.auth)
+    // useEffect(()=>{
+    //      dispatch(userInfo())
+    // },[]);
+    
+    // setUser()
     const onLogout = ()=>{
         dispatch(logout())
         dispatch(reset())
@@ -18,7 +23,7 @@ const Navbar = ()=>{
     }
     // redirect to profile page
     const toProfile = ()=>{
-        navigate(`/Profile`)
+        navigate('/Profile')
     }
 
     const [showLinks, setShowLinks] = useState(false)

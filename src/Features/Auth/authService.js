@@ -1,58 +1,51 @@
-import axios from "axios";
-import Cookies from "js-cookie";
-
-const API_URL_REGISTER = 'http://127.0.0.1:8000/api/register'
-const API_URL_LOGIN = 'http://127.0.0.1:8000/api/login'
-const API_URL_LOGOUT = 'http://127.0.0.1:8000/api/logout'
-const API_URL_USERS = 'http://127.0.0.1:8000/api/users'
-
+import axios from "axios"
 // register user 
 const register = async(userData)=>{
-    const response = await axios.post(API_URL_REGISTER, userData)
-    if(response.data){
-        localStorage.setItem('user', JSON.stringify(response.data))
-    }
-    return response.data
+    const response = await axios.post('/register', userData)
+    const content = JSON.stringify(response.data)
+    console.log(content)
+    return content
 }
 
 // login user 
 const login = async(userData)=>{
-    const response = await axios.post(API_URL_LOGIN, userData)
-    console.log(response)
-    if(response.data){
-        localStorage.setItem('user', JSON.stringify(response.data))
-    }
-    return response.data
+    const email = userData.email
+    const password = userData.password
+    const res = await axios.post('/login', {email, password});
+
+    return res.data
 }
 
 // logout user 
 const logout = async()=>{
-    // try {
-        // const response = await axios.post(API_URL_LOGOUT, userData) 
-        // if(response.data){
-            localStorage.removeItem('user')
-            Cookies.remove('token')
-    //     }
-    // } catch (error) {
-    //     console.log(error.response)
-    // }
-  
-    // return response.data
+    axios.post('/logout').then((res) => {
+        console.log(res.data)
+        return res.data
+    }).catch((err)=>{
+        console.log(err)
+    });
 }
 
-// all users
-const allUser = async(userData)=>{
-    const response = await axios.get(API_URL_USERS, userData)
+// user 
+const userInfo = async()=>{
+    const response = await axios.get('/user')
+    console.log(response.data)
     if(response.data){
-        
+        // localStorage.setItem('userInfo', JSON.stringify(response.data))
     }
     return response.data
 }
+
+export function saveUserInLocalStorage(userData){
+    
+    localStorage.setItem('user', JSON.stringify(userData))
+}
+
 const authService ={
     register,
     login,
     logout,
-    allUser,
+    userInfo,
 }   
 
 export default authService

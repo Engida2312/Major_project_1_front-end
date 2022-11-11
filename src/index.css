@@ -49,6 +49,14 @@ body {
   align-items: center;
   justify-content: center;
 }
+.grid{
+  display: grid;
+ 
+}
+.g-2{
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .flex{
   display: flex;
 }
@@ -86,6 +94,9 @@ body {
 }
 .m-5 {
   margin: 5rem;
+}
+.w-100{
+  width: 100%;
 }
 
 .row {
