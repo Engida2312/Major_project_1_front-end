@@ -52,6 +52,11 @@ export const UpdateComponent = createAsyncThunk('component/update-component', ([
     return axios.put(`http://127.0.0.1:8000/api/update-component/${id}`, component)
         .then((response) => response.data)
 })
+//update component
+export const DelateComponent = createAsyncThunk('component/update-component', (id) => {
+    return axios.delete(`http://127.0.0.1:8000/api/delete-component/${id}`)
+        .then((response) => response.data)
+})
 const componentSlice = createSlice({
     name: 'component',
     initialState,
@@ -78,7 +83,7 @@ const componentSlice = createSlice({
             state.loading = true
         })
         builder.addCase(SingleComponent.fulfilled, (state, action) => {
-            state.si_component = action.payload.message
+            state.si_component = action.payload.message[0]
             state.loading = false
         })
         builder.addCase(SingleComponent.rejected, (state, action) => {

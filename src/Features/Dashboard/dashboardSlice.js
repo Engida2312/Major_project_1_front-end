@@ -10,6 +10,7 @@ const initialState = {
     categoryCount: 0,
     componentCount: 0,
     stats: [],
+    h_components: [],
 }
 
 // all stats
@@ -28,6 +29,23 @@ export const showStats = createAsyncThunk(
         }
     }
 )
+
+export const homeComponet = createAsyncThunk(
+    'dashboard/homeComponet',
+    async(_, thunkAPI)=>{
+        try {
+            return await dashboardService.homeComponet()
+        } catch (error) {
+            const message = (error.response && 
+                error.response.data &&
+                error.response.data.message) || 
+                error.message || 
+                error.toString()
+            return thunkAPI.rejectWithValue(message)
+        }
+    }
+)
+
 const dashboardSlice = createSlice({
     name: 'dashboard',
     initialState,
@@ -49,6 +67,26 @@ const dashboardSlice = createSlice({
                 
             })
             .addCase(showStats.rejected, (state, action)=>{
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                toast.error(state.message)
+            })
+            // **********
+            .addCase(homeComponet.pending, (state)=>{
+                state.isLoading = true
+            })
+            .addCase(homeComponet.fulfilled, (state, action)=>{
+                state.isLoading = false
+                state.isSuccess = true
+                console.log('home.comp')
+                console.log(action.payload)
+               
+                state.h_components = action.payload
+               
+                
+            })
+            .addCase(homeComponet.rejected, (state, action)=>{
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

@@ -23,23 +23,18 @@ function Signup() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
   
-    const {user, isLoading, isError, isSuccess, message } = useSelector(
-      (state)=> state.auth
-    )
+    const {user, isLoading, isError, isSuccess, message } = useSelector( (state)=> state.auth    )
   
     useEffect(()=>{
       if(errors != null && Object.keys(errors).length === 0){
-        dispatch(register(formData))
-      }
-      if(isError){
-        toast.error(message)
+        // dispatch(register(formData))
       }
       
       if(isSuccess || user){
         navigate('/')
       }
 
-      dispatch(reset())
+      // dispatch(reset())
       
     }, [errors, user, isError, isSuccess, message, navigate, dispatch])
   
@@ -56,7 +51,7 @@ function Signup() {
     const onSubmit = (e)=>{
       e.preventDefault()
           setErrors(validation(formData));
-
+          dispatch(register(formData))
         const userData = {
           firstname,
           lastname,

@@ -2,19 +2,34 @@ import React from 'react'
 import ComponentCard from '../Componets/componet-card'
 import Logo from './../Assets/Images/avatar.png'
 import { Link, useNavigate } from 'react-router-dom';
-import {psocialLinks} from './../Assets/Data/data'
+// import {psocialLinks} from './../Assets/Data/data'
 import userEvent from '@testing-library/user-event';
 import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios';
 import swal from 'sweetalert2';
 import { useState, useEffect } from "react";
 import { SingleUserComponent } from '../Redux/reducers/componentReducer';
+import {MdOutlineDeveloperMode} from 'react-icons/md'
+import {BsLinkedin, BsGithub, BsYoutube, BsTwitter} from 'react-icons/bs'
 
 export const Profile = () => {
+  const {user} = useSelector((state)=> state.auth)
+  const socialLinks = [
+    {
+      id:1,
+      icon: <BsLinkedin/>,
+      url: `${user.linkedin}`,
+    },
+    {
+      id:2,
+      icon: <BsGithub/>,
+      url:   `${user.github}`,
+    },
+    
+  ]
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const {user} = useSelector((state)=> state.auth)
   const {siUser_component} = useSelector((state)=> state.component)
   useEffect(()=>{
     dispatch(SingleUserComponent(user.id))
@@ -36,46 +51,48 @@ export const Profile = () => {
     }
     else if(res.data.status === 404){
         swal("Error",res.data.message,"error");
-        
     }
   })
 }
-  
+  const toUploadComponent = ()=>{
+    navigate(`/AddComponent`)
+  }
 
   return (
-    <div className='user_profile_container'>
+    <div className='user_profile_container  flex col w-90'>
 			
          <div className="upper">
 	   	<div className="userimage">
 	   		<img className="user_img" src={Logo} alt="av"/>
 
 		</div>
-	   	<h1 className="profile_h1">{user.firstname + " " + user.lastname}</h1>
+	   	<h1 className="profile_h1">{user.firstname.charAt(0).toUpperCase() + user.firstname.slice(1) + ' ' + user.lastname.charAt(0).toUpperCase() + user.lastname.slice(1)}</h1>
 	   	<p className="profile_p">{user.role}</p>
 
-	  
 		 <div className="collection">
 	   	<button className='btn'>Collections</button>
 		</div>
 		<div className='liked'>
-	   	<button className='btn'>Liked Shots</button>
+	   	<button className='btn'onClick={toUploadComponent}>Upload Component</button>
 	   
 	   </div>
 
-	  
-		<button className="profile_button btn" onClick={toEditProfile}>Edit Profile</button>
-	   
-		<div className="social_links social_profile">
-		<ul>
-	    {
-             psocialLinks.map((link)=>{
-                 return(
+	  <div className='flex col justify_content_sb align_items_l '>
+
+      <button className="btn" onClick={toEditProfile}>Edit Profile</button>
+      
+      <div className=" ">
+        <ul className='flex gap-1 p-1'>
+          {
+            socialLinks.map((link)=>{
+              return(
                 <li key={link.id}><a target={'_blank'} className="icon" href={link.url}> {link.icon}</a></li>
-                 )
-            })
-    	 }
-		 </ul>
-		 </div>
+                )
+              })
+            }
+        </ul>
+      </div>
+      </div>
 	</div>
 	   <hr/>
 
@@ -87,18 +104,16 @@ export const Profile = () => {
           siUser_component.map((item)=>{
               // console.log(user)
               
-              return <ComponentCard key={item.id} {...user}/>
+              return <ComponentCard key={item.id} {...item}/>
           })
       }
       </div>
-
-   
-                {/* <div className="cards_container margin_top_4 margin_section">
-                    <ComponentCard/>
-                    <ComponentCard/>
-                    <ComponentCard/>
-                    <ComponentCard/>
-                </div> */}
+        {/* <div className="cards_container margin_top_4 margin_section">
+            <ComponentCard/>
+            <ComponentCard/>
+            <ComponentCard/>
+            <ComponentCard/>
+        </div> */}
       </section>
    	
    </div>

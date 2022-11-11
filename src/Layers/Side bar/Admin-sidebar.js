@@ -45,13 +45,9 @@ const AdminSidebar = ()=>{
     }
      // allusers
      const onAllUser = ()=>{
-        // dispatch(allUser())
-        // dispatch(reset())
         navigate('/dashboard/allusers')
     }
     const onAllComponents = ()=>{
-        // dispatch(allUser())
-        // dispatch(reset())
         navigate('/dashboard/allComponents')
     }
     const onAddComponent = ()=>{
@@ -66,13 +62,13 @@ const AdminSidebar = ()=>{
         <div className="a_sidebar_top">
             <div className="col center_center m-2">
                 <img src={Logo} className="avatar" alt="image" />
-                {/* <h3>{
+                <h3>{
                     user.firstname.charAt(0).toUpperCase()
                     + user.firstname.slice(1) 
                     + " " + user.lastname.charAt(0).toUpperCase()
                     + user.lastname.slice(1)
                     }
-                </h3> */}
+                </h3>
             </div>
         </div>
         <div className="a_sidebar_bottom center_center col">

@@ -3,6 +3,7 @@
     box-shadow: 2px 2px 20px rgba(129, 125, 125, 0.527);
     padding: 2em;
     border-radius: 10px;
+    
   }
   .user_image_and_name {  
     display: flex;

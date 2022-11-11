@@ -1,6 +1,25 @@
 import React from 'react'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import ComponentCard from '../Componets/componet-card'
+import Spinner from '../Componets/spinner'
+import { homeComponet } from '../Features/Dashboard/dashboardSlice'
 
 export default function ComponentIntro() {
+    const {h_components, isLoading, isSuccess } = useSelector( (state)=> state.dashboard )
+
+    
+    const dispatch = useDispatch()
+    
+    useEffect(()=>{
+        dispatch(homeComponet())
+    },[])
+
+    if(isLoading){
+        return(
+            <Spinner/>
+        )
+    }
     return (
         <>
             <div className='hdr-mrg' >
@@ -21,8 +40,16 @@ export default function ComponentIntro() {
                         </li>
                     </ol>
                 </div>
-                <div className='comp-snipt-container'>
-                    <h1 className='comp-sub-elem-hdr sub-elem-hdr-marg'>example components</h1>
+                <div className='comp-snipt-container w-100'>
+                    <h1 className='comp-sub-elem-hdr sub-elem-hdr-marg p-1'>Top components</h1>
+                    <div className='grid g-2'>
+                    {
+                        h_components.slice(0, 6).map((item)=>{
+                        // console.log(user)
+                            return <ComponentCard key={item.id} {...item}/>
+                        })
+                    }
+                </div>
                 </div>
             </div>
         </>
