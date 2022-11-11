@@ -2,7 +2,7 @@ import React from 'react'
 import ComponentCard from '../Componets/componet-card'
 import Logo from './../Assets/Images/avatar.png'
 import { Link, useNavigate } from 'react-router-dom';
-import {socialLinks} from './../Assets/Data/data'
+import {psocialLinks} from './../Assets/Data/data'
 import userEvent from '@testing-library/user-event';
 import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios';
@@ -64,7 +64,7 @@ export const Profile = () => {
 		<div className="social_links social_profile">
 		<ul>
 	    {
-             socialLinks.map((link)=>{
+             psocialLinks.map((link)=>{
                  return(
                 <li key={link.id}><a target={'_blank'} className="icon" href={link.url}> {link.icon}</a></li>
                  )
