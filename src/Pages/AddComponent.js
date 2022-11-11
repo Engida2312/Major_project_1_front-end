@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { AddComponent } from '../Redux/reducers/componentReducer';
+import {  GetCategory } from '../Redux/reducers/categoryReducer';
 import { useNavigate } from "react-router-dom";
 
 
@@ -11,6 +12,9 @@ const Landing = () => {
     const user = useSelector((state) => state.auth.user)
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    useEffect(() => {
+        dispatch(GetCategory())
+      }, []);
     const error = categorystore.error
     const ref = Math.random().toString(36).slice(2);
     const [component, setComponent] = useState({
@@ -18,9 +22,10 @@ const Landing = () => {
         category_id: '',
         name: '',
         discription: '',
-        code_referance: ''
+        code: '',
+        css: ''
     })
-    const { category_id, name, discription, code_referance } = component;
+    const { category_id, name, discription, code, css } = component;
     const onChange = (e) => {
         setComponent({ ...component, [e.target.name]: e.target.value ,['user_id']:user.id})
     }
@@ -34,11 +39,11 @@ const Landing = () => {
          dispatch(AddComponent(component))
         // navigate('/components')
         setComponent({
-            user_id: '',
             category_id: '',
             name: '',
             discription: '',
-            code_referance: ''
+            code: '',
+            css:''
         })
 
     }
@@ -54,18 +59,22 @@ const Landing = () => {
                     <form onSubmit={onSubmit}>
                         <div className='flex' style={{ display: 'flex', flexDirection: 'column', width: '50%' }}>
                             <label className='sub-title-marg' htmlFor='Cname'>Name</label>
-                            <input className='sub-title-marg input' type='text' id='Cname' placeholder='Component Name' name='name' onChange={onChange} required ></input>
+                            <input className='sub-title-marg input' type='text' id='Cname' value={name} placeholder='Component Name' name='name' onChange={onChange} required ></input>
                             <label className='sub-title-marg' htmlFor='Cdescription'>Description</label>
-                            <textarea className='sub-title-marg' type='text' id='Cdescription' placeholder='Description' name='discription' onChange={onChange} ></textarea>
+                            <textarea className='sub-title-marg' type='text' id='Cdescription' value={discription} placeholder='Description' name='discription' onChange={onChange} ></textarea>
                             <label className='sub-title-marg' htmlFor='category'>Category</label>
-                            <select name="category_id" className="input" id="categorys" onChange={onChange} required>
+                            <select name="category_id" className="input" id="categorys" value="none" onChange={onChange} required>
+                                {}
                                 <option value="none" selected="selected" disabled hidden>Select an Option</option>
                                 {categorys.map(category => (
                                     <option  key={category.id} value={category.id}>{category.title}</option>
                                 ))}
                             </select>
-                            <label className='sub-title-marg' htmlFor='code_ref'>Code Input</label>
-                            <textarea id='code_ref' className='sub-title-marg' style={{ width: '43rem' }} name='code_referance' onChange={onChange} placeholder='submite the code here after checking in the code editor' rows="10" cols="50" required>
+                            <label className='sub-title-marg' htmlFor='code_ref'>Jsx Code Input</label>
+                            <textarea id='code_ref' className='sub-title-marg' style={{ width: '43rem' }} name='code' value={code} onChange={onChange} placeholder='submite the Jsx code here after checking in the code editor' rows="10" cols="50" required>
+                            </textarea>
+                            <label className='sub-title-marg' htmlFor='code_ref'>Css Code Input</label>
+                            <textarea id='css' className='sub-title-marg' style={{ width: '43rem' }} name='css' value={css} onChange={onChange} placeholder='submite the css code here after checking in the code editor' rows="10" cols="50" required>
                             </textarea>
                             <input className='sub-title-marg btn' type='submit' value='Add Component' />
                         </div>
