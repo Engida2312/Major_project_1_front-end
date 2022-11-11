@@ -7,8 +7,8 @@ import Home from './Pages/Home'
 import Signup from './Pages/Signup'
 import Login from './Pages/Login'
 // import AddComponents from './Pages/AddComponent';
-import AddCategory from './Pages/AddCategory';
-import UpdateCategory from './Pages/UpdateCategory';
+import AddCategory from './Pages/Admin/AddCategory';
+import UpdateCategory from './Pages/Admin/UpdateCategory';
 import Landing from './Pages/AddComponent';
 import { Profile } from './Pages/Profile';
 import Components from './Pages/Components';

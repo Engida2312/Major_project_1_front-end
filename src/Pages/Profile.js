@@ -9,7 +9,7 @@ import axios from 'axios';
 import swal from 'sweetalert2';
 import { useState, useEffect } from "react";
 
-export const Profile = () => {
+export  const Profile = () => {
   const navigate = useNavigate()
   const {user} = useSelector((state)=> state.auth)
    
