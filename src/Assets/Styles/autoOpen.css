@@ -1,0 +1,8 @@
+.list_container{
+ width: 500px;
+ z-index: 1000;
+ position: absolute;
+ top: 60px;
+}.list{
+    margin: 0.5rem;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState,  useEffect } from 'react'
 import { useDispatch, useSelector  } from 'react-redux';
 import { AddCategory } from '../../Redux/reducers/categoryReducer';
 import { useNavigate } from "react-router-dom";
@@ -8,7 +8,6 @@ const AddCategorys = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const error = categorystore.error
-
     const [category, setCategory] = useState({
         title: '',
         discription: ''
@@ -41,7 +40,7 @@ const AddCategorys = () => {
                             <input className='sub-title-marg input' value={title} type='text' id='Cname' placeholder='Component Name' name='title' onChange={onChange} required></input>
                             <label className='sub-title-marg' htmlFor='Cdescription'>Description</label>
                             <textarea rows={10} className='sub-title-marg description' value={discription} type='text' id='Cdescription' placeholder='Description' name='discription' onChange={onChange} ></textarea>
-                            <input className='sub-title-marg  submit btn' type='submit' value='Add Component' />
+                            <input className='sub-title-marg  submit btn' type='submit' value='Add Category' />
                         </div>
                     </form>
                 </div>

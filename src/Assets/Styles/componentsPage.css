@@ -28,6 +28,10 @@
 .sub-title-marg{
     margin: 0.5rem 0 0 0;
 }
+.like_button:hover{
+ color: red;
+ cursor: pointer;
+}
 .submit{
     cursor: pointer;
     height: 2rem;
@@ -35,7 +39,10 @@
 .submit:hover{
     background: #4dff4d;
 }
-
+.code_flex_container{
+    display: flex;
+    justify-content: space-between;
+}
 .component_container{
     /* position:fixed; */
     display: flex;
@@ -50,8 +57,12 @@
     /* overflow-y: scroll; */
     
 }
+.editors-container{
+display: flex;
+flex-direction: row;
+}
 .compnent-elements{
-   /* margin-left: 15rem; */
+   margin-left: 15rem;
 }
 .side-bar-container{
     position: fixed;
@@ -94,9 +105,11 @@ line-height: 2.5rem;
     line-height: 2.2rem;
 }
 .comp-steps-container{
-    height: 8.3rem;
+    min-height: 8.3rem;
+    height: auto;
     background: rgba(217, 217, 217, 0.05);
     border-radius: 1rem;
+    padding: 1rem;
 }
 .comp-snipt-container{
     background: #112444;
