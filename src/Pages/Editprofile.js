@@ -22,7 +22,6 @@ function Editprofile (){
     }
     useEffect(()=>{
         if(errors != '' && Object.keys(errors).length === 0){
-         
             const userData = new FormData();   
             console.log(newuser)
             //   userData.append('uimage',userImage.uimage);
@@ -31,7 +30,7 @@ function Editprofile (){
               userData.append('email',newuser.email);
               userData.append('github',newuser.github);
               userData.append('linkedin',newuser.linkedin);
-              axios.post(`http://localhost:8000/api/updateprofile/${user.id}`, userData).then(res=>{
+              axios.post(`/updateprofile/${user.id}`, userData).then(res=>{
                   if(res.data.status === 200){
                       swal("Success",res.data.message,"success");
                   }
@@ -100,6 +99,7 @@ const updateUser = (e) =>{
             <button type='submit' className="btn save" >save change</button>
          </form>
       </div>
-  </div>  );
+  </div>  
+  );
 }
 export default Editprofile

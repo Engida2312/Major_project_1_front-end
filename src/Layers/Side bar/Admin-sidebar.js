@@ -54,6 +54,9 @@ const AdminSidebar = ()=>{
         // dispatch(reset())
         navigate('/dashboard/allComponents')
     }
+    const onAddComponent = ()=>{
+        navigate('/dashboard/AddComponent')
+    }
   return <>
     <nav className="flex justify_content_sb align_items_c admin_top_nav">
         <SearchBar/>
@@ -83,20 +86,20 @@ const AdminSidebar = ()=>{
                         <li className={active === 10 ? ('active') : ('')}  onClick={()=>isActive(10)}>
                             <p href="/all-events"  onClick={onAllComponents}>All Components</p>
                         </li>
-                        <li className={active === 11 ? ('active') : ('')}  onClick={()=>isActive(11)}>
+                        {/* <li className={active === 11 ? ('active') : ('')}  onClick={()=>isActive(11)}>
                             <a href="/event/all/active">New Components</a>
-                        </li>
+                        </li> */}
                         <li  className={active === 12 ? ('active') : ('')}  onClick={()=>isActive(12)}>
-                            <p> Add Components</p>
+                            <p onClick={onAddComponent}> Add Components</p>
                         </li>
                     </div>
                 </ul>
                 <li className={selected === 2 ? ('accordion_header link active') : ('accordion_header link')}  onClick={()=>toggle(2)}><MdOutlineCategory/>Catagory</li>
                 <ul className={selected === 2 ? ('accordion_body_container show') : ('accordion_body_container')} >
                     <div className="accordion_body">
-                        <li className={active === 20 ? ('active') : ('')}  onClick={()=>isActive(20)}>
+                        {/* <li className={active === 20 ? ('active') : ('')}  onClick={()=>isActive(20)}>
                             <a href="/all-inactive-organizers">All Catagories</a>
-                        </li>
+                        </li> */}
                         <li className={active === 21 ? ('active') : ('')}  onClick={()=>isActive(21)}>
                             <Link to='/dashboard/addCategory' >Add catagory</Link>
                         </li>

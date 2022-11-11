@@ -23,16 +23,21 @@ const SideBar = () => {
   }
 
   return (
-    <div className='sid-elem-cont' >
-    {categorys.map(category => (
-        <div id={'sid' + (category.id)} className='sid-element hvr-backgroung ' key={category.id} >
-        
-            <input className='dis-none' type='radio' name='component' id={category.id} onClick={()=>{Highlighting(category.id)}}  ></input>
-         
-          <label className='hvr-pointer' htmlFor={category.id}>{category.title} </label>
+    <div className='side-bar-container'>
+        <div className='side-bar'>
+            <h1 className='sid-hdr-mrg'>Components</h1>
+            <div className='sid-elem-cont' >
+              {categorys.map(category => (
+                  <div id={'sid' + (category.id)} className='sid-element hvr-backgroung ' key={category.id} >
+                  
+                      <input className='dis-none' type='radio' name='component' id={category.id} onClick={()=>{Highlighting(category.id)}}  ></input>
+                  
+                    <label className='hvr-pointer' htmlFor={category.id}>{category.title} </label>
+                  </div>
+              ))}
+            </div>
         </div>
-    ))}
-    </div>
+    </div>    
   )
 }
 export default SideBar

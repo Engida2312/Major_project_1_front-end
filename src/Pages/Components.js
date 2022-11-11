@@ -11,13 +11,7 @@ const Components = () => {
     return (
 
         <div className='component_container'>
-            <div className='side-bar-container'>
-
-                <div className='side-bar'>
-                   <h1 className='sid-hdr-mrg'>Components</h1>
-                   <SideBar />
-                </div>
-            </div>
+            
             <div className='compnent-elements'>
                 <ComponentIntro />
             </div>
