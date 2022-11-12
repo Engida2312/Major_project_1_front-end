@@ -10,20 +10,20 @@ const initialState = {
     siCategory_component: [],
     error: ''
 }
-
+const baseURL = 'https://ethirek.com/api/'
 // single component
 export const SingleComponent = createAsyncThunk('single-component/id', (id) => {
-    return axios.get(`/single-component/${id}`)
+    return axios.get(`${baseURL}/single-component/${id}`)
         .then((response) => response.data)
 })
 // single category component
 export const SingleCategoryComponent = createAsyncThunk('singleCategry-component/id', (id) => {
-    return axios.get(`/singleCategory-component/${id}`)
+    return axios.get(`${baseURL}/singleCategory-component/${id}`)
         .then((response) => response.data)
 })
 // single user component
 export const SingleUserComponent = createAsyncThunk('singleUser-component/id', (id) => {
-    return axios.get(`/singleUser-component/${id}`)
+    return axios.get(`${baseURL}/singleUser-component/${id}`)
         .then((response) => response.data)
 })
 // getcomponent
