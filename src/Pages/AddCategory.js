@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState,  useEffect } from 'react'
 import { useDispatch, useSelector  } from 'react-redux';
 import { AddCategory } from '../Redux/reducers/categoryReducer';
 import { useNavigate } from "react-router-dom";
@@ -8,7 +8,6 @@ const AddCategorys = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const error = categorystore.error
-
     const [category, setCategory] = useState({
         title: '',
         discription: ''

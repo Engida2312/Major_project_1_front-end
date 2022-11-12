@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import SideBar from '../Layers/Side bar/SideBar'
 import ComponentIntro from '../Layers/ComponentIntro'
-import { Link} from 'react-router-dom'
+import { GetCategory } from '../Redux/reducers/categoryReducer';
+import { useDispatch } from 'react-redux';
 const Components = () => {
+    const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(GetCategory())
+  }, []);
     return (
 
         <div className='component_container'>
@@ -10,7 +15,7 @@ const Components = () => {
 
                 <div className='side-bar'>
                    <h1 className='sid-hdr-mrg'>Components</h1>
-                    <SideBar />
+                   <SideBar />
                 </div>
             </div>
             <div className='compnent-elements'>

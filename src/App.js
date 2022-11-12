@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast, Zoom, Bounce } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css"
-import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { GetCategory } from './Redux/reducers/categoryReducer';
-import { GetComponent } from './Redux/reducers/componentReducer';
 import Footer from './Layers/Footer/Footer';
 import Home from './Pages/Home'
 import Signup from './Pages/Signup'
@@ -41,12 +38,8 @@ import './Assets/Styles/profile.css'
 import './Assets/Styles/accordion.css'
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(GetCategory())
-    dispatch(GetComponent())
+ 
 
-  }, [dispatch]);
   return <>
     <Router>
       <Routes>
