@@ -10,7 +10,7 @@ const initialState = {
     siCategory_component: [],
     error: ''
 }
-const baseURL = 'https://ethirek.com/api/'
+const baseURL = 'https://ethirek.com/api'
 // single component
 export const SingleComponent = createAsyncThunk('single-component/id', (id) => {
     return axios.get(`${baseURL}/single-component/${id}`)
