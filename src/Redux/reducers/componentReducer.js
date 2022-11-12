@@ -28,33 +28,33 @@ export const SingleUserComponent = createAsyncThunk('singleUser-component/id', (
 })
 // getcomponent
 export const GetComponent = createAsyncThunk('component', () => {
-    return axios.get('/component')
+    return axios.get(`${baseURL}/component`)
         .then((response) => response.data)
 })
 //addComponent
 export const AddComponent = createAsyncThunk('component/add-component', (newComponent) => {
-    return axios.post('/add-component', newComponent)
+    return axios.post(`${baseURL}/add-component`, newComponent)
         .then((response) => response.data)
 })
 //update component view
 export const UpdateComponentview = createAsyncThunk('component/update-componentview', (id) => {
-    return axios.put(`/update-componentview/${id}`)
+    return axios.put(`${baseURL}/update-componentview/${id}`)
         .then((response) => response.data)
 })
 //update component like
 export const UpdateComponentLike = createAsyncThunk('component/update-componentlike', (id) => {
-    return axios.put(`/update-componentlike/${id}`)
+    return axios.put(`${baseURL}/update-componentlike/${id}`)
         .then((response) => response.data)
 })
 
 //update component
 export const UpdateComponent = createAsyncThunk('component/update-component', ([id, component]) => {
-    return axios.put(`/update-component/${id}`, component)
+    return axios.put(`${baseURL}/update-component/${id}`, component)
         .then((response) => response.data)
 })
 //update component
 export const DelateComponent = createAsyncThunk('component/update-component', (id) => {
-    return axios.delete(`/delete-component/${id}`)
+    return axios.delete(`${baseURL}/delete-component/${id}`)
         .then((response) => response.data)
 })
 const componentSlice = createSlice({
