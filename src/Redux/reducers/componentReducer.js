@@ -13,48 +13,48 @@ const initialState = {
 
 // single component
 export const SingleComponent = createAsyncThunk('single-component/id', (id) => {
-    return axios.get(`http://127.0.0.1:8000/api/single-component/${id}`)
+    return axios.get(`/single-component/${id}`)
         .then((response) => response.data)
 })
 // single category component
 export const SingleCategoryComponent = createAsyncThunk('singleCategry-component/id', (id) => {
-    return axios.get(`http://127.0.0.1:8000/api/singleCategory-component/${id}`)
+    return axios.get(`/singleCategory-component/${id}`)
         .then((response) => response.data)
 })
 // single user component
 export const SingleUserComponent = createAsyncThunk('singleUser-component/id', (id) => {
-    return axios.get(`http://127.0.0.1:8000/api/singleUser-component/${id}`)
+    return axios.get(`/singleUser-component/${id}`)
         .then((response) => response.data)
 })
 // getcomponent
 export const GetComponent = createAsyncThunk('component', () => {
-    return axios.get('http://127.0.0.1:8000/api/component')
+    return axios.get('/component')
         .then((response) => response.data)
 })
 //addComponent
 export const AddComponent = createAsyncThunk('component/add-component', (newComponent) => {
-    return axios.post('http://127.0.0.1:8000/api/add-component', newComponent)
+    return axios.post('/add-component', newComponent)
         .then((response) => response.data)
 })
 //update component view
 export const UpdateComponentview = createAsyncThunk('component/update-componentview', (id) => {
-    return axios.put(`http://127.0.0.1:8000/api/update-componentview/${id}`)
+    return axios.put(`/update-componentview/${id}`)
         .then((response) => response.data)
 })
 //update component like
 export const UpdateComponentLike = createAsyncThunk('component/update-componentlike', (id) => {
-    return axios.put(`http://127.0.0.1:8000/api/update-componentlike/${id}`)
+    return axios.put(`/update-componentlike/${id}`)
         .then((response) => response.data)
 })
 
 //update component
 export const UpdateComponent = createAsyncThunk('component/update-component', ([id, component]) => {
-    return axios.put(`http://127.0.0.1:8000/api/update-component/${id}`, component)
+    return axios.put(`/update-component/${id}`, component)
         .then((response) => response.data)
 })
 //update component
 export const DelateComponent = createAsyncThunk('component/update-component', (id) => {
-    return axios.delete(`http://127.0.0.1:8000/api/delete-component/${id}`)
+    return axios.delete(`/delete-component/${id}`)
         .then((response) => response.data)
 })
 const componentSlice = createSlice({

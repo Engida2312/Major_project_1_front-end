@@ -48,7 +48,7 @@ const Navbar = ()=>{
                 {/* nav middle*/}
                 <div className="nav_middle_container">
                     <SearchBar/>
-                    <AutoOpen/>
+                    {/* <AutoOpen/> */}
                 </div>
                 {/* nav left */}
                 <div className="nav_left_container">

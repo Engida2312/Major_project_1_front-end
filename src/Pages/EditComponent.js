@@ -19,8 +19,8 @@ const EditComponent = () => {
         dispatch(SingleComponent(id))
         dispatch(GetCategory())
         if(si_component.code_referance){
-            axios.get(`http://127.0.0.1:8000/api/component/code/${si_component.code_referance}`).then((response) => setComponent({ ...si_component, ['code']: response.data.message })).catch((err) => { console.log(err) })
-            axios.get(`http://127.0.0.1:8000/api/component/css/${si_component.code_referance}`).then((response) => setComponent({ ...si_component, ['css']: response.data.message })).catch((err) => { console.log(err) })
+            axios.get(`/component/code/${si_component.code_referance}`).then((response) => setComponent({ ...si_component, ['code']: response.data.message })).catch((err) => { console.log(err) })
+            axios.get(`/component/css/${si_component.code_referance}`).then((response) => setComponent({ ...si_component, ['css']: response.data.message })).catch((err) => { console.log(err) })
     }
    
     }, []);

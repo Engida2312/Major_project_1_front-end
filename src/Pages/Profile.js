@@ -7,7 +7,6 @@ import userEvent from '@testing-library/user-event';
 import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios';
 import swal from 'sweetalert2';
-import { useState, useEffect } from "react";
 import { SingleUserComponent } from '../Redux/reducers/componentReducer';
 import {MdOutlineDeveloperMode} from 'react-icons/md'
 import {BsLinkedin, BsGithub, BsYoutube, BsTwitter} from 'react-icons/bs'
