@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{ useState, useEffect } from 'react'
 import ComponentCard from '../Componets/componet-card'
 import Logo from './../Assets/Images/avatar.png'
 import { Link, useNavigate } from 'react-router-dom';
@@ -7,9 +7,9 @@ import userEvent from '@testing-library/user-event';
 import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios';
 import swal from 'sweetalert2';
-import { useState, useEffect } from "react";
 
 export const Profile = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate()
   const {user} = useSelector((state)=> state.auth)
    

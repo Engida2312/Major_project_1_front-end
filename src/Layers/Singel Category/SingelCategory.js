@@ -7,7 +7,7 @@ import defaultAvatar from '../../Assets/Images/avatar.png'
 import { SingleCategoryComponent as Unique } from '../../Redux/reducers/componentReducer';
 import { useParams } from "react-router-dom";
 import SideBar from '../Side bar/SideBar'
-
+import Spinner from '../../Componets/spinner'
 const SingelCategory = () => {
     let { id } = useParams();
     const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const SingelCategory = () => {
     }
     if (categorystore.loading || componentstore.loading) {
         return (
-            <h1>loading...</h1>
+            <Spinner/>
         )
     }
     return (
@@ -48,29 +48,18 @@ const SingelCategory = () => {
                     <p className='comp-sub-title sub-title-marg'>{category.discription}</p>
                 </div>
                 <div className='comp-sub-section sub-section-marg'>
-                    <h1 className='comp-sub-header hdr-title-marg '>Introduction</h1>
-                    <p className='comp-sub-title sub-title-marg'>You are easy two steps behind to create a highly responsive web app. </p>
-                    <div className='comp-steps-container'>
-                        <h1 className='comp-sub-elem-hdr sub-elem-hdr-marg'>Steps</h1>
-                        <ol className='comp-sub-title '>
-                            <li>
-                                1. choose the component you want to use from the side bar.
-                            </li>
-                            <li>
-                                2. take a look  on the compnent you choose and copy the code.
-                            </li>
-                        </ol>
-                    </div>
+                   
                     <div className='comp-snipt-container'>
                         <div>
                             <h1 className='comp-sub-elem-hdr sub-elem-hdr-marg'>Available components</h1>
                         </div>
+                        
                         {
                             singlecomponent.length === 0 ?
-                                <h6 className='comp-sub-elem-hdr sub-elem-hdr-marg'>no components to display </h6>
+                                <h6 className='comp-sub-elem-hdr sub-elem-hdr-marg comp-steps-container'>no components to display </h6>
                                 :
                                 singlecomponent.map(element => (
-                                    <div className="card sub-elem-hdr-marg" key={element.id} onClick={() => { navigate('/components/' + (element.id)) }} >
+                                    <div className="card sub-elem-hdr-marg comp-steps-container" key={element.id} onClick={() => { navigate('/components/' + (element.id)) }} >
 
                                         <div className='comp-sub-title sub-elem-hdr-marg '>
                                             <code>
@@ -80,7 +69,7 @@ const SingelCategory = () => {
                                         <div className="card_bottom center_center gap-1">
                                             <div className='card_detail_left center_center gap-0_5'>
                                                 <a href=""><img src={defaultAvatar} className='profile_img' alt="profile" /></a>
-                                                <p>yohannes</p>
+                                                <p>{element.firstname}</p>
                                             </div>
 
                                             <div className='card_detail_right center_center gap-0_5'>
@@ -92,6 +81,8 @@ const SingelCategory = () => {
                                 ))
 
                         }
+
+                        
 
 
                     </div>

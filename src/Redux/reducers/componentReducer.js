@@ -5,7 +5,7 @@ import swal from 'sweetalert';
 const initialState = {
     loading: false,
     components: [],
-    si_component: [],
+    si_component: '',
     siUser_component: [],
     siCategory_component: [],
     error: ''
@@ -79,7 +79,7 @@ const componentSlice = createSlice({
             state.loading = true
         })
         builder.addCase(SingleComponent.fulfilled, (state, action) => {
-            state.si_component = action.payload.message
+            state.si_component = action.payload.message[0]
             state.loading = false
         })
         builder.addCase(SingleComponent.rejected, (state, action) => {
