@@ -6,17 +6,20 @@ import {CgComponents} from 'react-icons/cg'
 import {MdOutlineCategory} from 'react-icons/md'
 import {FiUsers} from 'react-icons/fi'
 import {useSelector, useDispatch} from 'react-redux'
-import {logout, reset} from '../../Features/Auth/authSlice'
+import {logout, reset, userInfo} from '../../Features/Auth/authSlice'
 import '../../Assets/Styles/admin-sidebar.css'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 const AdminSidebar = ()=>{
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const {user} = useSelector((state)=>state.auth)
     const [selected, setSelected] = useState(null)
     const [active, setActive] = useState(null)
+    const {user } = useSelector( (state)=> state.auth )
+//     useEffect(()=>{
+//         dispatch(userInfo())
+//    },[]);
 
     // active for accordion 
     const isActive = (i)=>{
@@ -40,8 +43,17 @@ const AdminSidebar = ()=>{
         dispatch(reset())
         navigate('/')
     }
+     // allusers
+     const onAllUser = ()=>{
+        navigate('/dashboard/allusers')
+    }
+    const onAllComponents = ()=>{
+        navigate('/dashboard/allComponents')
+    }
+    const onAddComponent = ()=>{
+        navigate('/dashboard/AddComponent')
+    }
   return <>
-
     <nav className="flex justify_content_sb align_items_c admin_top_nav">
         <SearchBar/>
         <li><p className='btn' onClick={onLogout} >Logout</p></li>
@@ -68,22 +80,22 @@ const AdminSidebar = ()=>{
                 <ul className={selected === 1 ? ('accordion_body_container show') : ('accordion_body_container')} >
                     <div className="accordion_body">
                         <li className={active === 10 ? ('active') : ('')}  onClick={()=>isActive(10)}>
-                            <a href="/all-events">All Components</a>
+                            <p href="/all-events"  onClick={onAllComponents}>All Components</p>
                         </li>
-                        <li className={active === 11 ? ('active') : ('')}  onClick={()=>isActive(11)}>
+                        {/* <li className={active === 11 ? ('active') : ('')}  onClick={()=>isActive(11)}>
                             <a href="/event/all/active">New Components</a>
-                        </li>
+                        </li> */}
                         <li  className={active === 12 ? ('active') : ('')}  onClick={()=>isActive(12)}>
-                            <Link to='/dashboard/AddComponent' > Add Components</Link>
+                            <p onClick={onAddComponent}> Add Components</p>
                         </li>
                     </div>
                 </ul>
                 <li className={selected === 2 ? ('accordion_header link active') : ('accordion_header link')}  onClick={()=>toggle(2)}><MdOutlineCategory/>Catagory</li>
                 <ul className={selected === 2 ? ('accordion_body_container show') : ('accordion_body_container')} >
                     <div className="accordion_body">
-                        <li className={active === 20 ? ('active') : ('')}  onClick={()=>isActive(20)}>
+                        {/* <li className={active === 20 ? ('active') : ('')}  onClick={()=>isActive(20)}>
                             <a href="/all-inactive-organizers">All Catagories</a>
-                        </li>
+                        </li> */}
                         <li className={active === 21 ? ('active') : ('')}  onClick={()=>isActive(21)}>
                             <Link to='/dashboard/addCategory' >Add catagory</Link>
                         </li>
@@ -92,11 +104,8 @@ const AdminSidebar = ()=>{
                 <li className={selected === 3 ? ('accordion_header link active') : ('accordion_header link')}  onClick={()=>toggle(3)}><FiUsers/> Users </li>
                 <ul className={selected === 3 ? ('accordion_body_container show') : ('accordion_body_container')} >
                     <div className="accordion_body">
-                        <li className={active === 30 ? ('active') : ('')}  onClick={()=>isActive(30)}>
-                            <a href="/all-inactive-organizers">Contributers</a>
-                        </li>
                         <li className={active === 31 ? ('active') : ('')}  onClick={()=>isActive(31)}>
-                            <a href="/organizer/register">All users</a>
+                            <p onClick={onAllUser}>All users</p>
                         </li>
                     </div>
                 </ul>

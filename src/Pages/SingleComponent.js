@@ -7,7 +7,8 @@ import { UpdateComponentLike as Like } from '../Redux/reducers/componentReducer'
 import Editor from '../Componets/Editor'
 import { AiFillHeart } from 'react-icons/ai'
 import axios from 'axios';
-import Spinner from '../Componets/spinner'
+import Spinner from '../Componets/spinner';
+
 
 function SingleComponent() {
     const dispatch = useDispatch();
@@ -54,6 +55,7 @@ function SingleComponent() {
                         width='600px'
                         height='80px'
                         title='codeOutput'
+                        backgroundColor='white'
                     />
 
                 </div>

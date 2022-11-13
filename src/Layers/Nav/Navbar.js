@@ -1,4 +1,4 @@
-import React, {useState, UseRef, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import {AiOutlineMenu} from 'react-icons/ai'
 import {VscGithub} from 'react-icons/vsc'
@@ -11,6 +11,11 @@ const Navbar = ()=>{
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const {user} = useSelector((state)=> state.auth)
+    // useEffect(()=>{
+    //      dispatch(userInfo())
+    // },[]);
+    
+    // setUser()
     const onLogout = ()=>{
         dispatch(logout())
         dispatch(reset())
@@ -18,7 +23,7 @@ const Navbar = ()=>{
     }
     // redirect to profile page
     const toProfile = ()=>{
-        navigate(`/Profile`)
+        navigate('/Profile')
     }
 
     const [showLinks, setShowLinks] = useState(false)
@@ -43,7 +48,7 @@ const Navbar = ()=>{
                 {/* nav middle*/}
                 <div className="nav_middle_container">
                     <SearchBar/>
-                    {/* <AutoOpen/> */}
+                    <AutoOpen/>
                 </div>
                 {/* nav left */}
                 <div className="nav_left_container">

@@ -8,6 +8,9 @@ import { SingleCategoryComponent as Unique } from '../../Redux/reducers/componen
 import { useParams } from "react-router-dom";
 import SideBar from '../Side bar/SideBar'
 import Spinner from '../../Componets/spinner'
+import ComponentCard from '../../Componets/componet-card'
+
+
 const SingelCategory = () => {
     let { id } = useParams();
     const dispatch = useDispatch();
@@ -15,6 +18,9 @@ const SingelCategory = () => {
         dispatch(Unique(id))
 
     }, [id]);
+
+    // dispatch(SingleCategory(id));
+
     let navigate = useNavigate();
     const categorystore = useSelector((state) => state.category)
     const category = categorystore.si_category
@@ -34,13 +40,13 @@ const SingelCategory = () => {
     }
     return (
         <>
-            <div className='side-bar-container'>
+            {/* <div className='side-bar-container'>
 
                 <div className='side-bar'>
                     <Link to='/components'><h1 className='sid-hdr-mrg'>Components</h1></Link>
                     <SideBar />
                 </div>
-            </div>
+            </div> */}
             <div className='compnent-elements'>
 
                 <div className='hdr-mrg' >
@@ -59,25 +65,26 @@ const SingelCategory = () => {
                                 <h6 className='comp-sub-elem-hdr sub-elem-hdr-marg comp-steps-container'>no components to display </h6>
                                 :
                                 singlecomponent.map(element => (
-                                    <div className="card sub-elem-hdr-marg comp-steps-container" key={element.id} onClick={() => { navigate('/components/' + (element.id)) }} >
+                                    <ComponentCard key={element.id} {...element} />
+                                    // <div className="card sub-elem-hdr-marg" key={element.id} onClick={() => { navigate('/components/' + (element.id)) }} >
 
-                                        <div className='comp-sub-title sub-elem-hdr-marg '>
-                                            <code>
-                                                {element.code_referance}
-                                            </code>
-                                        </div>
-                                        <div className="card_bottom center_center gap-1">
-                                            <div className='card_detail_left center_center gap-0_5'>
-                                                <a href=""><img src={defaultAvatar} className='profile_img' alt="profile" /></a>
-                                                <p>{element.firstname}</p>
-                                            </div>
+                                    //     <div className='comp-sub-title sub-elem-hdr-marg '>
+                                    //         <code>
+                                    //             {element.code_referance}
+                                    //         </code>
+                                    //     </div>
+                                    //     <div className="card_bottom center_center gap-1">
+                                    //         <div className='card_detail_left center_center gap-0_5'>
+                                    //             <a href=""><img src={defaultAvatar} className='profile_img' alt="profile" /></a>
+                                    //             <p>yohannes</p>
+                                    //         </div>
 
-                                            <div className='card_detail_right center_center gap-0_5'>
-                                                <AiFillHeart /><span>{element.likes}</span>
-                                                <AiFillEye /><span>{element.viewes}</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    //         <div className='card_detail_right center_center gap-0_5'>
+                                    //             <AiFillHeart /><span>{element.likes}</span>
+                                    //             <AiFillEye /><span>{element.viewes}</span>
+                                    //         </div>
+                                    //     </div>
+                                    // </div>
                                 ))
 
                         }

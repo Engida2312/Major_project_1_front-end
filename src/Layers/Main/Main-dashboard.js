@@ -15,7 +15,7 @@ const MainDashboard = ()=>{
                         <StatCard/>
                     </div>
      
-                    <Table />
+                    {/* <Table /> */}
                 </section>
             </div>
         </main>

@@ -1,6 +1,6 @@
 import React, { useState,  useEffect } from 'react'
 import { useDispatch, useSelector  } from 'react-redux';
-import { AddCategory } from '../Redux/reducers/categoryReducer';
+import { AddCategory } from '../../Redux/reducers/categoryReducer';
 import { useNavigate } from "react-router-dom";
 
 const AddCategorys = () => {

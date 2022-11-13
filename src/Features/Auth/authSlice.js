@@ -1,14 +1,16 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import authService from "./authService"
+import cookie from 'js-cookie'
+import { toast } from "react-toastify"
+import { addUserToLocalStorage, getUserFromLocalStorage, removeUserFromLocalStorage } from "../../utils/localStorage"
 
-// get user from local storage 
-const user = JSON.parse(localStorage.getItem('user'))
 
 const initialState = {
-    user: user ? user : null,
+    user : getUserFromLocalStorage(),
+    isLoading: false,
+    // token: token ? token : null,
     isError: false,
     isSuccess: false,
-    isLoading: false,
     message: '',
 }
 
@@ -19,6 +21,7 @@ export const register = createAsyncThunk(
     try {
         return await authService.register(user)
     } catch (error) {
+        console.log(error)
         const message = (
             error.response && 
             error.response.data &&
@@ -50,7 +53,7 @@ export const logout = createAsyncThunk(
     'auth/logout',
     async (user, thunkAPI)=>{
         try {
-            return await authService.logout(user)
+            return await authService.logout()
         } catch (error) {
             const message = (error.response && 
                 error.response.data &&
@@ -62,18 +65,27 @@ export const logout = createAsyncThunk(
     }
 )
 
-// all users
-export const allUser = createAsyncThunk(
-    'auth/users',
+//  user 
+export const userInfo = createAsyncThunk(
+    'auth/userinfo', 
     async(user, thunkAPI)=>{
-        return await authService.allUser(user)
+    try {
+        return await authService.userInfo()
+    } catch (error) {
+        const message = (error.response && 
+            error.response.data &&
+            error.response.data.message) || 
+            error.message || 
+            error.toString()
+        return thunkAPI.rejectWithValue(message)
     }
-)
+})
+
 
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
-    reducers: {
+    reducers: {       
         reset: (state)=>{
             state.isLoading = false
             state.isError = false
@@ -83,13 +95,16 @@ export const authSlice = createSlice({
     },
     extraReducers: (builder)=>{
         builder
-            .addCase(register.pending, (state)=>{
+            .addCase(register.pending, (state, action)=>{
                 state.isLoading = true
+                state.user = null
             })
             .addCase(register.fulfilled, (state, action)=>{
                 state.isLoading = false
                 state.isSuccess = true
                 state.user = action.payload
+                addUserToLocalStorage(state.user)                
+                toast.success(`Hi There ${state.user.firstname}`)
             })
             .addCase(register.rejected, (state, action)=>{
                 state.isLoading = false
@@ -97,37 +112,50 @@ export const authSlice = createSlice({
                 state.message = action.payload
                 state.user = null
             })
-            .addCase(login.pending, (state)=>{
+            .addCase(login.pending, (state, action)=>{
                 state.isLoading = true
+                state.message = action.payload
+                state.user = null
             })
             .addCase(login.fulfilled, (state, action)=>{
+                console.log('login.payload')
+                console.log(action.payload)
                 state.isLoading = false
                 state.isSuccess = true
                 state.user = action.payload
+                addUserToLocalStorage(state.user)
+                toast.success(`Welcome back ${state.user.firstname}`)
             })
             .addCase(login.rejected, (state, action)=>{
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
                 state.user = null
+                toast.error(action.payload)
+
             })
             .addCase(logout.fulfilled, (state)=>{
                 state.user = null
+                removeUserFromLocalStorage()
+                toast.success('Successfully Loged out')
+
             })
-             .addCase(allUser.pending, (state)=>{
+            .addCase(userInfo.pending, (state)=>{
                 state.isLoading = true
             })
-            .addCase(allUser.fulfilled, (state, action)=>{
+            .addCase(userInfo.fulfilled, (state, action)=>{
+                console.log('user.payload')
+                console.log(action.payload)
                 state.isLoading = false
                 state.isSuccess = true
                 state.user = action.payload
             })
-            .addCase(allUser.rejected, (state, action)=>{
-                state.isLoading = false
-                state.isError = true
-                state.message = action.payload
-                state.user = null
-            })
+            // .addCase(userInfo.rejected, (state, action)=>{
+            //     state.isLoading = false
+            //     state.isError = true
+            //     state.message = action.payload
+            //     state.user = null
+            // })
     }
 })
 

@@ -41,6 +41,7 @@ nav{
     color: var(--clr-primary-1);
 
 }
+
 .profile_circle:hover + .nav_profile_content{
     top: 50px;
     height:max-content;
@@ -54,13 +55,14 @@ nav{
     background-color: var(--clr-primary-3);
     overflow-y: hidden;
     transition: height 500ms;
+    border-radius: 4px;
+    box-shadow: var(--dark-shadow);
 }
 .nav_profile_content:hover{
     top: 50px;
     height:max-content;
     width: max-content;
     padding: 1rem;
-
 }
 .nav_profile_content ul{
     padding: 1rem;
@@ -77,9 +79,14 @@ nav{
     background-color: var(--clr-primary-2);
     padding: 1rem;
     color: var(--clr-primary-3);
+    border-radius: 4px;
+
  }
 .nav_profile_content .link{
     color: var(--clr-primary-1);
+}
+.nav_profile_content h3{
+    padding-bottom: 1rem;
 }
 @media (max-width: 48em) {
     .nav-header .link{
@@ -96,7 +103,7 @@ nav{
     
 }
 
-
+/* 
 .loadingSpinnerContainer {
     position: fixed;
     top: 0;
@@ -117,4 +124,4 @@ nav{
     border-color: rgb(71, 207, 241) transparent rgb(11, 108, 146) transparent;
     border-radius: 50%;
     animation: spin 1.2s linear infinite;
-  }
+  } */

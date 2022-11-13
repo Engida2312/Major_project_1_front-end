@@ -5,25 +5,25 @@ export const infoCards = [
     {
         id: 1,
         title: 'Flaxable',
-        description: 'Build beautiful UIs with ease. Start with Googles Material Design, or create your own sophisticated theme.',
+        description: 'Our components are as flexible as they are powerful. You always have full control over how they look and behave.',
         icon: <MdOutlineDeveloperMode/>,
     },
       {
         id: 2,
         title: 'Accessable',
-        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum rem, quam natus, ipsa ex tempor',
+        description: "We believe in building for everyone. That's why accessibility is one of our highest priorities with every new feature we ship.",
         icon: <MdOutlineDeveloperMode/>,
     },
       {
         id: 3,
         title: 'Maintainable',
-        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum rem, quam natus, ipsa ex tempor',
+        description: 'Build beautiful UIs with ease. Start with react component library and create your own sophisticated theme.',
         icon: <MdOutlineDeveloperMode/>,
     },
       {
         id: 4,
-        title: 'open-soure',
-        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum rem, quam natus, ipsa ex tempor',
+        title: 'Open source  ',
+        description: "Our platform helps others build their own platforms based on it. As a result, the platform's source code is available to everyone.",
         icon: <MdOutlineDeveloperMode/>,
     },
 
@@ -50,4 +50,18 @@ export const socialLinks = [
     icon: <BsTwitter/>,
     url: 'https://twitter.com/',
   },
+]
+
+export const psocialLinks = [
+  {
+    id:1,
+    icon: <BsLinkedin/>,
+    url: 'https://linkedin.com',
+  },
+  {
+    id:2,
+    icon: <BsGithub/>,
+    url: 'https://github.com',
+  },
+  
 ]

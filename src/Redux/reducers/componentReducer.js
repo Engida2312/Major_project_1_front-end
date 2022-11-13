@@ -28,7 +28,6 @@ export const SingleUserComponent = createAsyncThunk('singleUser-component/id', (
 })
 // getcomponent
 export const GetComponent = createAsyncThunk('component', () => {
-
     return axios.get('http://127.0.0.1:8000/api/component')
         .then((response) => response.data)
 })
@@ -51,6 +50,11 @@ export const UpdateComponentLike = createAsyncThunk('component/update-componentl
 //update component
 export const UpdateComponent = createAsyncThunk('component/update-component', ([id, component]) => {
     return axios.put(`http://127.0.0.1:8000/api/update-component/${id}`, component)
+        .then((response) => response.data)
+})
+//update component
+export const DelateComponent = createAsyncThunk('component/update-component', (id) => {
+    return axios.delete(`http://127.0.0.1:8000/api/delete-component/${id}`)
         .then((response) => response.data)
 })
 const componentSlice = createSlice({

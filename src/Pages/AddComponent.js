@@ -5,11 +5,11 @@ import {  GetCategory } from '../Redux/reducers/categoryReducer';
 import { useNavigate } from "react-router-dom";
 
 
-
 const Landing = () => {
     const categorystore = useSelector((state) => state.category)
     const categorys = categorystore.categorys
     const user = useSelector((state) => state.auth.user)
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
     useEffect(() => {
