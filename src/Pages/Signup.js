@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import validation from "./validation";
 import {ToastContainer, toast, Zoom, Bounce} from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css"
-import {register, reset}  from '../Features/Auth/authSlice'
+import {register}  from '../Features/Auth/authSlice'
 import Spinner from '../Componets/spinner'
 
 function Signup() {
@@ -51,7 +51,7 @@ function Signup() {
     const onSubmit = (e)=>{
       e.preventDefault()
           setErrors(validation(formData));
-          dispatch(register(formData))
+          dispatch(register(formData))  
         const userData = {
           firstname,
           lastname,

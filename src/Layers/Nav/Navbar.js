@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import {AiOutlineMenu} from 'react-icons/ai'
 import {VscGithub} from 'react-icons/vsc'
 import SearchBar from '../../Componets/search-bar'
 import logo from '../../Assets/Images/avatar.png'
