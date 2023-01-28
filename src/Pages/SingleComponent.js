@@ -17,6 +17,7 @@ function SingleComponent() {
         dispatch(Unique(id))
         dispatch(Viewes(id))
     }, [id]);
+    
     const user = useSelector((state) => state.auth.user)
     const componentstore = useSelector((state) => state.component)
     const component = componentstore.si_component
@@ -31,7 +32,7 @@ function SingleComponent() {
     var codeOutput = ''
     console.log(component)
     if (component.code_referance) {
-        codeOutput = `https://capable-empanada-735e35.netlify.app/component/${component.code_referance}`
+        codeOutput = `http://127.0.0.1:3001/component/${component.code_referance}`
         axios.get(`/component/code/${component.code_referance}`).then((response) => setThisCode(response.data.message)).catch((err) => { console.log(err) })
         axios.get(`/component/css/${component.code_referance}`).then((response) => setCss(response.data.message)).catch((err) => { console.log(err) })
     }
