@@ -12,20 +12,20 @@ const initialState = {
 
 // singleCategory
 export const SingleCategory = createAsyncThunk('single-category/id', (id) => {
-    return axios.get(`http://127.0.0.1:8000/api/single-category/${id}`)
+    return axios.get(`/single-category/${id}`)
         .then((response) => response.data)
 })
 // getCategory
 export const GetCategory = createAsyncThunk('category', () => {
 
-    return axios.get('http://127.0.0.1:8000/api/category')
+    return axios.get('/category')
         .then((response) => response.data)
 })
 // searchCategory
 
 
 export const searchCategory = createAsyncThunk('search-category', (searchTerm) => {
-    return axios.get(`http://127.0.0.1:8000/api/search/${searchTerm}`)
+    return axios.get(`/search/${searchTerm}`)
         .then((response) => response.data)
         .catch((err)=>{
             console.log(err)
@@ -33,7 +33,7 @@ export const searchCategory = createAsyncThunk('search-category', (searchTerm) =
 })
 //addCategory
 export const AddCategory = createAsyncThunk('category/add-category', (newCategory) => {
-    return axios.post('http://127.0.0.1:8000/api/add-category', newCategory)
+    return axios.post('/add-category', newCategory)
         .then((response) => response.data)
         .catch((err)=>{
             console.log(err)
@@ -42,7 +42,7 @@ export const AddCategory = createAsyncThunk('category/add-category', (newCategor
 //update category
 export const UpdateCategory = createAsyncThunk('category/update-category', ([id, Category]) => {
     console.log(Category);
-    return axios.put(`http://127.0.0.1:8000/api/update-category/${id}`, Category)
+    return axios.put(`/update-category/${id}`, Category)
         .then((response) => response.data)
         .catch((err)=>{
             console.log(err)

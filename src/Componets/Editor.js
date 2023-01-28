@@ -6,7 +6,7 @@ import 'codemirror/mode/javascript/javascript'
 import 'codemirror/mode/css/css'
 import { Controlled as ControlledEditor } from 'react-codemirror2'
 import '../Assets/Styles/editor.css'
-import { AiOutlineCopy } from 'react-icons/ai'
+import { AiOutlineCopy, AiOutlineArrowsAlt, AiOutlineArrowLeft} from 'react-icons/ai'
 import swal from 'sweetalert2';
 
 export default function Editor(props) {
@@ -41,7 +41,7 @@ export default function Editor(props) {
                     className="expand-collapse-btn"
                     onClick={() => setOpen(prevOpen => !prevOpen)}
                 >
-                    {open ? <spin>close</spin> : <spin>open</spin>}
+                    {open ? <AiOutlineArrowLeft/> : <AiOutlineArrowsAlt/>}
                     {/* <FontAwesomeIcon icon={open ? faCompressAlt : faExpandAlt} /> */}
                 </button>
             </div>

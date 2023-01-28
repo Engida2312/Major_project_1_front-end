@@ -7,6 +7,8 @@ import { UpdateComponentLike as Like } from '../Redux/reducers/componentReducer'
 import Editor from '../Componets/Editor'
 import { AiFillHeart } from 'react-icons/ai'
 import axios from 'axios';
+import Spinner from '../Componets/spinner';
+
 
 function SingleComponent() {
     const dispatch = useDispatch();
@@ -27,15 +29,15 @@ function SingleComponent() {
         }
     }
     var codeOutput = ''
-    var code = ''
+    console.log(component)
     if (component.code_referance) {
-        codeOutput = `http://127.0.0.1:3001/component/${component.code_referance}`
-        axios.get(`http://127.0.0.1:8000/api/component/code/${component.code_referance}`).then((response) => setThisCode(response.data.message)).catch((err) => { console.log(err) })
-        axios.get(`http://127.0.0.1:8000/api/component/css/${component.code_referance}`).then((response) => setCss(response.data.message)).catch((err) => { console.log(err) })
+        codeOutput = `https://capable-empanada-735e35.netlify.app/component/${component.code_referance}`
+        axios.get(`/component/code/${component.code_referance}`).then((response) => setThisCode(response.data.message)).catch((err) => { console.log(err) })
+        axios.get(`/component/css/${component.code_referance}`).then((response) => setCss(response.data.message)).catch((err) => { console.log(err) })
     }
     if (componentstore.loading) {
         return (
-            <h1>loading...</h1>
+            <Spinner/>
         )
     }
     return (
@@ -53,6 +55,7 @@ function SingleComponent() {
                         width='600px'
                         height='80px'
                         title='codeOutput'
+                        backgroundColor='white'
                     />
 
                 </div>

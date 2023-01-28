@@ -2,9 +2,9 @@ import axios from "axios"
 // register user 
 const register = async(userData)=>{
     const response = await axios.post('/register', userData)
-    const content = JSON.stringify(response.data)
-    console.log(content)
-    return content
+    if(response.data){
+        return response.data
+    }
 }
 
 // login user 

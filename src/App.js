@@ -23,6 +23,7 @@ import AddCategory from './Pages/Admin/AddCategory';
 import UpdateCategory from './Pages/Admin/UpdateCategory';
 // import Landing from './Pages/Admin/landingPage';
 import ItemProfile from './Pages/Admin/ItemProfile';
+import EditComponent from './Pages/EditComponent';
 // ****shared layouts*****
 import ClientSharedLayout from './Layers/SharedLayouts/ClientSharedLayout';
 import AdminSharedLayout from './Layers/SharedLayouts/AdminSharedLayout'
@@ -84,6 +85,7 @@ function App() {
           <Route path='components/updateCategory/:id' element={<UpdateCategory />} />
           <Route path='*' element={<DemoIframe />} />
           <Route path='AddComponent' element={<AddComponents />} />
+          <Route path='component/edit/:id' element={<EditComponent />} />
           <Route path='/components' element={<ComponentSharedLayout />}>
             <Route index element={<Components />} />
             <Route path='category/:id' element={<SingleCategory />} />
@@ -99,6 +101,7 @@ function App() {
             <Route path='allusers' element={<AllUsers />} />
             <Route path='AddComponent' element={<AddComponents />} />
             <Route path='user/profile/:id' element={<ItemProfile />} />
+            <Route path='component/edit/:id' element={<EditComponent />} />
           </Route>
         </Route>
       </Routes>

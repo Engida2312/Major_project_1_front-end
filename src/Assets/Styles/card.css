@@ -31,6 +31,10 @@
     width: 30px;
     height: 30px;
 }
+.card_top{
+    padding: 3rem 1rem;
+
+}
 .card_detail_right {
 }
 
